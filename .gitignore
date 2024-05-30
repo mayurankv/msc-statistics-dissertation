@@ -2,11 +2,11 @@
 .vscode
 
 # Environments
-.env
+#.env
 .venv
 venv/
 #ENV/
-env.bak/
+#env.bak/
 venv.bak/
 
 # Mac OS-specific storage files
