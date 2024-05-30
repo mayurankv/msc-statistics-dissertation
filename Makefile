@@ -4,11 +4,6 @@ PYTHON_VERSION = 3.12
 PYTHON_INTERPRETER = python
 
 ## Commands
-# Locally host app
-.PHONY: app
-app:
-	streamlit run app/app.py
-
 # Freeze requirements
 .PHONY: requirements
 requirements:
