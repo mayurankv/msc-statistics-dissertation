@@ -39,7 +39,8 @@
 		"**/LICENSE*": true,
 		"node_modules/": true,
 		".venv/": true,
-		".gitlab/": true
+		".gitlab/": true,
+		".vscode/": true
 	},
 	"hide-files.files": [],
 	"explorer.fileNesting.patterns": {

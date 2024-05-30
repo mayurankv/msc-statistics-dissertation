@@ -1,6 +1,3 @@
-# Styling, Linting and Workspace Settings Files
-.vscode
-
 # Environments
 .env
 .venv
