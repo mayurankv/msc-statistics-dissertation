@@ -37,7 +37,9 @@
 		"**/*.xdy": true,
 		"**/__pycache__": true,
 		"**/LICENSE*": true,
-		"node_modules/": true
+		"node_modules/": true,
+		".venv/": true,
+		".gitlab/": true
 	},
 	"hide-files.files": [],
 	"explorer.fileNesting.patterns": {
