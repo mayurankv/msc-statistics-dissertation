@@ -1,6 +1,3 @@
-# Specify exports
-__all__ = ["initialise"]
-
 # Imports
 from pathlib import Path
 
