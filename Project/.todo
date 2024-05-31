@@ -41,6 +41,7 @@ Concepts to Learn:
 		Just in Time Compilation:
 			☐ Research concept
 			☐ Research `numba`
+				☐ Read 		https://stackoverflow.com/questions/55417308/when-numba-is-effective
 			☐ Research `jax`
 			☐ Research `pypy`
 			☐ Research `pyston`
