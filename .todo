@@ -4,5 +4,7 @@ Setup:
 	☐ Start on Organisation `.todo`
 
 Other:
-	☐ Convert dataset.py
 	☐ Download all notes from all courses from blackboard
+	☐ Models
+	☐ Debug
+	☐ Tests
