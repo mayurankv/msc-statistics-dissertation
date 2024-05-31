@@ -30,7 +30,7 @@ cesium==0.12.1
 cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
-cloudpathlib==0.16.0
+cloudpathlib==0.18.1
 cloudpickle==3.0.0
 cmdstanpy==1.2.2
 coloredlogs==15.0.1
