@@ -38,6 +38,8 @@
 		"**/__pycache__": true,
 		"**/LICENSE*": true,
 		"node_modules/": true,
+		".pytest_cache/": true,
+		".ruff_cache/": true,
 		".venv/": true,
 		".gitlab/": true,
 		".vscode/": true,

@@ -21,6 +21,7 @@ Setup:
 			☐ Use
 		CLI:
 			☐ Look into `Typer`
+				☐ Look into shell completions it makes available
 			☐ Look into `argparse`
 		Packaging:
 			☐ Look at https://py-pkgs.org/03-how-to-package-a-python
