@@ -165,6 +165,8 @@
   },
   "active": "c1ecb4f29d433323",
   "lastOpenFiles": [
+    "Pipfile",
+    "Project/modules/generic_module/config.py",
     "Submission/Thesis/Examples/Thesis_FootballFatigue.pdf",
     "Submission/Thesis/Examples/Thesis_Football_Fatigue.pdf",
     "Submission/Thesis/Examples/Football Fatigue.pdf",
@@ -174,8 +176,6 @@
     "Writeup/thesis/templates/Generic/figures/plots/slp/toeplitz_4x4_4_paar1.dat",
     "Writeup/thesis/templates/Generic/figures/plots/slp/toeplitz_4x4_4_naive.dat",
     "Writeup/thesis/templates/Generic/figures/plots/slp/toeplitz_4x4_4_bmp.dat",
-    "Writeup/thesis/templates/Generic/figures/plots/slp/hadamard_4x4_4_paar1.dat",
-    "Writeup/thesis/templates/Generic/figures/plots/slp/hadamard_4x4_4_naive.dat",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Generic/README.md",
