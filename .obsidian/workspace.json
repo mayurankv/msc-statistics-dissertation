@@ -163,8 +163,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "c1ecb4f29d433323",
+  "active": "5a0ae81c1c17f403",
   "lastOpenFiles": [
+    "Organisation/Meetings/templates/Meeting.md",
+    "Organisation/Meetings/templates",
     "utilities/obsidian/snippets/typing_ease.js",
     "utilities/obsidian/snippets/text.js",
     "utilities/obsidian/snippets/symbols.js",
@@ -174,8 +176,6 @@
     "utilities/obsidian/snippets/physics.js",
     "utilities/obsidian/snippets/operators.js",
     "utilities/obsidian/snippets/matrices.js",
-    "utilities/obsidian/snippets/math_modes.js",
-    "utilities/obsidian/snippets/links.js",
     "Untitled.md",
     "Temp/Phone.md",
     "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 9.md",
