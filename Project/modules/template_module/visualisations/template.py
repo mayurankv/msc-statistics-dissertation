@@ -1,10 +1,11 @@
 # Imports
 from typer import Typer
 
-# Initialise Classes
+# Initialise Decorators
 app = Typer()
 
 
+# Main Function
 @app.command()
 def main():
 	pass
