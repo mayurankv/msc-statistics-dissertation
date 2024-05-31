@@ -1,2 +1,65 @@
-Initial:
+Setup:
+	☐ Choose project
+		☐ Think about type of financial data you are keen to analyse
+		☐ Think about what kind of time series research question you want to build around it
 	☐ Update the module names and descriptions to reflect thesis
+	☐ Populate `Makefile` with relevant commands
+	☐ Store argument in `yaml` files (rest set as CONSTANTS in file)
+
+	Logging:
+		☐ Set up logging decorators
+		☐ Choose logging format
+		☐ Set multiple logging sinks
+			☐ `stdout`
+			☐ Logging files
+		☐ Look into `loguru` (https://github.com/Delgan/loguru)
+		☐ Read `logging` cookbook
+
+	Deployment:
+		GUI:
+			☐ Use
+		CLI:
+			☐ Look into `Typer`
+			☐ Look into `argparse`
+
+	Environment:
+		☐ Convert `environment.yml` to `requirements.txt`
+		☐ Setup `mamba` (https://mamba.readthedocs.io/en/latest/user_guide/configuration.html)
+
+Data:
+	Bloomberg data:
+		☐ Contact relevant person for access
+		☐ Work out how to use via python
+	☐ Find other financial data sources
+
+Concepts to Learn:
+	Speeding up:
+		Profiling:
+			☐ Look into `cProfile`
+			☐ Look into `Snakeviz`
+			☐ Look into other tools
+		Just in Time Compilation:
+			☐ Research concept
+			☐ Research `numba`
+			☐ Research `jax`
+			☐ Research `pypy`
+			☐ Research `pyston`
+		Parallelism:
+			☐ Look into `multiprocessing`
+				☐ `from multiprocessing import Pool`
+			☐ Use vectorisation
+		Concurrency:
+			☐ Look at https://docs.python.org/3/library/concurrency.html
+			☐ Asynchronisation
+				☐ Use `asyncio`
+		Caching:
+			☐ `functools` caching via `@lru_cache`
+			☐ Streamlit caching
+		C Code:
+			☐ Look into `Cython`
+			☐ Look at how native `C` code can be called
+		Other Examples:
+			☐ Look into `concurrent.futures`
+			☐ Look into `threading`
+			☐ https://github.com/Llamrei/StatsMSc_Speed_examples
+			☐ https://github.com/bmartin9/MScOptimisation

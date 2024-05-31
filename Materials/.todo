@@ -1,0 +1,19 @@
+Concepts to Cover:
+	☐ Trend stationary models
+	☐ ARIMA Models
+	✔ Brownian Motion @done(24-05-31 02:38)
+	☐ Unit root processes and unit root testing
+	☐ State Space Models
+		☐ Kalman Filter
+	☐ Fractional Models
+		☐ ARFIMA Models
+		☐ Fractional Brownian Motion
+	☐ Look more generally into non-stationary time series and relevant concepts
+
+Read:
+	☐ Adam's papers (write by name)
+	☐ A tale of two timescales (paper)
+	☐ Books from library (write by name)
+
+Literature Reviews:
+	☐ Decide what to literature review

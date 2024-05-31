@@ -1,0 +1,28 @@
+LaTeX:
+	Template:
+		☐ Decide template
+
+	Snippets:
+		☐ Set up Obsidian snippets
+		☐ Set up VSCode snippets
+
+	Conversions:
+		☐ Automatic conversion of markdown to latex
+		☐ Automatic conversion of latex to pdf
+		☐ Automatic publishing of pdf
+
+References:
+	☐ Set up referencing structure
+		☐ Look at Giles Castel's reference manager
+		☐ 	Check Obsidian referencing solutions
+	☐ Set up `zotero` (https://www.zotero.org/)
+	Packages:
+		☐ https://www.zotero.org/support/plugins
+		☐ Browser extensions
+			☐ Chrome
+			☐ Firefox
+			☐ Safari
+	CLI:
+		☐ https://github.com/jbaiter/zotero-cli
+	Obsidian:
+		☐ https://github.com/frthjf/obsidian-zotero-sync-client
