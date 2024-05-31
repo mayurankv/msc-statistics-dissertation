@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "0c3dc0e86b11955a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6488e291806e7fc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c1ecb4f29d433323",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7107fc352a0889b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad95a682fb10f645",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5a0ae81c1c17f403",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ae82b0eebfac1844",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#AcademicBackground",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "04a4002ce48b6d1b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "439e0c2104fc67e2",
+    "type": "split",
+    "children": [
+      {
+        "id": "890a4f675dd9c364",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3b4f05cc8112a285",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "de467fa23f64fd4a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "cc7c0ae49f122966",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "456f4d491f6afbe7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          },
+          {
+            "id": "5854aecfa8d4219b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "markdown-importer:Open format converter": false,
+      "audio-recorder:Start/stop recording": false,
+      "workspaces:Manage workspace layouts": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "c1ecb4f29d433323",
+  "lastOpenFiles": [
+    "utilities/obsidian/snippets/typing_ease.js",
+    "utilities/obsidian/snippets/text.js",
+    "utilities/obsidian/snippets/symbols.js",
+    "utilities/obsidian/snippets/spacing.js",
+    "utilities/obsidian/snippets/series.js",
+    "utilities/obsidian/snippets/selections.js",
+    "utilities/obsidian/snippets/physics.js",
+    "utilities/obsidian/snippets/operators.js",
+    "utilities/obsidian/snippets/matrices.js",
+    "utilities/obsidian/snippets/math_modes.js",
+    "utilities/obsidian/snippets/links.js",
+    "Untitled.md",
+    "Temp/Phone.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 9.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/todo.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 3.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/temp.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 7.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 6.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 5.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 4.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Exams/Theorems.md",
+    "Temp/AP.md",
+    "Temp/PhDs/Current Year/StatML/Supervisor Pool.md",
+    "Temp/PhDs/Current Year/StatML/Statement of Purpose.md",
+    "Temp/PhDs/Current Year/StatML/Application.md",
+    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 4 2024-02-29 16.56.54.excalidraw.md",
+    "Temp/PhDs/Current Year/StatML/Template Email.md",
+    "Work/Imperial/Modules/Optional/Deep Learning/Tensorflow/Assessments/Summative/3/My Work/Coursework 3_files/Coursework 3_19_3.png",
+    "Work/Imperial/Modules/Optional/Deep Learning/Tensorflow/Assessments/Summative/3/My Work/Coursework 3_files/Coursework 3_19_1.png",
+    "Work/Imperial/Modules/Optional/Deep Learning/Tensorflow/Assessments/Summative/3/My Work/Coursework 3_files/Coursework 3_10_1.png",
+    "Temp/PhDs/Current Year/StatML/Temp.md",
+    "Temp/PhDs/Current Year/StatML/TODO.md",
+    "Temp.md",
+    "Temp/PhDs/Current Year/Masters Personal Statement.md",
+    "Temp/PhDs/Current Year/StatML/Notes.md",
+    "Work/Imperial/Modules/Optional/Deep Learning/Tensorflow/Assessments/Summative/3/My Work/Question 4/Question 4 Notes.md",
+    "Temp/PhDs/Current Year/References/Alastair Young Reference Email.md",
+    "Programming/My Pages/mayurankv.github.io/_pages/about.md",
+    "Programming/Projects/Obsidian/Obsidian Plugins/Latex Headings Vault/latex-headings/node_modules/caniuse-db/browserstack-logo.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/MacOS Vibrancy Vault/macos-vibrancy/node_modules/caniuse-db/browserstack-logo.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/TikzJax Vault/obsidian-tikzjax/imgs/screenshot2.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/TikzJax Vault/obsidian-tikzjax/imgs/screenshot.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/TikzJax Vault/obsidian-tikzjax/imgs/img6.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/TikzJax Vault/obsidian-tikzjax/imgs/img5.png",
+    "Programming/Projects/Obsidian/Obsidian Plugins/TikzJax Vault/obsidian-tikzjax/imgs/img4.png"
+  ]
+}

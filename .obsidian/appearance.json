@@ -1,0 +1,20 @@
+{
+  "accentColor": "#b11b61",
+  "cssTheme": "Minimal",
+  "theme": "obsidian",
+  "monospaceFontFamily": "MesloLGL Nerd Font",
+  "interfaceFontFamily": "SF Pro Rounded",
+  "textFontFamily": "CMU Serif,SF Pro",
+  "translucency": true,
+  "baseFontSize": 16,
+  "enabledCssSnippets": [
+    "Maths - LaTeX Unitalicise",
+    "Maths - LaTeX Tooltips",
+    "Maths - LaTeX Syntax Highlighting",
+    "Maths - LaTeX PDF Export",
+    "Maths - LaTeX Appearance",
+    "Headings",
+    "Colours",
+    "Callouts"
+  ]
+}
