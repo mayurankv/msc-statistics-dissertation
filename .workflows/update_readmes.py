@@ -41,5 +41,6 @@ def main() -> None:
 	with open(file="README.md", mode="w") as file:
 		file.write(readme)
 
+
 if __name__ == "__main__":
 	main()

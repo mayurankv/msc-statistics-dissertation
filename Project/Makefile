@@ -14,6 +14,7 @@ app:
 format:
 	ruff check --fix
 	ruff format
+	# find. -name "*.tex" -exec chktex {} \;
 
 ## Help
 # Display all rules
