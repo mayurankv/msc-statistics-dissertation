@@ -14,6 +14,7 @@ Setup:
 			☐ Logging files
 		☐ Look into `loguru` (https://github.com/Delgan/loguru)
 		☐ Read `logging` cookbook
+		☐ Read and implement https://ankitbko.github.io/blog/2021/04/logging-in-python/
 
 	Deployment:
 		GUI:
@@ -21,16 +22,22 @@ Setup:
 		CLI:
 			☐ Look into `Typer`
 			☐ Look into `argparse`
+		Packaging:
+			☐ Look at https://py-pkgs.org/03-how-to-package-a-python
+			☐ Read https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#writing-pyproject-toml
 
 	Environment:
 		☐ Convert `environment.yml` to `requirements.txt`
-		☐ Setup `mamba` (https://mamba.readthedocs.io/en/latest/user_guide/configuration.html)
+		☐ Setup `mamba` (https://mamba.readthedocs.io/en/latest/user_guide/configuration.html) (https://github.com/mamba-org/mamba)
 
 Data:
 	Bloomberg data:
 		☐ Contact relevant person for access
 		☐ Work out how to use via python
 	☐ Find other financial data sources
+
+Testing:
+	☐ Use `unittest` (https://docs.python.org/3/library/unittest.html)
 
 Concepts to Learn:
 	Speeding up:
@@ -44,6 +51,7 @@ Concepts to Learn:
 				☐ Read 		https://stackoverflow.com/questions/55417308/when-numba-is-effective
 			☐ Research `jax`
 			☐ Research `pypy`
+			☐ Research `pythran`
 			☐ Research `pyston`
 		Parallelism:
 			☐ Look into `multiprocessing`
@@ -64,3 +72,8 @@ Concepts to Learn:
 			☐ Look into `threading`
 			☐ https://github.com/Llamrei/StatsMSc_Speed_examples
 			☐ https://github.com/bmartin9/MScOptimisation
+			☐ https://github.com/abriz97/Computational_Training_ICL
+
+			Transpilers?:
+				☐ http://11l-lang.org/
+				☐ http://shed-skin.blogspot.com/
