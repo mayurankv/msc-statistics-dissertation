@@ -22,6 +22,12 @@ venv:
 	$(PYTHON_INTERPRETER) -m pip install -U pip
 	$(PYTHON_INTERPRETER) -m pip install -r env/requirements.txt
 
+# Format files
+.PHONY: format
+format:
+	ruff check --fix
+	ruff format
+
 # Clean up python bytecode files
 .PHONY: clean
 clean:

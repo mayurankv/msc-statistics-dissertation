@@ -9,6 +9,12 @@ PYTHON_INTERPRETER = python
 app:
 	streamlit run tools/distributions/gui/app/main.py
 
+# Format python files
+.PHONY: format
+format:
+	ruff check --fix
+	ruff format
+
 ## Help
 # Display all rules
 .DEFAULT_GOAL := help
