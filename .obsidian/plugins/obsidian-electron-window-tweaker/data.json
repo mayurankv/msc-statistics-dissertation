@@ -1,7 +1,7 @@
 {
   "opacity": 1,
   "alwaysOnTop": false,
-  "vibrancy": "hud",
+  "vibrancy": "popover",
   "trafficLightsPosX": 11,
   "trafficLightsPosY": 11
 }

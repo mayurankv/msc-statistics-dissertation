@@ -20,6 +20,9 @@
     "excalidraw-border-color": "text",
     "excalidraw-css": "text",
     "excalidraw-autoexport": "checkbox",
-    "excalidraw-iframe-theme": "text"
+    "excalidraw-iframe-theme": "text",
+    "date": "datetime",
+    "time": "datetime",
+    "attendees": "multitext"
   }
 }
