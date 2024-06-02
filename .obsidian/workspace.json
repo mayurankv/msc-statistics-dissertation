@@ -13,10 +13,23 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/templates/Meeting.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 1.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "1f19eb9d3ed5a51c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Organisation/Meetings/Supervisor Meeting 1.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": false
+                "source": true
               }
             }
           }
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Organisation/templates/Meeting.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Organisation/templates/Meeting.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Organisation/templates/Meeting.md"
+                "file": "Organisation/Meetings/Supervisor Meeting 1.md"
               }
             }
           },
@@ -165,17 +178,29 @@
   },
   "active": "c1ecb4f29d433323",
   "lastOpenFiles": [
+    "Organisation/Progress Reports/Progress Report 2.md",
+    "Organisation/Meetings/Supervisor Meeting 1.md",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "Organisation/Progress Reports/Progress Report 1.md",
+    "Organisation/templates/Progress Report.md",
+    "Organisation/templates/Meeting.md",
+    "Organisation/Meetings/Supervisor Meeting 3.md",
+    "Organisation/templates/Supervisor Meeting <% last_meetin_id %>.md",
+    "Organisation/Meetings/Supervisor Meeting 5.md",
+    "Organisation/Meetings/Untitled 1.md",
+    "Organisation/Meetings/Review/Untitled.md",
+    "Organisation/templates/Meeting 2024-06-02 15.21.43.excalidraw.md",
+    "Organisation/templates/Meeting copy.md",
+    "Organisation/Meetings/Review",
+    "Organisation/Progress Reports",
+    "Organisation/Updates",
+    "Organisation/Update",
+    "Organisation/Tasks/Review",
+    "Organisation/Tasks",
+    "utilities/obsidian/snippets/chat-view.js",
+    "utilities/obsidian/snippets/arrows.1.js",
     "Submission/thesis/Examples/Thesis_WeakSupervisionMLForCyber.pdf",
     "Submission/thesis/Examples/Thesis_StatisticalCyberSecurity.pdf",
-    "Submission/thesis/Examples/Thesis_ModellingEdgeFormation.pdf",
-    "Submission/thesis/Examples/Thesis_IdentifiabilityHawkesProcesses.pdf",
-    "Submission/thesis/Examples/Thesis_FootballFatigue.pdf",
-    "Submission/thesis/Examples/Thesis_BayesianNetworksYieldPredictions.pdf",
-    "Submission/thesis/Examples/Thesis_AnalyticApproximationsBayesian.pdf",
-    "Submission/thesis/Examples/Thesis_AnalysisSpatialPatterns.pdf",
-    "Submission/thesis/Examples",
-    "Submission/thesis",
-    "Writeup/poster",
     "README.md",
     "Materials/Readinglist.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
@@ -197,19 +222,6 @@
     "Writeup/thesis/templates/Cambridge PhD/README.md",
     "Writeup/thesis/templates/Cambridge PhD/ChangeLog.md",
     "Writeup/thesis/templates/Cambridge/Figs/CollegeShields/Licenses.md",
-    "Writeup/thesis/templates/Cambridge/license.md",
-    "Writeup/thesis/templates/Cambridge/README.md",
-    "Writeup/thesis/templates/Cambridge/ChangeLog.md",
-    "Writeup/thesis/templates/Oxford/README.md",
-    "Writeup/thesis/templates/kaobook/README.md",
-    "Writeup/thesis/templates/kaobook/MANIFEST.md",
-    "Writeup/thesis/templates/Imperial/README.md",
-    "Writeup/thesis/templates/Imperial/LICENSE.md",
-    "Writeup/thesis/templates/MSc_Statistics_Research_Report_Template/README.md",
-    "Writeup/thesis/templates/MSc_Statistics_Research_Report_Template/LICENSE.md",
-    "Organisation/templates/Meeting.md",
-    "Untitled.md",
-    "Temp/Phone.md",
-    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 9.md"
+    "Writeup/thesis/templates/Cambridge/license.md"
   ]
 }

@@ -23,6 +23,7 @@
     "excalidraw-iframe-theme": "text",
     "date": "datetime",
     "time": "datetime",
-    "attendees": "multitext"
+    "attendees": "multitext",
+    "previous supervisor meeting": "text"
   }
 }
