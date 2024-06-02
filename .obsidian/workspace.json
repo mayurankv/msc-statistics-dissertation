@@ -165,17 +165,18 @@
   },
   "active": "c1ecb4f29d433323",
   "lastOpenFiles": [
-    "Project/templates/template_module/src/algorithms/template.py",
-    "Project/templates/template_module/src/core/template.py",
-    "Project/templates/template_module/src/data/template.py",
+    "Project/tools/distributions/cli/themes/app",
+    "Project/templates/template_module/data/file_template.py",
+    "Project/templates/file_template.py",
+    "Project/templates/template.py",
     "Project/templates/template_module/src/utils/template.py",
+    "Project/templates/template_module/src/data/template.py",
+    "Project/templates/template_module/src/core/template.py",
+    "Project/templates/template_module/src/algorithms/template.py",
     "Project/templates/template_module/data/template.py",
     "Project/templates/template_module/tests/template.py",
-    "Project/templates/template_module/visualisations/__pycache__/test.cpython-312.pyc",
-    "Project/templates/template_module/visualisations/__pycache__/template.cpython-312.pyc",
-    "Project/templates/template_module/src/utils/__init__.py",
-    "Project/templates/template_module/src/models/tune.py",
-    "Project/templates/template_module/src/models/train.py",
+    "Project/templates/template_module/tests/template 15.42.46.py",
+    "Materials/Readinglist.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Generic/README.md",
@@ -209,7 +210,6 @@
     "Untitled.md",
     "Temp/Phone.md",
     "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 9.md",
-    "Work/Imperial/Modules/Optional/Stochastic Processes/todo.md",
-    "Work/Imperial/Modules/Optional/Stochastic Processes/Lecture Notes/My Notes/Lecture 3.md"
+    "Work/Imperial/Modules/Optional/Stochastic Processes/todo.md"
   ]
 }
