@@ -52,4 +52,27 @@
 	"explorer.fileNesting.patterns": {
 		"README*": "AUTHORS, Authors, BACKERS*, Backers*, CHANGELOG*, CITATION*, CODEOWNERS, CODE_OF_CONDUCT*, CONTRIBUTING*, CONTRIBUTORS, COPYING*, CREDITS, Changelog*, Citation*, Code_Of_Conduct*, Codeowners, Contributing*, Contributors, Copying*, Credits, GOVERNANCE.MD, Governance.md, HISTORY.MD, History.md, LICENSE*, License*, MAINTAINERS, Maintainers, SECURITY.MD, SPONSORS*, Security.md, Sponsors*, authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying*, credits, governance.md, history.md, license*, maintainers, security.md, sponsors*, .todo, .TODO, .gitignore, Makefile",
 	},
+	"cSpell.words": [
+		"Banderi",
+		"Classique",
+		"colorinlistoftodos",
+		"Cours",
+		"Dthesis",
+		"filright",
+		"Kaneti",
+		"kaohandt",
+		"listoftodos",
+		"makeidx",
+		"mathptpx",
+		"Mécanique",
+		"nolineno",
+		"nomencl",
+		"nomname",
+		"Ohori",
+		"quotchap",
+		"Schwamb",
+		"scshape",
+		"todonotes",
+		"unsrt"
+	],
 }

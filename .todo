@@ -1,10 +1,15 @@
 Setup:
-	☐ Initialise all `.todo`s
-	☐ Update update-readmes
 	☐ Start on Organisation `.todo`
+	☐ Start on Materials `.todo`
+	☐ Update update-readmes
+	☐ Initialise `README`'s
 
 Other:
 	☐ Download all notes from all courses from blackboard
-	☐ Models
-	☐ Debug
-	☐ Tests
+	☐ Python files to complete
+		☐ `models.train`
+		☐ `models.test`
+		☐ `models.predict`
+		☐ `models.tune`
+		☐ `debug.logging` (Needs Wi-Fi)
+		☐ `test.template`

@@ -14430,7 +14430,8 @@ var PseudocodeSuggestor = class extends import_obsidian2.EditorSuggest {
       "\\For{}": "\\EndFor",
       "\\ForAll{}": "\\EndFor",
       "\\If{}": "\\EndIf",
-      "\\While{}": "\\EndWhile"
+      "\\While{}": "\\EndWhile",
+      "\\Repeat": "\\Until{}"
       // Add more pairs as needed
     };
     this.pseudocodeKeywords = [

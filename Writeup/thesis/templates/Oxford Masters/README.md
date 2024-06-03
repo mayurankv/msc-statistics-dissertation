@@ -15,7 +15,7 @@ Some of the features of **OxThesis** are:
 
 *Table of abbreviations.* Many science and engineering theses use lots of abbreviations. Humanities and social sciences theses often need glossaries. While there are some dedicated LaTeX classes that meet these needs in complex cases, I decided to create a simple list environment to handle the routine cases.
 
-*Highlighted corrections.* Most Oxford theses go through a round of corrections, as time-honored a tradition as the viva itself. Minor corrections generally just involve sending a PDF of your revised thesis to your internal examiner. (Major corrections often require a more exacting process.) This class allows you to designate text (or figures, etc) as a correction. You can then toggle between generating a document in which these corrections are highlighted in blue (ideal for sending to your examiner for a quick read-through) and just printing them without any adornment (for generating your final copy).
+*Highlighted corrections.* Most Oxford theses go through a round of corrections, as time-honoured a tradition as the viva itself. Minor corrections generally just involve sending a PDF of your revised thesis to your internal examiner. (Major corrections often require a more exacting process.) This class allows you to designate text (or figures, etc) as a correction. You can then toggle between generating a document in which these corrections are highlighted in blue (ideal for sending to your examiner for a quick read-through) and just printing them without any adornment (for generating your final copy).
 
 *Page layout, draft, and spacing options.* In a few keystrokes, you can switch between a double-spaced, single-sided, binding-margin document (ideal for submission), a 1.5-spaced, double-sided document (for your parents’ copy), or a version with equal left and right margins (for submitting as a PDF). An optional draft notice (with date) can be included in the footer — just remember to turn it off before submitting!
 
@@ -23,8 +23,3 @@ Some of the features of **OxThesis** are:
 
 ---
 Full details with pictures can still be found at the [Oxford Echoes blog post](https://www.oxfordechoes.com/oxford-thesis-template/).  Feel free to submit push requests or issues.
-
----
-
-
-> Written with [StackEdit](https://stackedit.io/).

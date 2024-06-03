@@ -35,7 +35,7 @@ def main() -> None:
 		pattern=r"\{\{([^}]*)\}\}",
 		repl=read_stub_file,
 		string=readme_stub,
-	)
+	).strip()
 
 	# Update README.md
 	with open(file="README.md", mode="w") as file:
