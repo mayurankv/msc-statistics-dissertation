@@ -44,6 +44,13 @@ Overview of previous meeting:
 ## Further Discussion Points 
 
 #toComplete
+I would like to do mixing of state space models with either ARIMA-GARCH or continuous models
+Levy noise
+Incorporation of HAR models?
+
+Rough-Bergomi model
+
+Also look at RNNs
 
 ---
 

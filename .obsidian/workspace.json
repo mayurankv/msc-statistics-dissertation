@@ -4,19 +4,32 @@
     "type": "split",
     "children": [
       {
-        "id": "d6488e291806e7fc",
+        "id": "3b671fad032b0011",
         "type": "tabs",
         "children": [
           {
-            "id": "c1ecb4f29d433323",
+            "id": "d981f61ba3fa1a91",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/Timeline/Timeline.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
                 "mode": "source",
                 "backlinks": true,
-                "source": true
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f9d2043fef82ad3a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Organisation/Progress Reports/Progress Report 1.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -70,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 279.5
   },
   "right": {
     "id": "439e0c2104fc67e2",
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Organisation/Timeline/Timeline.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Organisation/Timeline/Timeline.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Organisation/Timeline/Timeline.md"
+                "file": "Organisation/Meetings/Supervisor Meeting 2.md"
               }
             }
           },
@@ -162,53 +175,53 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "c1ecb4f29d433323",
+  "active": "d981f61ba3fa1a91",
   "lastOpenFiles": [
-    "Organisation/Meetings/Supervisor Meeting 1.md",
-    "Organisation/Timeline/Timeline.md",
-    "Organisation/Progress Reports/Progress Report 2.md",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
     "Organisation/Progress Reports/Progress Report 1.md",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
     "Organisation/templates/Progress Report.md",
-    "Organisation/templates/Meeting.md",
-    "Organisation/Meetings/Supervisor Meeting 3.md",
-    "Organisation/templates/Supervisor Meeting <% last_meetin_id %>.md",
-    "Organisation/Meetings/Supervisor Meeting 5.md",
-    "Organisation/Meetings/Untitled 1.md",
-    "Organisation/Meetings/Review/Untitled.md",
-    "Organisation/templates/Meeting 2024-06-02 15.21.43.excalidraw.md",
-    "Organisation/templates/Meeting copy.md",
+    "Organisation/Progress Reports/Progress Report 2.md",
+    "Writeup/theory/Time Series/Definition - Seasonality.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+    "Writeup/theory/Time Series/Definition - Stationarity.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
+    "Writeup/theory/Time Series/Definition - Non-Stationarity.md",
+    "Writeup/theory/Time Series/Definition - Wide-Sense Stationarity.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Process.md",
+    "utilities/obsidian/snippets/definitions.js",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Materials/Books/Ruey Tsay/An Introduction to Analysis of Financial Data with R/An Introduction to Analysis of Financial Data with R (1st Edition).pdf",
+    "Materials/Books/Ruey Tsay/An Introduction to Analysis of Financial Data with R",
+    "Materials/Books/Ruey Tsay/Analysis of Financial Time Series/Analysis of Financial Time Series.pdf",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Z-Transform.md",
+    "Writeup/theory/Time Series/Time Series Operators/Definition - Lag Operator.md",
+    "Writeup/theory/Time Series/Time Series Operators/Definition - Time Series Operators.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Covariance Function.md",
+    "Writeup/theory/Time Series/Definition - Time Series.md",
+    "Writeup/theory/Time Series/Time Series Operators",
+    "Writeup/theory/Time Series",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
+    "Materials/Course Notes/Time Series/2023.pdf",
+    "Writeup/theory/Time Series/Continuous Processes",
+    "Writeup/theory/Time Series/Discrete Processes",
     "Organisation/Meetings/Review",
-    "Organisation/Progress Reports",
-    "Organisation/Updates",
-    "Organisation/Update",
-    "Organisation/Tasks/Review",
-    "Organisation/Tasks",
-    "utilities/obsidian/snippets/chat-view.js",
-    "utilities/obsidian/snippets/arrows.1.js",
-    "Submission/thesis/Examples/Thesis_WeakSupervisionMLForCyber.pdf",
-    "Submission/thesis/Examples/Thesis_StatisticalCyberSecurity.pdf",
-    "README.md",
-    "Materials/Readinglist.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
-    "Writeup/thesis/templates/Generic/README.md",
     "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",
-    "Writeup/thesis/templates/Oxford Masters/README.md",
-    "Writeup/thesis/templates/Imperial Masters/README.md",
-    "Writeup/thesis/templates/Imperial Masters/LICENSE.md",
     "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Trinity.svg",
     "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Queens.svg",
     "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Peterhouse.svg",
     "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Kings.svg",
     "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/minion.png",
     "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/WallE.png",
-    "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/TomandJerry.png",
-    "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/Licenses.md",
-    "Writeup/thesis/templates/Cambridge PhD/license.md",
-    "Writeup/thesis/templates/Cambridge PhD/README.md",
-    "Writeup/thesis/templates/Cambridge PhD/ChangeLog.md",
-    "Writeup/thesis/templates/Cambridge/Figs/CollegeShields/Licenses.md",
-    "Writeup/thesis/templates/Cambridge/license.md"
+    "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/TomandJerry.png"
   ]
 }

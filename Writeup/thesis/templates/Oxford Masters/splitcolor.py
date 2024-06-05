@@ -90,7 +90,13 @@ def iscolorppm(filename):
 	return not black_and_white
 
 
-def pdfcolorsplit(file, doublesided, merge, use_pdftoppm, verbose):
+def pdfcolorsplit(
+	file,
+	doublesided,
+	merge: bool,
+	use_pdftoppm: bool,
+	verbose: bool,
+) -> None:
 	# Work out which pages are color
 	if verbose:
 		print("Analyzing %s..." % file)
@@ -103,9 +109,9 @@ def pdfcolorsplit(file, doublesided, merge, use_pdftoppm, verbose):
 		if not verbose:
 			gs_opts += " -q"
 		os.system("gs " + gs_opts + ' -sOutputFile="%s" "%s"' % (os.path.join(tmpdir, "tmp%06d.ppm"), file))
-	PPMs = os.listdir(tmpdir)
-	PPMs.sort()
-	iscolor = [iscolorppm(os.path.join(tmpdir, x)) for x in PPMs]
+	ppms = os.listdir(tmpdir)
+	ppms.sort()
+	iscolor = [iscolorppm(os.path.join(tmpdir, x)) for x in ppms]
 
 	colorpagenos = [x + 1 for x in range(len(iscolor)) if iscolor[x]]
 	print("Color pages: %s" % colorpagenos)
