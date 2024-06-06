@@ -299,7 +299,7 @@ toml==0.10.2
 toolz==0.12.1
 torch==2.2.2
 torchmetrics==1.4.0.post0
-torchvision==0.17.2
+torchvision==0.18.1
 tornado==6.4
 tqdm==4.66.4
 traces==0.6.3
