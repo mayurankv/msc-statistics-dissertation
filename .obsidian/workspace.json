@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Organisation/Meetings/Supervisor Meeting 2.md"
+                "file": "Organisation/temp/Dissertation Ideas.md"
               }
             }
           },
@@ -177,8 +177,23 @@
   },
   "active": "d981f61ba3fa1a91",
   "lastOpenFiles": [
-    "Organisation/Progress Reports/Progress Report 1.md",
+    "utilities/obsidian/snippets/text.js",
+    "utilities/obsidian/snippets/symbols.js",
+    "utilities/obsidian/snippets/typing_ease.js",
+    "utilities/obsidian/snippets/spacing.js",
+    "utilities/obsidian/snippets/selections.js",
+    "utilities/obsidian/snippets/series.js",
+    "utilities/obsidian/snippets/physics.js",
+    "utilities/obsidian/snippets/operators.js",
+    "utilities/obsidian/snippets/matrices.js",
+    "utilities/obsidian/snippets/delimiters.js",
+    "utilities/obsidian/snippets/math_modes.js",
+    "Writeup/theory/Statistical Finance/Definition - Realised Volatility.md",
+    "Organisation/temp/Dissertation Ideas.md",
+    "Writeup/theory/Statistical Finance/Definition - Historical Volatility.md",
+    "Writeup/theory/Statistical Finance/Definition - Integrated Volatility.md",
     "Organisation/Meetings/Supervisor Meeting 2.md",
+    "Organisation/Progress Reports/Progress Report 1.md",
     "Organisation/templates/Progress Report.md",
     "Organisation/Progress Reports/Progress Report 2.md",
     "Writeup/theory/Time Series/Definition - Seasonality.md",
@@ -191,28 +206,13 @@
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Process.md",
-    "utilities/obsidian/snippets/definitions.js",
     "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Materials/Books/Ruey Tsay/An Introduction to Analysis of Financial Data with R/An Introduction to Analysis of Financial Data with R (1st Edition).pdf",
-    "Materials/Books/Ruey Tsay/An Introduction to Analysis of Financial Data with R",
-    "Materials/Books/Ruey Tsay/Analysis of Financial Time Series/Analysis of Financial Time Series.pdf",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Z-Transform.md",
     "Writeup/theory/Time Series/Time Series Operators/Definition - Lag Operator.md",
     "Writeup/theory/Time Series/Time Series Operators/Definition - Time Series Operators.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Covariance Function.md",
-    "Writeup/theory/Time Series/Definition - Time Series.md",
-    "Writeup/theory/Time Series/Time Series Operators",
-    "Writeup/theory/Time Series",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
-    "Materials/Course Notes/Time Series/2023.pdf",
-    "Writeup/theory/Time Series/Continuous Processes",
-    "Writeup/theory/Time Series/Discrete Processes",
-    "Organisation/Meetings/Review",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",
