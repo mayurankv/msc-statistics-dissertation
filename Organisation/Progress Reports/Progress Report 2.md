@@ -1,12 +1,14 @@
 ---
 time: 2024-06-04T13:02:52
-aliases: 
-  - "Progress Report 2024-06-04"
+aliases:
+  - Progress Report 2024-06-04
 supervisors: "[[Adam Sykulski]]"
 degree: MSc Statistics Imperial College London
 previous supervisor meeting: "[[Supervisor Meeting 2]]"
 next supervisor meeting: "[[Supervisor Meeting 3]]"
 meeting id: 2
+tags:
+  - SupervisorMeetingReport
 ---
 # Progress Report
 

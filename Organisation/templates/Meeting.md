@@ -16,6 +16,7 @@ degree: MSc Statistics Imperial College London
 previous progress report: "[[Progress Report <% meeting_id - 1 %>]]"
 next progress report: "[[Progress Report <% meeting_id %>]]"
 meeting id: <% meeting_id %>
+tags: SupervisorMeeting
 ---
 # Meeting
 
@@ -51,11 +52,14 @@ Use `ChatM`, or similarly `Chat<Letter>` to add a chat entry for someone whose n
 ```chat
 {mode=minimal}
 # Meeting Minutes started at <% tp.date.now("HH:mm:ss") %>
-[Mayuran Visakan=red, Adam Sykulski=blue, Chiara Ottino=yellow, Weinan He=green, Francesco Ventura=pink]
+[Mayuran Visakan=teal, Adam Sykulski=red, Chiara Ottino=indigo, Weinan He=orange, Francesco Ventura=pink]
 
 
 ```
 ^minutes
+
+> [!question] Questions
+> - [ ] #toComplete
 
 ## Results
 

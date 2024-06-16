@@ -14,7 +14,8 @@
   "complementAutomatically": true,
   "delayMilliSeconds": 0,
   "disableSuggestionsDuringImeOn": false,
-  "insertAfterCompletion": true,
+  "disableSuggestionsInMathBlock": false,
+  "insertSpaceAfterCompletion": false,
   "firstCharactersDisableSuggestions": ":/^@",
   "patternsToSuppressTrigger": [
     "^~~~.*",
@@ -63,11 +64,13 @@
   "enableCurrentFileComplement": true,
   "currentFileMinNumberOfCharacters": 0,
   "onlyComplementEnglishOnCurrentFileComplement": false,
+  "excludeCurrentFileWordPatterns": [],
   "enableCurrentVaultComplement": true,
   "currentVaultMinNumberOfCharacters": 0,
   "includeCurrentVaultPathPrefixPatterns": "",
   "excludeCurrentVaultPathPrefixPatterns": "",
   "includeCurrentVaultOnlyFilesUnderCurrentDirectory": false,
+  "excludeCurrentVaultWordPatterns": [],
   "enableCustomDictionaryComplement": false,
   "customDictionaryPaths": "https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt",
   "columnDelimiter": "Tab",
@@ -77,7 +80,7 @@
   "caretLocationSymbolAfterComplement": "",
   "displayedTextSuffix": " => ...",
   "enableInternalLinkComplement": true,
-  "suggestInternalLinkWithAlias": false,
+  "suggestInternalLinkWithAlias": true,
   "excludeInternalLinkPathPrefixPatterns": "",
   "updateInternalLinksOnSave": true,
   "insertAliasTransformedFromDisplayedInternalLink": {
@@ -97,5 +100,6 @@
   },
   "disableOnMobile": false,
   "showLogAboutPerformanceInConsole": false,
+  "insertAfterCompletion": true,
   "selectionHistoryTree": {}
 }

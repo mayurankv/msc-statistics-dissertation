@@ -1,12 +1,12 @@
 ---
-time: 2024-05-29T13:00:00
+time: 2024-06-11T13:03:32
 aliases:
-  - Progress Report 2024-05-29
+  - Progress Report 2024-06-11
 supervisors: "[[Adam Sykulski]]"
 degree: MSc Statistics Imperial College London
-previous supervisor meeting: "[[Supervisor Meeting 1]]"
-next supervisor meeting: "[[Supervisor Meeting 2]]"
-meeting id: 1
+previous supervisor meeting: "[[Supervisor Meeting 3]]"
+next supervisor meeting: "[[Supervisor Meeting 4]]"
+meeting id: 3
 tags:
   - SupervisorMeetingReport
 ---
@@ -14,11 +14,11 @@ tags:
 
 Points to address:
 
-![[Supervisor Meeting 1#^actionable-points]]
+![[Supervisor Meeting 3#^actionable-points]]
 
 Overview of previous meeting:
 
-![[Supervisor Meeting 1#^summary]]
+![[Supervisor Meeting 3#^summary]]
 
 ---
 ## Ideas
@@ -46,13 +46,6 @@ Overview of previous meeting:
 ## Further Discussion Points 
 
 #toComplete
-I would like to do mixing of state space models with either ARIMA-GARCH or continuous models
-Levy noise
-Incorporation of HAR models?
-
-Rough-Bergomi model
-
-Also look at RNNs
 
 ---
 

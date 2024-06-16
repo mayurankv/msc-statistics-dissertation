@@ -1,7 +1,7 @@
 ---
 time: 2024-05-29T13:00:00
 aliases:
-  - "Supervisor Meeting 2024-05-29"
+  - Supervisor Meeting 2024-05-29
 supervisors: "[[Adam Sykulski]]"
 attendees:
   - "[[Francesco Ventura]]"
@@ -11,6 +11,8 @@ degree: MSc Statistics Imperial College London
 previous progress report: None
 next progress report: "[[Progress Report 1]]"
 meeting id: 1
+tags:
+  - SupervisorMeeting
 ---
 # Meeting
 

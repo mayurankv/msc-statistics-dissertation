@@ -10,6 +10,7 @@ degree: MSc Statistics Imperial College London
 previous supervisor meeting: "[[Supervisor Meeting <% meeting_id %>]]"
 next supervisor meeting: "[[Supervisor Meeting <% meeting_id + 1 %>]]"
 meeting id: <% meeting_id %>
+tags: SupervisorMeetingReport
 ---
 # Progress Report
 

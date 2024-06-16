@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 3.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -32,8 +32,35 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5dafb845b4df1e75",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Organisation/Meetings/Supervisor Meeting 2.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "652e028045b70883",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Organisation/temp/Dissertation Ideas.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -83,7 +110,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 279.5
+    "width": 393.5
   },
   "right": {
     "id": "439e0c2104fc67e2",
@@ -159,8 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -175,8 +201,32 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d981f61ba3fa1a91",
+  "active": "652e028045b70883",
   "lastOpenFiles": [
+    "requirements.txt",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "Organisation/temp/Dissertation Ideas.md",
+    "Organisation/Meetings/Supervisor Meeting 3.md",
+    "Organisation/Progress Reports/Progress Report 1.md",
+    "Organisation/templates/Meeting.md",
+    "Organisation/templates/Progress Report.md",
+    "Organisation/Progress Reports/Progress Report 3.md",
+    "Organisation/Progress Reports/Progress Report 2.md",
+    "Organisation/Meetings/Supervisor Meeting 1.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
+    "Writeup/theory/Person - Adam Sykulski.md",
+    "Writeup/theory/Person - Francesco Ventura.md",
+    "Writeup/theory/Person - Weinan He.md",
+    "Writeup/theory/Person - Mayuran Visakan.md",
+    "Writeup/theory/Person - Chiara Ottino.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Exogenous Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
     "utilities/obsidian/snippets/text.js",
     "utilities/obsidian/snippets/symbols.js",
     "utilities/obsidian/snippets/typing_ease.js",
@@ -187,32 +237,8 @@
     "utilities/obsidian/snippets/operators.js",
     "utilities/obsidian/snippets/matrices.js",
     "utilities/obsidian/snippets/delimiters.js",
-    "utilities/obsidian/snippets/math_modes.js",
     "Writeup/theory/Statistical Finance/Definition - Realised Volatility.md",
-    "Organisation/temp/Dissertation Ideas.md",
     "Writeup/theory/Statistical Finance/Definition - Historical Volatility.md",
-    "Writeup/theory/Statistical Finance/Definition - Integrated Volatility.md",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
-    "Organisation/Progress Reports/Progress Report 1.md",
-    "Organisation/templates/Progress Report.md",
-    "Organisation/Progress Reports/Progress Report 2.md",
-    "Writeup/theory/Time Series/Definition - Seasonality.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
-    "Writeup/theory/Time Series/Definition - Stationarity.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
-    "Writeup/theory/Time Series/Definition - Non-Stationarity.md",
-    "Writeup/theory/Time Series/Definition - Wide-Sense Stationarity.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Z-Transform.md",
-    "Writeup/theory/Time Series/Time Series Operators/Definition - Lag Operator.md",
-    "Writeup/theory/Time Series/Time Series Operators/Definition - Time Series Operators.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",
