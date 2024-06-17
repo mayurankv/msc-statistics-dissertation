@@ -424,15 +424,6 @@
       "key": "H"
     }
   ],
-  "obsidian-minimal-settings:toggle-minimal-switch": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "D"
-    }
-  ],
   "templater-obsidian:Tools/Automation/Templater/Maths_Theorem.md": [
     {
       "modifiers": [
@@ -458,6 +449,15 @@
         "Mod"
       ],
       "key": "["
+    }
+  ],
+  "templater-obsidian:utilities/obsidian/templates/Definition.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "D"
     }
   ]
 }

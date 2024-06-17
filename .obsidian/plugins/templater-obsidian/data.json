@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "utilities/obsidian/templates",
+  "templates_folder": "utilities/obsidian/templater/templates",
   "templates_pairs": [
     [
       "",
@@ -11,7 +11,7 @@
   "auto_jump_to_cursor": false,
   "enable_system_commands": true,
   "shell_path": "",
-  "user_scripts_folder": "",
+  "user_scripts_folder": "utilities/obsidian/templater/scripts",
   "enable_folder_templates": true,
   "folder_templates": [
     {
@@ -22,7 +22,7 @@
   "syntax_highlighting": true,
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
-    ""
+    "utilities/obsidian/templates/Definition.md"
   ],
   "startup_templates": [
     ""

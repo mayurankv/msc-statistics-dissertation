@@ -25,7 +25,7 @@ X_{t}&=\mu+\varepsilon_{t} + \sum\limits_{i=1}^{q}\theta_{i}\varepsilon_{t-i}=\m
 > We often assume $\mu=0$ since we can usually just calculate the mean of our time series and subtract it.
 ^assumptions
 
-## Properties
+# Properties
 
 ### [[Definition - Mean Function|Mean Function]]
 

@@ -47,33 +47,20 @@
             }
           },
           {
-            "id": "9d56a4ae5c68fba1",
+            "id": "754109230def874f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+                "file": "Writeup/theory/Time Series/Time Series Operators/Definition - Lag Operator.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
-          },
-          {
-            "id": "dab732d72f9faed7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "utilities/obsidian/templates/Definition.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": true
-              }
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -102,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#AcademicBackground",
+                "query": "tag:definition",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "utilities/obsidian/templates/Definition.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "utilities/obsidian/templates/Definition.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -179,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "utilities/obsidian/templates/Definition.md"
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md"
               }
             }
           },
@@ -214,44 +201,44 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "dab732d72f9faed7",
+  "active": "652e028045b70883",
   "lastOpenFiles": [
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Organisation/Progress Reports/Progress Report 1.md",
-    "utilities/obsidian/templates/Dissertation Supervisor Progress Report.md",
-    "utilities/obsidian/templates/Dissertation Supervisor Meeting Record.md",
-    "Organisation/templates/Supervisor Meeting 3.md",
-    "Organisation/templates/Progress Report.md",
-    "Organisation/templates/Dissertation Progress Report.md",
-    "Organisation/templates/Meeting.md",
-    "Organisation/Progress Reports/Progress Report 3.md",
+    "utilities/obsidian/templater/scripts/multiSuggester.js",
+    "utilities/obsidian/templater/scripts",
+    "utilities/obsidian/templater/templates/Supervisor Meeting 3.md",
     "Organisation/Progress Reports/Progress Report 3 1.md",
-    "Organisation/Meetings/Supervisor Meeting 3.md",
-    "Organisation/templates/  .md",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "utilities/obsidian/templater/scripts/Test.md",
+    "utilities/obsidian/templater/scripts/Supervisor Meeting 3.md",
+    "utilities/obsidian/templater/scripts/New Note.md",
+    "utilities/obsidian/templater/scripts/Dissertation Supervisor Progress Report.md",
+    "utilities/obsidian/templater/scripts/Dissertation Supervisor Meeting Record.md",
+    "utilities/obsidian/templater/scripts/Definition.md",
+    "utilities/obsidian/templater/templates/Test.md",
+    "utilities/obsidian/templater/templates/New Note.md",
+    "utilities/obsidian/templater/templates/Dissertation Supervisor Progress Report.md",
+    "utilities/obsidian/templater/templates/Dissertation Supervisor Meeting Record.md",
+    "utilities/obsidian/templater/templates/Definition.md",
+    "utilities/obsidian/templater/templates",
+    "utilities/obsidian/templater",
+    "utilities/obsidian/latex_suite/snippets/typing_ease.js",
+    "utilities/obsidian/latex_suite/snippets/text.js",
+    "utilities/obsidian/latex_suite/snippets/symbols.js",
+    "utilities/obsidian/latex_suite/snippets/spacing.js",
+    "utilities/obsidian/latex_suite/snippets/series.js",
+    "utilities/obsidian/latex_suite/snippets/selections.js",
+    "utilities/obsidian/latex_suite/snippets/physics.js",
+    "Writeup/theory/Time Series/Time Series Operators/Definition - Lag Operator.md",
+    "utilities/obsidian/templates/New Note.md",
     "utilities/obsidian/templates/Definition.md",
-    "utilities/obsidian/templates",
-    "utilities/obsidian/templates/templates/Definition.md",
-    "utilities/obsidian/templates/templates",
-    "utilities/obsidian/untitled folder",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
-    "Organisation/temp/Dissertation Ideas.md",
-    "requirements.txt",
-    "Organisation/Progress Reports/Progress Report 2.md",
-    "Organisation/Meetings/Supervisor Meeting 1.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
+    "Writeup/theory/Time Series/Time Series Operators/Time Series Operators.md",
+    "Excalidraw/Drawing 2024-06-17 13.06.02.excalidraw.md",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Writeup/theory/Time Series/Time Series Operators/Definition - Z-Transform.md",
     "Writeup/theory/Person - Adam Sykulski.md",
-    "Writeup/theory/Person - Francesco Ventura.md",
-    "Writeup/theory/Person - Weinan He.md",
-    "Writeup/theory/Person - Mayuran Visakan.md",
-    "Writeup/theory/Person - Chiara Ottino.md",
-    "utilities/obsidian/snippets/text.js",
-    "utilities/obsidian/snippets/symbols.js",
-    "utilities/obsidian/snippets/typing_ease.js",
-    "utilities/obsidian/snippets/spacing.js",
-    "utilities/obsidian/snippets/selections.js",
-    "utilities/obsidian/snippets/series.js",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Covariance Function.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",

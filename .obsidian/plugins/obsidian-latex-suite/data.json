@@ -7,7 +7,7 @@
   "removeSnippetWhitespace": true,
   "loadSnippetsFromFile": true,
   "loadSnippetVariablesFromFile": false,
-  "snippetsFileLocation": "utilities/obsidian/snippets",
+  "snippetsFileLocation": "utilities/obsidian/latex_suite/snippets",
   "snippetVariablesFileLocation": "",
   "concealEnabled": true,
   "colorPairedBracketsEnabled": false,
