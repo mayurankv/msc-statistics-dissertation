@@ -8,19 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d981f61ba3fa1a91",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Organisation/Meetings/Supervisor Meeting 3.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "f9d2043fef82ad3a",
             "type": "leaf",
             "state": {
@@ -52,15 +39,41 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
+          },
+          {
+            "id": "9d56a4ae5c68fba1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "dab732d72f9faed7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "utilities/obsidian/templates/Definition.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": true
+              }
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -126,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "utilities/obsidian/templates/Definition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +156,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "utilities/obsidian/templates/Definition.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +179,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md"
+                "file": "utilities/obsidian/templates/Definition.md"
               }
             }
           },
@@ -201,16 +214,30 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "652e028045b70883",
+  "active": "dab732d72f9faed7",
   "lastOpenFiles": [
-    "requirements.txt",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
-    "Organisation/temp/Dissertation Ideas.md",
-    "Organisation/Meetings/Supervisor Meeting 3.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
     "Organisation/Progress Reports/Progress Report 1.md",
-    "Organisation/templates/Meeting.md",
+    "utilities/obsidian/templates/Dissertation Supervisor Progress Report.md",
+    "utilities/obsidian/templates/Dissertation Supervisor Meeting Record.md",
+    "Organisation/templates/Supervisor Meeting 3.md",
     "Organisation/templates/Progress Report.md",
+    "Organisation/templates/Dissertation Progress Report.md",
+    "Organisation/templates/Meeting.md",
     "Organisation/Progress Reports/Progress Report 3.md",
+    "Organisation/Progress Reports/Progress Report 3 1.md",
+    "Organisation/Meetings/Supervisor Meeting 3.md",
+    "Organisation/templates/  .md",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "utilities/obsidian/templates/Definition.md",
+    "utilities/obsidian/templates",
+    "utilities/obsidian/templates/templates/Definition.md",
+    "utilities/obsidian/templates/templates",
+    "utilities/obsidian/untitled folder",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+    "Organisation/temp/Dissertation Ideas.md",
+    "requirements.txt",
     "Organisation/Progress Reports/Progress Report 2.md",
     "Organisation/Meetings/Supervisor Meeting 1.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
@@ -219,26 +246,12 @@
     "Writeup/theory/Person - Weinan He.md",
     "Writeup/theory/Person - Mayuran Visakan.md",
     "Writeup/theory/Person - Chiara Ottino.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Exogenous Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
     "utilities/obsidian/snippets/text.js",
     "utilities/obsidian/snippets/symbols.js",
     "utilities/obsidian/snippets/typing_ease.js",
     "utilities/obsidian/snippets/spacing.js",
     "utilities/obsidian/snippets/selections.js",
     "utilities/obsidian/snippets/series.js",
-    "utilities/obsidian/snippets/physics.js",
-    "utilities/obsidian/snippets/operators.js",
-    "utilities/obsidian/snippets/matrices.js",
-    "utilities/obsidian/snippets/delimiters.js",
-    "Writeup/theory/Statistical Finance/Definition - Realised Volatility.md",
-    "Writeup/theory/Statistical Finance/Definition - Historical Volatility.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
     "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",

@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "Organisation/templates",
+  "templates_folder": "utilities/obsidian/templates",
   "templates_pairs": [
     [
       "",
@@ -16,7 +16,7 @@
   "folder_templates": [
     {
       "folder": "Organisation/Meetings",
-      "template": "Organisation/templates/Meeting.md"
+      "template": "utilities/obsidian/templates/Dissertation Supervisor Meeting Record.md"
     }
   ],
   "syntax_highlighting": true,

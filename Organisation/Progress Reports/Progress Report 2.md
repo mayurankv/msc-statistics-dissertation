@@ -5,7 +5,7 @@ aliases:
 supervisors: "[[Adam Sykulski]]"
 degree: MSc Statistics Imperial College London
 previous supervisor meeting: "[[Supervisor Meeting 2]]"
-next supervisor meeting: "[[Supervisor Meeting 3]]"
+next supervisor meeting: "[[Organisation/Meetings/Supervisor Meeting 3]]"
 meeting id: 2
 tags:
   - SupervisorMeetingReport

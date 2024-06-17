@@ -4,7 +4,7 @@ aliases:
   - Progress Report 2024-06-11
 supervisors: "[[Adam Sykulski]]"
 degree: MSc Statistics Imperial College London
-previous supervisor meeting: "[[Supervisor Meeting 3]]"
+previous supervisor meeting: "[[Organisation/Meetings/Supervisor Meeting 3]]"
 next supervisor meeting: "[[Supervisor Meeting 4]]"
 meeting id: 3
 tags:
@@ -14,11 +14,11 @@ tags:
 
 Points to address:
 
-![[Supervisor Meeting 3#^actionable-points]]
+![[Organisation/Meetings/Supervisor Meeting 3#^actionable-points]]
 
 Overview of previous meeting:
 
-![[Supervisor Meeting 3#^summary]]
+![[Organisation/Meetings/Supervisor Meeting 3#^summary]]
 
 ---
 ## Ideas
