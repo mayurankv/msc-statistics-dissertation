@@ -4,7 +4,7 @@ aliases:
   - White Noise
   - WN
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

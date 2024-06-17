@@ -2,7 +2,7 @@
 aliases:
   - Seasonality
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

@@ -3,7 +3,7 @@ aliases:
   - Non-Stationarity
   - Non-Stationary
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

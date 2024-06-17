@@ -5,7 +5,7 @@ aliases:
   - ARCH
   - Autoregressive Conditional Heteroskedasticity
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

@@ -4,7 +4,7 @@ aliases:
   - Gaussian White Noise
   - GWN
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

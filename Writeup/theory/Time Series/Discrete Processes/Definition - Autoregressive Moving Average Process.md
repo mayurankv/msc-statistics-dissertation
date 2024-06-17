@@ -4,7 +4,7 @@ aliases:
   - Autoregressive Moving Average
   - ARMA
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

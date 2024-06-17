@@ -5,7 +5,7 @@ aliases:
   - GARCH
   - Generalised Autoregressive Conditional Heteroskedasticity
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

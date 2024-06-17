@@ -4,7 +4,7 @@ aliases:
   - Moving Average
   - MA
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

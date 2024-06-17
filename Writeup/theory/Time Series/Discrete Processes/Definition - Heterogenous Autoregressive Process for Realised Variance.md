@@ -5,7 +5,7 @@ aliases:
   - HAR-RV
   - HAR
 tags:
-  - definition
+  - Definition
   - Mathematics
   - SignalProcessing
   - Statistics

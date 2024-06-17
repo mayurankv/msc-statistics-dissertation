@@ -16,13 +16,17 @@
   "folder_templates": [
     {
       "folder": "Organisation/Meetings",
-      "template": "utilities/obsidian/templates/Dissertation Supervisor Meeting Record.md"
+      "template": "utilities/obsidian/templater/templates/Dissertation Supervisor Meeting Record.md"
+    },
+    {
+      "folder": "/",
+      "template": "utilities/obsidian/templater/templates/New Note.md"
     }
   ],
   "syntax_highlighting": true,
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
-    "utilities/obsidian/templates/Definition.md"
+    "utilities/obsidian/templater/templates/Definition.md"
   ],
   "startup_templates": [
     ""

@@ -4,7 +4,7 @@ aliases:
   - Autoregressive Integrated Moving Average
   - ARIMA
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

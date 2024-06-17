@@ -4,7 +4,7 @@ aliases:
   - Autoregressive
   - AR
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

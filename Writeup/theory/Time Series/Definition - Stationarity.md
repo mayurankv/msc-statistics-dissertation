@@ -3,7 +3,7 @@ aliases:
   - Stationarity
   - Stationary
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

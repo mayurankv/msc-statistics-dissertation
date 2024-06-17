@@ -5,7 +5,7 @@ aliases:
   - Covariance Stationarity
   - Covariance Stationary
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

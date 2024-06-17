@@ -4,7 +4,7 @@ aliases:
   - Autoregressive Integrated Moving Average Exogenous
   - ARIMAX
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

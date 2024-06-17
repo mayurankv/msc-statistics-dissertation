@@ -4,7 +4,7 @@ aliases:
   - Strict White Noise
   - SWN
 tags:
-  - definition
+  - Definition
   - TimeSeries
   - Mathematics
   - Statistics

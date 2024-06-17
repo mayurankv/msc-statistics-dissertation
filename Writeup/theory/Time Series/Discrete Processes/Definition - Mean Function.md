@@ -4,7 +4,7 @@ aliases:
   - Mean
   - Means
 tags:
-  - definition
+  - Definition
   - Mathematics
   - SignalProcessing
   - Statistics
