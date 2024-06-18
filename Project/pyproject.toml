@@ -22,3 +22,9 @@ line-length = 320
 
 [tool.ruff.format]
 indent-style = "tab"
+
+[tool.flit]
+modules-dir = "Project/modules"
+
+[tool.flit.module]
+name = "mayurankv_msc_dissertation"

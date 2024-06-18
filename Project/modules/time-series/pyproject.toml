@@ -3,9 +3,9 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "mayurankv_time_series"
+name = "time-series"
 version = "0.0.1"
-description = "MSc Statistics Dissertation Project Imperial College London Time Series Models @mayurankv"
+description = "Time Series module for MSc Statistics Dissertation Project Imperial College London @mayurankv"
 authors = [
 	{ name = "mayurankv" },
 ]
@@ -16,3 +16,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
 requires-python = "~=3.11"
+
+[tool.ruff]
+line-length = 320
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.flit.module]
+name = "time-series"

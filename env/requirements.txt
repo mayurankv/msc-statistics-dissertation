@@ -76,6 +76,8 @@ statsmodels==0.14.2
 streamlit==1.35.0
 tenacity==8.3.0
 threadpoolctl==3.5.0
+# Editable Git install with no remote (time-series==0.0.1)
+-e /Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Project/modules/time-series
 toml==0.10.2
 toolz==0.12.1
 tornado==6.4.1
@@ -85,4 +87,5 @@ typing_extensions==4.12.2
 tzdata==2024.1
 urllib3==2.2.1
 wcwidth==0.2.13
+wheel==0.43.0
 yarl==1.9.4
