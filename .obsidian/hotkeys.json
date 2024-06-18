@@ -460,13 +460,40 @@
       "key": "D"
     }
   ],
-  "templater-obsidian:utilities/obsidian/templater/templates/Definition.md": [
+  "templater-obsidian:utilities/obsidian/tamplating/templater/templates/Definition.md": [
     {
       "modifiers": [
         "Alt",
         "Shift"
       ],
       "key": "D"
+    }
+  ],
+  "templater-obsidian:utilities/obsidian/templating/templater/templates/Definition.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "D"
+    }
+  ],
+  "templater-obsidian:utilities/obsidian/templating/templater/templates/Content/Definition.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "D"
+    }
+  ],
+  "templater-obsidian:utilities/obsidian/templating/templater/templates/Utilities/Snippet.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "S"
     }
   ]
 }

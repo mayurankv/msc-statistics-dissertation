@@ -14,7 +14,7 @@ meeting id: 2
 tags:
   - SupervisorMeeting
 ---
-]# Meeting
+# Meeting
 
 ## Activity since last meeting
 

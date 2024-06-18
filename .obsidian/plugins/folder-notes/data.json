@@ -1,5 +1,5 @@
 {
-  "syncFolderName": true,
+  "syncFolderName": false,
   "ctrlKey": true,
   "altKey": false,
   "hideFolderNote": true,
@@ -14,31 +14,31 @@
   "underlineFolderInPath": true,
   "openFolderNoteOnClickInPath": true,
   "openInNewTab": false,
-  "folderNoteName": "{{folder_name}}",
+  "folderNoteName": "Definition - {{folder_name}}",
   "folderNoteType": ".md",
   "disableFolderHighlighting": false,
-  "newFolderNoteName": "{{folder_name}}",
+  "newFolderNoteName": "Definition - {{folder_name}}",
   "storageLocation": "insideFolder",
   "syncDelete": false,
   "showRenameConfirmation": true,
   "defaultOverview": {
     "id": "",
     "folderPath": "",
-    "title": "{{folderName}} overview",
-    "showTitle": false,
+    "title": "{{folderName}} Overview",
+    "showTitle": true,
     "depth": 3,
     "includeTypes": [
       "folder",
-      "markdown"
+      "all"
     ],
-    "style": "list",
-    "disableFileTag": false,
+    "style": "explorer",
+    "disableFileTag": true,
     "sortBy": "name",
     "sortByAsc": true,
     "showEmptyFolders": false,
     "onlyIncludeSubfolders": false,
-    "storeFolderCondition": true,
-    "showFolderNotes": false,
+    "storeFolderCondition": false,
+    "showFolderNotes": true,
     "disableCollapseIcon": true
   },
   "useSubmenus": true,
@@ -88,6 +88,6 @@
     "hideInSettings": false
   },
   "hideCollapsingIcon": false,
-  "tabManagerEnabled": true,
+  "tabManagerEnabled": false,
   "ignoreAttachmentFolder": true
 }

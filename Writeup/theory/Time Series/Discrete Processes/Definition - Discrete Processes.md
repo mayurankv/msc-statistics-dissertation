@@ -1,7 +1,6 @@
 ---
 aliases:
-  - Variance Function
-  - Variance
+  - Discrete Processes
 tags:
   - Definition
   - Mathematics
@@ -9,12 +8,16 @@ tags:
   - TimeSeries
   - SignalProcessing
 type: definition
-mathLink: $\operatorname*{Var}_{X}\left(t\right)$
 ---
-> [!definition]+ Definition: Variance Function
+> [!definition]+ Definition: Discrete Processes
 > #toComplete
 ^definition
 
 # Properties
 
 #toComplete
+
+---
+
+```folder-overview
+```

@@ -129,7 +129,7 @@ body {
     var(--background-modifier-border),
     inset 0 0 0 1px var(--background-modifier-border);
   /* File layout */
-  --file-line-width: 65ch;
+  --file-line-width: 700px;
   --file-folding-offset: 24px;
   --file-margins: var(--size-4-8);
   --file-header-font-size: var(--font-ui-small);
@@ -505,10 +505,7 @@ body {
   --tag-radius: 0.8em;
   /* Window frame */
   --titlebar-background: var(--background-secondary);
-  --titlebar-background-focused:
-    var(
-      --background-secondary-alt
-    );
+  --titlebar-background-focused: var(--background-secondary-alt);
   --titlebar-border-width: 0;
   --titlebar-border-color: var(--background-modifier-border);
   --titlebar-text-color: var(--text-muted);
@@ -1698,6 +1695,10 @@ del,
   color: rgb(var(--ctp-strikethrough, var(--ctp-maroon)));
 }
 
+.cm-s-obsidian .cm-link.cm-strikethrough {
+  text-decoration: line-through;
+}
+
 .markdown-rendered blockquote,
 .cm-s-obsidian span.cm-quote {
   --blockquote-border-color: rgb(var(--ctp-blockquote, var(--ctp-accent)));
@@ -1838,8 +1839,13 @@ h6,
   border: 1px solid rgb(var(--ctp-rosewater), 60%);
 }
 
+/**
+* 1. Not sure when or why I added this, but it became an issue in
+https://github.com/catppuccin/obsidian/issues/60. I have set it to the value it
+should have. Hopefully it doesn't break anything!
+*/
 .tree-item-self.is-clickable.nav-file-title.has-focus[style] {
-  --background-modifier-border-focus: var(--background-modifier-border-focus);
+  --background-modifier-border-focus: var(--color-base-40);
 }
 
 /*
@@ -3158,6 +3164,16 @@ button.mod-cta:hover {
 
 .omnisearch-result.is-selected .omnisearch-default-highlight {
   background-color: rgb(var(--ctp-rosewater), 60%);
+}
+
+.omnisearch-result:not(.is-selected) .omnisearch-highlight.omnisearch-default-highlight {
+  background-color: rgb(var(--ctp-rosewater), 100%);
+}
+
+.omnisearch-result.is-selected .omnisearch-result__folder-path > span,
+.omnisearch-result.is-selected .omnisearch-result__extension,
+.omnisearch-result.is-selected .omnisearch-result__counter {
+  color: var(--text-faint);
 }
 
 /*

@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "utilities/obsidian/templater/templates",
+  "templates_folder": "utilities/obsidian/templating/templater/templates",
   "templates_pairs": [
     [
       "",
@@ -11,22 +11,23 @@
   "auto_jump_to_cursor": false,
   "enable_system_commands": true,
   "shell_path": "",
-  "user_scripts_folder": "utilities/obsidian/templater/scripts",
+  "user_scripts_folder": "utilities/obsidian/templating/templater/scripts",
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "Organisation/Meetings",
-      "template": "utilities/obsidian/templater/templates/Dissertation Supervisor Meeting Record.md"
+      "folder": "/",
+      "template": "utilities/obsidian/templating/templater/templates/New Note.md"
     },
     {
-      "folder": "/",
-      "template": "utilities/obsidian/templater/templates/New Note.md"
+      "folder": "Organisation/Meetings",
+      "template": "utilities/obsidian/templating/templater/templates/Organisation/Events/Dissertation Supervisor Meeting Record.md"
     }
   ],
   "syntax_highlighting": true,
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
-    "utilities/obsidian/templater/templates/Definition.md"
+    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
+    "utilities/obsidian/templating/templater/templates/Utilities/Snippet.md"
   ],
   "startup_templates": [
     ""

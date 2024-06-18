@@ -61,11 +61,11 @@
     "insert as text": []
   },
   "propagateEsc": false,
-  "enableCurrentFileComplement": true,
+  "enableCurrentFileComplement": false,
   "currentFileMinNumberOfCharacters": 0,
   "onlyComplementEnglishOnCurrentFileComplement": false,
   "excludeCurrentFileWordPatterns": [],
-  "enableCurrentVaultComplement": true,
+  "enableCurrentVaultComplement": false,
   "currentVaultMinNumberOfCharacters": 0,
   "includeCurrentVaultPathPrefixPatterns": "",
   "excludeCurrentVaultPathPrefixPatterns": "",

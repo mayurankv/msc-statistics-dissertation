@@ -39,7 +39,7 @@ that a PDF is worth a thousand words, have a look at [this](example_and_document
 
 ## Showcase
 
-In the [examples](examples) directory you can find some sample
+In the [Definition - Examples](Definition%20-%20Examples.md) directory you can find some sample
 documents, but here are some more books or reports created with the
 kaobook class. If you want to add a link to your work, please send me an
 email or open a pull request!

@@ -3,6 +3,7 @@ aliases:
   - Autoregressive Moving Average Process
   - Autoregressive Moving Average
   - ARMA
+  - ARMA(p,q)
 tags:
   - Definition
   - TimeSeries

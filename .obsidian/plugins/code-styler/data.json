@@ -311,8 +311,8 @@
       "header": {
         "title": {
           "textFont": "",
-          "textBold": false,
-          "textItalic": true
+          "textBold": true,
+          "textItalic": false
         },
         "languageTag": {
           "display": "always",

@@ -2,5 +2,6 @@
   "minimal-style@@checkbox-shape": "checkbox-square",
   "minimal-style@@minimal-strike-lists": true,
   "minimal-style@@ribbon-style": "ribbon-hidden",
-  "minimal-style@@window-title-off": false
+  "minimal-style@@window-title-off": false,
+  "minimal-style@@file-header-visibility": "minimal-tab-title-hover"
 }

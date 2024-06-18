@@ -3,6 +3,7 @@ aliases:
   - Moving Average Process
   - Moving Average
   - MA
+  - MA(q)
 tags:
   - Definition
   - TimeSeries
@@ -13,7 +14,7 @@ type: definition
 mathLink: $MA\left(q\right)$
 ---
 > [!definition]+ Definition: Moving Average Process
-> A sequence of [[Definition - Random Variables|Random Variables]] $\left(X_{t}\right)$ is a moving average process $MA\left(q\right)$ with coefficients $\vec{\theta}\in \mathbb{R}^{q}$ if for $\varepsilon_{t}\sim WN\left(\sigma^{2}\right)$, $\forall\: t$:
+> A [[Definition - Time Series|Time Series]] [[Definition - Time Series|$X_{t}$]] is a [[Definition - Moving Average Process|Moving Average Process]] [[Definition - Moving Average Process]] with coefficients $\vec{\theta}\in \mathbb{R}^{q}$ if for $\varepsilon_{t}\sim$[[Definition - White Noise Process]], $\forall\: t$:
 > $$
 \begin{align*}
 X_{t}&=\mu+\varepsilon_{t} + \sum\limits_{i=1}^{q}\theta_{i}\varepsilon_{t-i}=\mu+\left(1+ \sum\limits_{i=1}^{q}\theta_{i}L^{i}\right)\varepsilon_{t} 
@@ -24,6 +25,11 @@ X_{t}&=\mu+\varepsilon_{t} + \sum\limits_{i=1}^{q}\theta_{i}\varepsilon_{t-i}=\m
 > [!assumption]+ 
 > We often assume $\mu=0$ since we can usually just calculate the mean of our time series and subtract it.
 ^assumptions
+
+```reference title:Code, ref:[[Definition - Moving Average Process]]
+file: [[Moving Average Process.py]]
+```
+^code
 
 # Properties
 
