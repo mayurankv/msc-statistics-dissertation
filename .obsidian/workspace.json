@@ -230,6 +230,7 @@
   },
   "active": "416dec498525f287",
   "lastOpenFiles": [
+    "Project/modules/time-series/pyproject.toml",
     "Project/modules/time-series/src/core/time_series.py",
     "Project/modules/time-series/src/core/moving_average_process.py",
     "Project/modules/time-series/src/core/Time Series.py",
@@ -240,7 +241,6 @@
     "Project/modules/time-series/src/models/tune.py",
     "Project/modules/time-series/src/models/train.py",
     "Project/modules/time-series/src/models/test.py",
-    "Project/modules/time-series/src/models/predict.py",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
     "Organisation/Meetings/Supervisor Meeting 4.md",
