@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "time-series"
+name = "time_series"
 version = "0.0.1"
 description = "Time Series module for MSc Statistics Dissertation Project Imperial College London @mayurankv"
 authors = [
@@ -24,4 +24,4 @@ line-length = 320
 indent-style = "tab"
 
 [tool.flit.module]
-name = "time-series"
+name = "time_series"

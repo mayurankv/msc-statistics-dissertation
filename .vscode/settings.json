@@ -81,4 +81,11 @@
 		"toks",
 		"unsrt"
 	],
+	"python.analysis.extraPaths": [
+		"/opt/homebrew/lib/python3.9/site-packages/",
+		"/opt/homebrew/lib/python3.10/site-packages/",
+		"/opt/homebrew/lib/python3.11/site-packages/",
+		"/opt/homebrew/lib/python3.12/site-packages/",
+		"./Project/modules/time_series"
+	],
 }
