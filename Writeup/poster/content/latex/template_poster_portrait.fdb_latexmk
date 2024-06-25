@@ -1,0 +1,29 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "template_poster_portrait.xdv" "template_poster_portrait.pdf" "template_poster_portrait" 0 -1
+  "template_poster_portrait.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "template_poster_portrait.pdf"
+  (rewritten before read)
+["xelatex"] 1719312431.86306 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719312431.99244 2
+  "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" 1719312431.46474 13377 c73f1a347a815ea33c84f63f1e6387ff ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/base/article.cls" 1705352648 20144 147463a6a579f4597269ef9565205cfe ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/base/size10.clo" 1705352648 8448 dbc0dbf4156c0bb9ba01a1c685d3bad0 ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1601931149 46845 3b58f70c6e861a13d927bff09d35ecbc ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-def/xetex.def" 1663965824 14788 1dde73f396dd97d88c838bee2a352abe ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphics.sty" 1654720880 18387 8f900a490197ebaf93c02ae9476d4b09 ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphicx.sty" 1654720880 8010 a8d949cbdbc5c983593827c9eec252e1 ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/keyval.sty" 1654720880 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/trig.sty" 1654720880 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
+  "/usr/local/texlive/2024basic/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
+  "/usr/local/texlive/2024basic/texmf-var/web2c/xetex/xelatex.fmt" 1717979149 10028128 84a8190cfc3debff5e7f591952cfbb5e ""
+  "/usr/local/texlive/2024basic/texmf.cnf" 1710011638 628 8b896f7d9d41b43f4346b9091e52171f ""
+  "ImperialPoster.cls" 1719258204 14913 e193df48b8e46cb14f8cd5e535027812 ""
+  "anyfontsize.sty" 0 -1 0 ""
+  "template_poster_portrait.aux" 0 -1 0 "xelatex"
+  "template_poster_portrait.tex" 1719312431.46474 13377 c73f1a347a815ea33c84f63f1e6387ff ""
+  (generated)
+  "template_poster_portrait.aux"
+  "template_poster_portrait.log"
+  "template_poster_portrait.xdv"
+  (rewritten before read)

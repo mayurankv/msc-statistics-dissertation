@@ -26,8 +26,8 @@ X_{t}&=\mu+\varepsilon_{t} + \sum\limits_{i=1}^{q}\theta_{i}\varepsilon_{t-i}=\m
 > We often assume $\mu=0$ since we can usually just calculate the mean of our time series and subtract it.
 ^assumptions
 
-```reference title:Code, ref:[[Definition - Moving Average Process]]
-file: [[Moving Average Process.py]]
+```reference title:Code, fold, ref:[[Definition - Moving Average Process]]
+file: [[moving_average_process.py]]
 ```
 ^code
 

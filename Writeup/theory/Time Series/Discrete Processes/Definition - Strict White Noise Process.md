@@ -14,7 +14,7 @@ mathLink: $SWN\left(\sigma^{2}\right)$
 ---
 > [!definition]+ Definition: Strict White Noise Process
 > A sequence of [[Definition - Random Variables|Random Variables]] $\left(X_{t}\right)$ is a strict white noise process $SWN\left(\sigma\right)$ if the [[Definition - Random Variables|Random Variables]] are [[Definition - Independence|Independent]], have zero [[Definition - Mean|Mean]], and [[Definition - Finite|Finite]] [[Definition - Variance|Variance]]:
-> 
+>
 > $$
 \begin{align*}
 \forall\: t: &&\mathbb{E}\left[X_{t}\right]&=0\\

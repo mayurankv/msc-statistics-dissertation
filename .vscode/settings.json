@@ -86,6 +86,7 @@
 		"/opt/homebrew/lib/python3.10/site-packages/",
 		"/opt/homebrew/lib/python3.11/site-packages/",
 		"/opt/homebrew/lib/python3.12/site-packages/",
-		"./Project/modules/time_series"
+		"./Project/modules/time_series",
+		"./Project/modules/discrete_time_series"
 	],
 }

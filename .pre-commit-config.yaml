@@ -14,3 +14,4 @@ repos:
   rev: v0.2.2
   hooks:
     - id: chktex-system
+      exclude: "/templates/.*"

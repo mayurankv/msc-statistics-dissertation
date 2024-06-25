@@ -24,7 +24,7 @@ X_{t}&=\sum\limits_{i=1}^{p}\phi_{i}X_{t-i}+\varepsilon_{t}\\
 ^definition
 
 ```reference title:Code, ref:[[Definition - Autoregressive Process]]
-file: [[Autoregressive Process.py]]
+file: [[autoregressive_process.py]]
 ```
 ^code
 

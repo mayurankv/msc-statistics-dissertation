@@ -52,7 +52,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -84,9 +84,48 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "73c25848d3cbaed5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "utilities/obsidian/templating/templater/templates/Content/Definition.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "77f0956ad0588a5e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "00bc39cb6dcd7ac5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -152,7 +191,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,7 +208,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -192,7 +231,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md"
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md"
               }
             }
           },
@@ -228,53 +267,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "416dec498525f287",
+  "active": "00bc39cb6dcd7ac5",
   "lastOpenFiles": [
-    "Project/modules/time_series/time_series/src/core/__pycache__/moving_average_process.cpython-312.pyc",
-    "Project/modules/time_series/time_series/src/core/__pycache__/base_classes.cpython-312.pyc",
-    "Project/modules/time_series/time_series/src/core/base_classes.py",
-    "Project/modules/time_series/time_series/src/core/time_series.py",
-    "Project/modules/time_series/time_series/src/core/moving_average_process.py",
-    "Project/modules/time_series/time_series/src/core/models.py",
-    "Project/modules/time_series/time_series/src/core/__pycache__/time_series.cpython-312.pyc",
-    "Project/modules/time_series/time_series/src/core/__pycache__/__init__.cpython-312.pyc",
-    "Project/modules/time_series/time_series/src/core/__pycache__",
-    "Project/modules/time_series/time_series/src/__pycache__/__init__.cpython-312.pyc",
-    "Project/modules/time_series/time_series/src/__pycache__",
+    "Writeup/poster/content/latex/template_poster_landscape.log",
+    "Writeup/poster/content/latex/template_poster_landscape.fls",
+    "Writeup/poster/content/latex/xelatex35844.fls",
+    "Writeup/poster/content/latex/template_poster_landscape.fdb_latexmk",
+    "Writeup/poster/content/latex/template_poster_landscape.aux",
+    "Writeup/poster/content/latex/xelatex35783.fls",
+    "Writeup/poster/content/latex/template_poster_portrait.synctex(busy)",
+    "Writeup/poster/content/latex/xelatex35776.fls",
+    "Writeup/poster/content/latex/template_poster_landscape.synctex(busy)",
+    "Writeup/poster/content/latex/xelatex35630.fls",
+    "Writeup/poster/content/latex/xelatex35590.fls",
+    "Writeup/poster/content/latex/Images/UKRI_logo.png",
+    "Writeup/poster/content/latex/README.md",
+    "Writeup/poster/templates/Jacobs/placeholder.jpg",
+    "Writeup/poster/templates/Jacobs/logo.png",
+    "Writeup/poster/templates/Imperial Poster/Images/UKRI_logo.png",
+    "Writeup/poster/templates/Imperial Poster/README.md",
+    "Writeup/poster/templates/gemini/README.md",
+    "Writeup/poster/templates/gemini/LICENSE.md",
+    "Writeup/poster/templates/gemini-master/README.md",
+    "Writeup/poster/templates/gemini-master/LICENSE.md",
+    "Writeup/poster/templates/Imperial College London Poster Template/Images/UKRI_logo.png",
+    "Writeup/poster/templates/Imperial College London Poster Template/README.md",
+    "Writeup/poster/templates/Portrait Beamer Poster Template (Jacobs Style)/placeholder.jpg",
+    "Writeup/poster/templates/Portrait Beamer Poster Template (Jacobs Style)/logo.png",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Project/modules/discrete_time_series/README.md",
+    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
+    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
+    "utilities/obsidian/ui/UI Example.md",
+    "Organisation/Meetings/Supervisor Meeting 4.md",
     "Project/modules/time_series/README.md",
     "Project/modules/time-series/README.md",
     "Project/modules/time-serie/README.md",
     "Project/templates/template_module/README.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
-    "Organisation/Meetings/Supervisor Meeting 4.md",
     "Organisation/Progress Reports/Progress Report 4.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
-    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
     "Organisation/Progress Reports/Progress Report 1.md",
     "Organisation/Meetings/Supervisor Meeting 2.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Discrete Processes.md",
-    "Writeup/theory/Time Series/Definition - Stationarity.md",
-    "utilities/obsidian/templating/templater/templates/New Note.md",
-    "Writeup/theory/Time Series/Continuous Processes/Definition - Continuous Processes.md",
-    "Writeup/theory/Time Series/Definition - Time Series.md",
-    "utilities/obsidian/templating/templater/templates/Content/Theorem.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
-    "Writeup/theory/Time Series/Untitled.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
-    "Writeup/theory/Time Series/Time Series Operators/Definition - sd.md",
-    "Writeup/theory/Time Series/Discrete Processes/Untitled.md",
     "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
     "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
-    "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png",
-    "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Trinity.svg",
-    "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Queens.svg",
-    "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Peterhouse.svg",
-    "Writeup/thesis/templates/Cambridge PhD/Figs/CollegeShields/src/Kings.svg",
-    "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/minion.png",
-    "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/WallE.png",
-    "Writeup/thesis/templates/Cambridge PhD/Chapter2/Figs/Raster/TomandJerry.png"
+    "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png"
   ]
 }

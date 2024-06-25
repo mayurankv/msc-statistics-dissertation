@@ -1,0 +1,29 @@
+PWD /Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex
+INPUT /usr/local/texlive/2024basic/texmf.cnf
+INPUT /usr/local/texlive/2024basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2024basic/texmf-var/web2c/xetex/xelatex.fmt
+INPUT /Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex
+OUTPUT template_poster_portrait.log
+INPUT ./ImperialPoster.cls
+INPUT ImperialPoster.cls
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-def/xetex.def
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-def/xetex.def
+INPUT /usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-def/xetex.def
