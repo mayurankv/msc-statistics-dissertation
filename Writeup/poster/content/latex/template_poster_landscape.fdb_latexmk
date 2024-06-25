@@ -1,11 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1719313205.21312 "template_poster_portrait.xdv" "template_poster_portrait.pdf" "template_poster_portrait" 1719313205.35672 0
-  "template_poster_portrait.xdv" 1719313205.17326 70032 861ed833a28efc975838308e5f07c19f "xelatex"
+["xdvipdfmx"] 1719313144.98688 "template_poster_landscape.xdv" "template_poster_landscape.pdf" "template_poster_landscape" 1719313145.1247 0
+  "template_poster_landscape.xdv" 1719313144.95237 69312 8493d1e0f58cb3bf9029c888efb03a20 "xelatex"
   (generated)
-  "template_poster_portrait.pdf"
+  "template_poster_landscape.pdf"
   (rewritten before read)
-["xelatex"] 1719313204.68454 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719313205.35604 0
-  "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" 1719313204.47402 13272 d07695b52fd2af5bba58cd07d2429974 ""
+["xelatex"] 1719313144.40168 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_landscape.tex" "template_poster_landscape.xdv" "template_poster_landscape" 1719313145.12404 0
+  "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_landscape.tex" 1719313144.24062 13716 171723cb6a2aafe650020501ab012905 ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
@@ -79,18 +79,18 @@
   "/usr/local/texlive/2024basic/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
   "/usr/local/texlive/2024basic/texmf-var/web2c/xetex/xelatex.fmt" 1717979149 10028128 84a8190cfc3debff5e7f591952cfbb5e ""
   "/usr/local/texlive/2024basic/texmf.cnf" 1710011638 628 8b896f7d9d41b43f4346b9091e52171f ""
-  "Images/Grey_1-1.pdf" 1719258206 39455 bf79b8bd61ea2840624be6b50b3fbb0b ""
   "Images/Grey_16-9.pdf" 1719258206 39423 da09d22a8fed99e0ec9a0099fd2c71ed ""
   "Images/Grey_4-3.pdf" 1719258206 39435 c243d63bf126b6e404358f67a6181491 ""
+  "Images/Grey_4-3_Portrait.pdf" 1719258206 40294 bbc45cf449530ebb7d677ff97d265262 ""
   "Images/ICL_Logo_Blue_RGB.pdf" 1719258206 14746 92619d271634567e479193441be692df ""
   "Images/UKRI_logo.png" 1719258206 25570 e224282f5c98c50c2e3434da15d4f6d9 ""
   "ImperialPoster.cls" 1719312857.38062 14891 cfcd1564dc29d7676b15f475a1c966bb ""
-  "template_poster_portrait.aux" 1719313205.17264 3312 6f6091bfc36f11401072ab044e9ddc3f "xelatex"
-  "template_poster_portrait.out" 1719313205.17306 1660 0cb67642f4fd02de078307f1b2ac6ad8 "xelatex"
-  "template_poster_portrait.tex" 1719313204.47402 13272 d07695b52fd2af5bba58cd07d2429974 ""
+  "template_poster_landscape.aux" 1719313144.9518 3050 4aa2dbdcae26935e5e38d62fee22695d "xelatex"
+  "template_poster_landscape.out" 1719313144.9522 1548 f98f735e1c79f7d0ecd4c073fee04208 "xelatex"
+  "template_poster_landscape.tex" 1719313144.24062 13716 171723cb6a2aafe650020501ab012905 ""
   (generated)
-  "template_poster_portrait.aux"
-  "template_poster_portrait.log"
-  "template_poster_portrait.out"
-  "template_poster_portrait.xdv"
+  "template_poster_landscape.aux"
+  "template_poster_landscape.log"
+  "template_poster_landscape.out"
+  "template_poster_landscape.xdv"
   (rewritten before read)
