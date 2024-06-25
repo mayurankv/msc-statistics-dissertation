@@ -117,7 +117,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -191,7 +191,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -208,7 +208,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -231,7 +231,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md"
+                "file": "Organisation/temp/Dissertation Ideas.md"
               }
             }
           },
@@ -269,32 +269,35 @@
   },
   "active": "00bc39cb6dcd7ac5",
   "lastOpenFiles": [
+    "Writeup/poster/content/latex/template_poster_portrait.xdv",
+    "Writeup/poster/content/latex/template_poster_portrait.out",
     "Writeup/poster/content/latex/template_poster_portrait.synctex(busy)",
-    "Writeup/poster/content/latex/xelatex42640.fls",
-    "Writeup/poster/content/latex/xelatex42597.fls",
-    "Writeup/poster/content/latex/xelatex42527.fls",
-    "Writeup/poster/content/latex/xelatex42470.fls",
-    "Writeup/poster/content/latex/xelatex42429.fls",
-    "Writeup/poster/content/latex/xelatex42385.fls",
-    "Writeup/poster/content/latex/xelatex42341.fls",
-    "Writeup/poster/content/latex/xelatex42300.fls",
-    "Writeup/poster/content/latex/xelatex42254.fls",
-    "Writeup/poster/content/latex/template_poster_landscape.synctex(busy)",
+    "Writeup/poster/content/latex/xelatex58417.fls",
+    "Writeup/poster/content/latex/xelatex58373.fls",
+    "Writeup/poster/content/latex/xelatex58354.fls",
+    "Writeup/poster/content/assets/images/ICL_Crest.png",
+    "Writeup/poster/content/latex/template_poster_portrait.fdb_latexmk",
+    "Writeup/poster/content/latex/template_poster_portrait.aux",
+    "Writeup/poster/content/latex/xelatex58259.fls",
+    "Writeup/poster/content/latex/xelatex58243.fls",
+    "Writeup/poster/content/latex/xelatex58208.fls",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+    "Writeup/poster/content/assets/images/UKRI_logo.png",
+    "Writeup/poster/content/assets/images/ICL_Logo_Old.png",
+    "Writeup/poster/content/latex/assets/images/UKRI_logo.png",
+    "Writeup/poster/content/latex/assets/images/ICL_Logo_Old.png",
+    "Writeup/poster/content/latex/images/UKRI_logo.png",
+    "Writeup/poster/content/latex/images/ICL_Logo_Old.png",
+    "Writeup/poster/content/latex/Images/ICL_Logo_Old.png",
     "Writeup/poster/content/latex/Images/UKRI_logo.png",
     "Writeup/poster/content/latex/README.md",
     "Writeup/poster/templates/Jacobs/placeholder.jpg",
-    "Writeup/poster/templates/Jacobs/logo.png",
-    "Writeup/poster/templates/Imperial Poster/Images/UKRI_logo.png",
     "Writeup/poster/templates/Imperial Poster/README.md",
     "Writeup/poster/templates/gemini/README.md",
     "Writeup/poster/templates/gemini/LICENSE.md",
     "Writeup/poster/templates/gemini-master/README.md",
     "Writeup/poster/templates/gemini-master/LICENSE.md",
-    "Writeup/poster/templates/Imperial College London Poster Template/Images/UKRI_logo.png",
     "Writeup/poster/templates/Imperial College London Poster Template/README.md",
-    "Writeup/poster/templates/Portrait Beamer Poster Template (Jacobs Style)/placeholder.jpg",
-    "Writeup/poster/templates/Portrait Beamer Poster Template (Jacobs Style)/logo.png",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
@@ -311,9 +314,6 @@
     "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
     "Organisation/Progress Reports/Progress Report 1.md",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
-    "Writeup/thesis/templates/Generic/figures/bison/bison-qed.jpg",
-    "Writeup/thesis/templates/Generic/figures/bison/bison-logo.jpg",
-    "Writeup/thesis/templates/Oxford Masters/figures/sample/Gray498.png"
+    "Organisation/Meetings/Supervisor Meeting 2.md"
   ]
 }

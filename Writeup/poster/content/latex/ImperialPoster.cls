@@ -69,6 +69,26 @@
 \newcommand{\largepercent}[1]{{\ImperialSansExtraBold\iftoggle{a1papersize}{\fontsize{150pt}{150pt}}{\fontsize{213pt}{213pt}}\selectfont\textcolor{ICLDarkBlue}{#1}}} % Styling of the large percentage value used to highlight important numbers
 
 %----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+
+% Convert colors to CMYK space if the print class option was used
+\iftoggle{print}{
+	\usepackage[svgnames, cmyk]{xcolor} % Required for defining and using custom colors
+}{
+	\usepackage[svgnames]{xcolor} % Required for defining and using custom colors
+}
+
+\definecolor{ICLBlue}{RGB}{0, 0, 205}
+\definecolor{ICLGreen}{RGB}{15, 255, 175}
+\definecolor{ICLGrey}{RGB}{35, 41, 55}
+\definecolor{ICLWhite}{RGB}{204, 202, 194}
+\definecolor{ICLDarkBlue}{RGB}{0, 0, 128}
+
+\usepackage{pagecolor}
+\pagecolor{ICLGrey}
+
+%----------------------------------------------------------------------------------------
 %	MARGINS
 %----------------------------------------------------------------------------------------
 
@@ -101,7 +121,7 @@
 \usepackage{fontspec} % Required for specifying custom fonts
 
 \defaultfontfeatures{Ligatures=TeX} % To support LaTeX ligatures (e.g. `` and --)
-\defaultfontfeatures{Path=Fonts/} % Specify the location of font files
+\defaultfontfeatures{Path=../assets/fonts/} % Specify the location of font files
 
 % The default font family
 \setmainfont{ImperialSansText}[
@@ -115,6 +135,8 @@
 \newfontface{\ImperialSansSemiBold}{ImperialSansText-Semibold.ttf}
 \newfontface{\ImperialSansMedium}{ImperialSansText-Medium.ttf}
 \newfontface{\ImperialSansLight}{ImperialSansText-Light.ttf}
+
+
 
 % Both {\small <text>\par} and \smalltext{<text>} will have the same effect in the template, with the latter being easier to use and the former being a standard LaTeX command
 \renewcommand{\small}{%
@@ -142,15 +164,16 @@
 \renewcommand{\headrulewidth}{0pt} % Top horizontal rule thickness
 \renewcommand{\footrulewidth}{2pt} % Top horizontal rule thickness
 \let\oldfootrule\footrule% Copy original footer rule command into \oldfootrule
-\renewcommand{\footrule}{{\color{ICLBlue}\oldfootrule}} % Add color to footer rules
+\renewcommand{\footrule}{{\color{ICLGreen}\oldfootrule}} % Add color to footer rules
 
 \fancyhf{} % Clear default headers/footers
 
 \fancyhead[L]{% Left header
 	\iftoggle{print}{% Use the CMYK logo for print mode
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{ICL_Logo_Blue_CMYK.pdf}%
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Blue_CMYK.pdf}%
 	}{% Otherwise use the RGB logo for screens
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{ICL_Logo_Blue_RGB.pdf}%
+		%\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Blue_RGB.pdf}%
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Crest.png}%
 	}%
 	\expandafter\ifstrequal\expandafter{\coauthorlogosinternal}{}{}{\coauthorlogosinternal}% If coauthor logos were specified by the user
 }
@@ -158,7 +181,7 @@
 \fancyhead[R]{} % Right header
 
 \fancyfoot[L]{% Left footer
-	\color{ICLBlue}% Color
+	\color{ICLGreen}% Color
 	\iftoggle{a1papersize}{\fontsize{32pt}{32pt}\selectfont}{\fontsize{45pt}{45pt}\selectfont}% Font size
 	\raisebox{-1.5cm}{Imperial College London}\hfill\raisebox{-1.25cm}{imperial.ac.uk}% Footer text
 }
@@ -200,20 +223,6 @@
 \newcommand{\boldsection}[1]{{\iftoggle{a1papersize}{\fontsize{42pt}{52.5pt}}{\fontsize{60pt}{75pt}}\selectfont\bfseries\textcolor{ICLDarkBlue}{#1}\par}} % Styling of bold sections
 
 %----------------------------------------------------------------------------------------
-%	COLORS
-%----------------------------------------------------------------------------------------
-
-% Convert colors to CMYK space if the print class option was used
-\iftoggle{print}{
-	\usepackage[svgnames, cmyk]{xcolor} % Required for defining and using custom colors
-}{
-	\usepackage[svgnames]{xcolor} % Required for defining and using custom colors
-}
-
-\definecolor{ICLBlue}{RGB}{0, 0, 205}
-\definecolor{ICLDarkBlue}{RGB}{0, 0, 128}
-
-%----------------------------------------------------------------------------------------
 %	TABLES AND FIGURES
 %----------------------------------------------------------------------------------------
 
@@ -252,8 +261,8 @@
 	nolistsep, % No extra whitespace above and below lists
 }
 
-\renewcommand{\labelitemi}{\textcolor{ICLBlue}{\textbullet}} % Customize the first level bullet point character
-\renewcommand{\labelenumi}{\textcolor{ICLBlue}{\arabic{enumi}.}} % Customize the first level numbered list characters
+\renewcommand{\labelitemi}{\textcolor{ICLGreen}{\textbullet}} % Customize the first level bullet point character
+\renewcommand{\labelenumi}{\textcolor{ICLGreen}{\arabic{enumi}.}} % Customize the first level numbered list characters
 
 %----------------------------------------------------------------------------------------
 %	LINKS
@@ -262,11 +271,10 @@
 \usepackage{hyperref} % Required for links
 
 \hypersetup{
-	colorlinks=false, % Whether to color the text of links
-	urlcolor=ICLBlue, % Color for \url and \href links
-	linkcolor=ICLBlue, % Color for \nameref links
-	citecolor=ICLBlue, % Color of reference citations
-	hidelinks, % Hide the default boxes around links
+	colorlinks=true, % Whether to color the text of links
+	urlcolor=ICLGreen, % Color for \url and \href links
+	linkcolor=ICLGreen, % Color for \nameref links
+	citecolor=ICLGreen, % Color of reference citations
 }
 
 %----------------------------------------------------------------------------------------
@@ -275,33 +283,18 @@
 
 \newcommand{\titlesection}{
 	\begingroup
-		\color{ICLBlue} % Color
+		\color{ICLGreen} % Color
 		\setlength{\arrayrulewidth}{2pt} % Thickness of table rules
 		\begin{tabular}{@{} L{0.655\linewidth} | R{0.32\linewidth} @{}} % Column widths and text alignment
 			\hline % Top rule
-			\parbox[t]{\linewidth}{\vspace{0pt}\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}\bfseries\postertitle\vspace{20pt}} & \parbox[t]{\linewidth}{\vspace{0pt}\bfseries\posterauthors\vspace{20pt}}\\ % Poster title and authors in the 2 columns of the table, styled with whitespace above and below
+			\parbox[t]{\linewidth}{\vspace{0pt}\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}\bfseries\postertitle\vspace{20pt}} &
+			\parbox[t]{\linewidth}{\vspace{0pt}\bfseries\posterauthors\vspace{20pt}}\\ % Poster title and authors in the 2 columns of the table, styled with whitespace above and below
 			\hline % Bottom rule
 		\end{tabular}
 	\endgroup
 }
 
-%----------------------------------------------------------------------------------------
-%	AFFILIATIONS
-%----------------------------------------------------------------------------------------
-
-\newcommand{\affiliation}[1]{\textsuperscript{#1}} % Command to output affiliation numbers in the author list
-
-\newcommand{\affiliationentry}[2]{\textsuperscript{#1} #2} % Command to output affiliation institutions in a list
-
-%----------------------------------------------------------------------------------------
-%	COAUTHOR LOGOS
-%----------------------------------------------------------------------------------------
-
 \newcommand{\coauthorlogo}[2][\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{\hspace{2cm}\includegraphics[height=#1]{#2}} % Command to output a coauthor logo in the header
-
-%----------------------------------------------------------------------------------------
-%	CUSTOM COMMANDS
-%----------------------------------------------------------------------------------------
 
 \newcommand{\postertitle}[1]{\renewcommand{\postertitle}{#1}}
 \newcommand{\posterauthors}[1]{\renewcommand{\posterauthors}{#1}}

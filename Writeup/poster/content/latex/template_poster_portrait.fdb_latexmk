@@ -1,11 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1719313205.21312 "template_poster_portrait.xdv" "template_poster_portrait.pdf" "template_poster_portrait" 1719313205.35672 0
-  "template_poster_portrait.xdv" 1719313205.17326 70032 861ed833a28efc975838308e5f07c19f "xelatex"
+["xdvipdfmx"] 0 "template_poster_portrait.xdv" "template_poster_portrait.pdf" "template_poster_portrait" 0 -1
+  "template_poster_portrait.xdv" 1719317229.21136 61816 131331e02050fd96ec4f1675c69b3782 "xelatex"
   (generated)
   "template_poster_portrait.pdf"
   (rewritten before read)
-["xelatex"] 1719313204.68454 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719313205.35604 0
-  "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" 1719313204.47402 13272 d07695b52fd2af5bba58cd07d2429974 ""
+["xelatex"] 1719317227.56579 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719317229.43276 2
+  "../assets/images/ICL_Crest.png" 1719317205.70686 2486349 6c73cd26d76656157699c6496092585a ""
+  "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" 1719313844.31568 12131 fdad258dcfbee852667c46041ea318b4 ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
@@ -50,6 +51,7 @@
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics-def/xetex.def" 1663965824 14788 1dde73f396dd97d88c838bee2a352abe ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/color.sty" 1654720880 7233 e46ce9241d2b2ca2a78155475fdd557a ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphics.sty" 1654720880 18387 8f900a490197ebaf93c02ae9476d4b09 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/graphicx.sty" 1654720880 8010 a8d949cbdbc5c983593827c9eec252e1 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/graphics/keyval.sty" 1654720880 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
@@ -67,6 +69,7 @@
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/l3kernel/expl3.sty" 1708463273 6565 10e89ed128ccd59431746bbdd82129fc ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/l3packages/xfp/xfp.sty" 1708376303 1249 c1659e6bf3e6050620f0c77651a3b07d ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/l3packages/xparse/xparse.sty" 1708376303 9327 11bedad2ac38f92e405a38ed18489a03 ""
+  "/usr/local/texlive/2024basic/texmf-dist/tex/latex/pagecolor/pagecolor.sty" 1681846844 9888 bce9a9132a3f756ede24729ac30ff1e9 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "/usr/local/texlive/2024basic/texmf-dist/tex/latex/titlesec/titlesec.sty" 1698436711 48766 0b93839be28e9744a24c45075c75b2e2 ""
@@ -79,15 +82,14 @@
   "/usr/local/texlive/2024basic/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
   "/usr/local/texlive/2024basic/texmf-var/web2c/xetex/xelatex.fmt" 1717979149 10028128 84a8190cfc3debff5e7f591952cfbb5e ""
   "/usr/local/texlive/2024basic/texmf.cnf" 1710011638 628 8b896f7d9d41b43f4346b9091e52171f ""
-  "Images/Grey_1-1.pdf" 1719258206 39455 bf79b8bd61ea2840624be6b50b3fbb0b ""
-  "Images/Grey_16-9.pdf" 1719258206 39423 da09d22a8fed99e0ec9a0099fd2c71ed ""
-  "Images/Grey_4-3.pdf" 1719258206 39435 c243d63bf126b6e404358f67a6181491 ""
-  "Images/ICL_Logo_Blue_RGB.pdf" 1719258206 14746 92619d271634567e479193441be692df ""
-  "Images/UKRI_logo.png" 1719258206 25570 e224282f5c98c50c2e3434da15d4f6d9 ""
-  "ImperialPoster.cls" 1719312857.38062 14891 cfcd1564dc29d7676b15f475a1c966bb ""
-  "template_poster_portrait.aux" 1719313205.17264 3312 6f6091bfc36f11401072ab044e9ddc3f "xelatex"
-  "template_poster_portrait.out" 1719313205.17306 1660 0cb67642f4fd02de078307f1b2ac6ad8 "xelatex"
-  "template_poster_portrait.tex" 1719313204.47402 13272 d07695b52fd2af5bba58cd07d2429974 ""
+  "Grey_1-1.pdf" 0 -1 0 ""
+  "Grey_16-9.pdf" 0 -1 0 ""
+  "Grey_4-3.pdf" 0 -1 0 ""
+  "ImperialPoster.cls" 1719317227.25729 14350 b5aefb453f6ed1de15680171a7585799 ""
+  "UKRI_logo.png" 0 -1 0 ""
+  "template_poster_portrait.aux" 1719317229.21048 3312 6f6091bfc36f11401072ab044e9ddc3f "xelatex"
+  "template_poster_portrait.out" 1719317229.21113 1660 0cb67642f4fd02de078307f1b2ac6ad8 "xelatex"
+  "template_poster_portrait.tex" 1719313844.31568 12131 fdad258dcfbee852667c46041ea318b4 ""
   (generated)
   "template_poster_portrait.aux"
   "template_poster_portrait.log"
