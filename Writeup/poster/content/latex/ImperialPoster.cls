@@ -88,6 +88,20 @@
 \usepackage{pagecolor}
 \pagecolor{ICLGrey}
 
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{eso-pic}
+\AddToShipoutPicture*{
+    \put(-675,-50){
+        \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill
+            \centering
+            {\transparent{0.05}\includegraphics[width=0.55\textwidth]{../assets/images/ICL_Crest.png}}
+            \vfill
+        }
+    }
+}
+
 %----------------------------------------------------------------------------------------
 %	MARGINS
 %----------------------------------------------------------------------------------------
@@ -158,35 +172,49 @@
 %	HEADERS AND FOOTERS
 %----------------------------------------------------------------------------------------
 
-\usepackage{fancyhdr} % Required for customizing headers and footers
-\pagestyle{fancy} % Enable custom headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-\renewcommand{\headrulewidth}{0pt} % Top horizontal rule thickness
-\renewcommand{\footrulewidth}{2pt} % Top horizontal rule thickness
-\let\oldfootrule\footrule% Copy original footer rule command into \oldfootrule
-\renewcommand{\footrule}{{\color{ICLGreen}\oldfootrule}} % Add color to footer rules
+\setlength{\headheight}{200pt}
+\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\footrulewidth}{2pt}
+\let\oldheadrule\headrule
+\renewcommand{\headrule}{{\color{ICLGreen}\oldheadrule}}
+\let\oldfootrule\footrule
+\renewcommand{\footrule}{{\color{ICLGreen}\oldfootrule}}
 
 \fancyhf{} % Clear default headers/footers
 
 \fancyhead[L]{% Left header
 	\iftoggle{print}{% Use the CMYK logo for print mode
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Blue_CMYK.pdf}%
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Green_CMYK.png}%
 	}{% Otherwise use the RGB logo for screens
-		%\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Blue_RGB.pdf}%
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Crest.png}%
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Green_RGB.png}%
 	}%
-	\expandafter\ifstrequal\expandafter{\coauthorlogosinternal}{}{}{\coauthorlogosinternal}% If coauthor logos were specified by the user
+	% \includegraphics[height=\iftoggle{a1papersize}{4.6500cm}{5.7902cm}]{../assets/images/ICL_Crest.png}
+	% \raisebox{-2cm}{\includegraphics[height=\iftoggle{a1papersize}{3.875cm}{4.8252cm}]{../assets/images/ICL_Crest.png}}
 }
-\fancyhead[C]{} % Center header
-\fancyhead[R]{} % Right header
+\fancyhead[C]{
+	\begingroup
+		\color{ICLGreen}
+		\vspace{0pt}\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}\bfseries\postertitle
+	\endgroup
+}
+\fancyhead[R]{
+	% \vspace*{2cm}\\
+	\textcolor{ICLGreen}{\bfseries{Presenter:}} Mayuran Visakan\\
+	\textcolor{ICLGreen}{\bfseries{Supervisor:}} Adam Sykulski
+} % Right header
 
 \fancyfoot[L]{% Left footer
 	\color{ICLGreen}% Color
 	\iftoggle{a1papersize}{\fontsize{32pt}{32pt}\selectfont}{\fontsize{45pt}{45pt}\selectfont}% Font size
-	\raisebox{-1.5cm}{Imperial College London}\hfill\raisebox{-1.25cm}{imperial.ac.uk}% Footer text
+	\raisebox{-1.5cm}{\href{Imperial College London}{imperial.ac.uk}}\hfill\raisebox{-1.25cm}{24/06/2024}% Footer text
 }
 \fancyfoot[C]{} % Center footer
 \fancyfoot[R]{} % Right footer
+
+\newcommand{\postertitle}[1]{\renewcommand{\postertitle}{#1}}
 
 %----------------------------------------------------------------------------------------
 %	SECTIONS
@@ -276,26 +304,3 @@
 	linkcolor=ICLGreen, % Color for \nameref links
 	citecolor=ICLGreen, % Color of reference citations
 }
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\newcommand{\titlesection}{
-	\begingroup
-		\color{ICLGreen} % Color
-		\setlength{\arrayrulewidth}{2pt} % Thickness of table rules
-		\begin{tabular}{@{} L{0.655\linewidth} | R{0.32\linewidth} @{}} % Column widths and text alignment
-			\hline % Top rule
-			\parbox[t]{\linewidth}{\vspace{0pt}\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}\bfseries\postertitle\vspace{20pt}} &
-			\parbox[t]{\linewidth}{\vspace{0pt}\bfseries\posterauthors\vspace{20pt}}\\ % Poster title and authors in the 2 columns of the table, styled with whitespace above and below
-			\hline % Bottom rule
-		\end{tabular}
-	\endgroup
-}
-
-\newcommand{\coauthorlogo}[2][\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{\hspace{2cm}\includegraphics[height=#1]{#2}} % Command to output a coauthor logo in the header
-
-\newcommand{\postertitle}[1]{\renewcommand{\postertitle}{#1}}
-\newcommand{\posterauthors}[1]{\renewcommand{\posterauthors}{#1}}
-\newcommand{\coauthorlogosinternal}{}\newcommand{\coauthorlogos}[1]{\renewcommand{\coauthorlogosinternal}{#1}}

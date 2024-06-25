@@ -1,10 +1,10 @@
 # Fdb version 4
 ["xdvipdfmx"] 0 "template_poster_portrait.xdv" "template_poster_portrait.pdf" "template_poster_portrait" 0 -1
-  "template_poster_portrait.xdv" 1719317229.21136 61816 131331e02050fd96ec4f1675c69b3782 "xelatex"
+  "template_poster_portrait.xdv" 1719318917.49745 62420 ae1b9f9ee42c228abcd72eed746653de "xelatex"
   (generated)
   "template_poster_portrait.pdf"
   (rewritten before read)
-["xelatex"] 1719317227.56579 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719317229.43276 2
+["xelatex"] 1719318916.26742 "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" "template_poster_portrait.xdv" "template_poster_portrait" 1719318917.6045 2
   "../assets/images/ICL_Crest.png" 1719317205.70686 2486349 6c73cd26d76656157699c6496092585a ""
   "/Users/mayurankv/Documents/Mayuran/Programming/Projects/Academic/Imperial College London/MSc Statistics/Dissertation/Writeup/poster/content/latex/template_poster_portrait.tex" 1719313844.31568 12131 fdad258dcfbee852667c46041ea318b4 ""
   "/usr/local/texlive/2024basic/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -85,10 +85,10 @@
   "Grey_1-1.pdf" 0 -1 0 ""
   "Grey_16-9.pdf" 0 -1 0 ""
   "Grey_4-3.pdf" 0 -1 0 ""
-  "ImperialPoster.cls" 1719317227.25729 14350 b5aefb453f6ed1de15680171a7585799 ""
+  "ImperialPoster.cls" 1719318914.29407 13325 577d96ff96c11aacb3a24a6e908de682 ""
   "UKRI_logo.png" 0 -1 0 ""
-  "template_poster_portrait.aux" 1719317229.21048 3312 6f6091bfc36f11401072ab044e9ddc3f "xelatex"
-  "template_poster_portrait.out" 1719317229.21113 1660 0cb67642f4fd02de078307f1b2ac6ad8 "xelatex"
+  "template_poster_portrait.aux" 1719318917.49651 3312 6f6091bfc36f11401072ab044e9ddc3f "xelatex"
+  "template_poster_portrait.out" 1719318917.49719 1660 0cb67642f4fd02de078307f1b2ac6ad8 "xelatex"
   "template_poster_portrait.tex" 1719313844.31568 12131 fdad258dcfbee852667c46041ea318b4 ""
   (generated)
   "template_poster_portrait.aux"
