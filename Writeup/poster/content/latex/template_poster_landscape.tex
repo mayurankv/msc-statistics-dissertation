@@ -12,13 +12,41 @@
 \postertitle{VOLATILITY FORECASTING MODELS toDo}
 \posterbrief{Comparing best in class models toDo}
 
-\newflowframe{0.3\textwidth}{\textheight}{0mm}{0mm}
-\newflowframe{0.3\textwidth}{\textheight}{0.3\textwidth}{0mm}
-\newflowframe{0.4\textwidth}{\textheight}{0.6\textwidth}{0mm}
-
 \begin{document}
 \medskip % Vertical whitespace
+
+\place{0.1}{0.1}{
+	\begin{description-section}{Discrete Time Series Modelling}
+		Content
+	\end{description-section}
+}
+
 \begin{multicols}{3}
+
+	\begin{description-section}{Discrete Time Series Modelling}
+		Content
+	\end{description-section}
+
+	\begin{multicols}{2}
+
+		\begin{model-section}{ARIMA-GARCH}
+			Content
+		\end{model-section}
+
+		\columnbreak{}
+
+		\begin{data-model-section}{Realised Variance $RV_{t}$}
+			Content
+		\end{data-model-section}
+
+		\begin{model-section}{HAR-RV}
+			Content
+		\end{model-section}
+
+	\end{multicols}
+
+	\columnbreak{}
+
 	\begin{main-section}{Data}{\faChartArea}
 		Content
 	\end{main-section}
@@ -27,57 +55,56 @@
 		Content
 	\end{main-section}
 
-	\begin{description-section}{Title}
+	\columnbreak{}
+
+	\begin{description-section}{Continuous Time Series Modelling}
 		Content
 	\end{description-section}
 
-	\begin{data-model-section}{Realised Variance $RV_{t}$}
-		Content
-	\end{data-model-section}
+	\begin{multicols}{2}
 
-	\begin{model-section}{Heston}
-		Content
-	\end{model-section}
+		\begin{data-model-section}{todo}
+			Content
+		\end{data-model-section}
 
-	% \includegraphics{diagram.tikz}
-	% \begin{tikzpicture}
-	% 	\begin{axis}[
-	% 		width=.8\textwidth,
-	% 		height=.8\textheight,
-	% 	]
-	% 		\node[circle] A
-	% 	\end{axis}
-	% \end{tikzpicture}
+		\begin{model-section}{Heston}
+			Content
+		\end{model-section}
 
-	\columnbreak{}
+		\begin{model-section}{Volterra Bergomi}
+			Content
+		\end{model-section}
 
-	\begin{tcolorbox}[
-		enhanced jigsaw,
-		parskip,
-		opacityback=0,
-		colframe=ICLGreen!90!ICLGrey,
-		fonttitle=\bfseries,
-		before upper={\setlength{\baselineskip}{1.2\baselineskip}\setlength{\abovedisplayskip}{20pt}\setlength{\belowdisplayskip}{20pt}},
-		boxsep=10pt
-	]
-		\color{ICLWhite}
-		Hi
-	\end{tcolorbox}
+		\columnbreak{}
 
-	\columnbreak{}
+		\begin{description-section}{Rough Volatility}
+			Content
+		\end{description-section}
 
-	\begin{tcolorbox}[
-		standard jigsaw,
-		parskip,
-		opacityback=0,
-		% colback=ICLGrey!90!white,
-		colframe=ICLGreen!90!ICLGrey,
-		% title=foo,
-		fonttitle=\bfseries,
-		before upper={\setlength{\baselineskip}{1.2\baselineskip}\setlength{\abovedisplayskip}{20pt}\setlength{\belowdisplayskip}{20pt}},
-		boxsep=10pt
-	]
-		Hi
-	\end{tcolorbox}
+		\begin{data-model-section}{todo}
+			Content
+		\end{data-model-section}
+
+		\begin{model-section}{Rough Quadratic Heston}
+			Content
+		\end{model-section}
+
+		\begin{model-section}{Rough Volterra Bergomi}
+			Content
+		\end{model-section}
+
+	\end{multicols}
+
+% \includegraphics{diagram.tikz}
+% \begin{tikzpicture}
+% 	\begin{axis}[
+% 		width=.8\textwidth,
+% 		height=.8\textheight,
+% 	]
+% 		\node[circle] A
+% 	\end{axis}
+% \end{tikzpicture}
+
 \end{multicols}
+
 \end{document}

@@ -41,6 +41,7 @@
 
 \usepackage{graphicx} % Required for including images
 \usepackage{tikz}
+\usetikzlibrary{tikzmark,calc}
 \usepackage{pgfkeys}
 \graphicspath{{../assets/images/}{./}} % Specifies where to look for included images (trailing slash required)
 
@@ -73,7 +74,6 @@
 \usepackage{pagecolor}
 \usepackage[most]{tcolorbox}
 \usepackage{fontawesome5}
-\usepackage{flowfram}
 \tcbuselibrary{skins}
 % \tcbset{
 % 	noparskip/.style={before={\par\smallskip\pagebreak[0]\parindent=0pt }, after={\par\smallskip}}
@@ -306,6 +306,23 @@
 \newtcolorbox{model-section}[1]{%
 	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Model:}} #1\hfill \faSitemap},
 	colframe=ICLLime,
+}
+
+
+\newlength{\pagewidth}
+\newlength{\pageheight}
+\setlength{\pagewidth}{\paperwidth}
+\setlength{\pageheight}{\paperheight}
+\newlength{\centerx}
+\newlength{\centery}
+\setlength{\centerx}{0.5\pagewidth}
+\setlength{\centery}{0.5\pageheight}
+\newcommand{\place}[3]{
+	\AddToShipoutPictureBG*{
+		\put(\LenToUnit{#1\pagewidth}, \dimexpr \pageheight - \LenToUnit{#2\pageheight} \relax){
+			#3
+		}
+	}
 }
 
 %------------------------------------------------
