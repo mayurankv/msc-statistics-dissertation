@@ -10,7 +10,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $ARIMA\left(p,d,q\right)$
+mathLink: $\operatorname*{ARIMA}\left(p,d,q\right)$
 ---
 > [!definition]+ Definition: Autoregressive Integrated Moving Average Process
 > #toComplete

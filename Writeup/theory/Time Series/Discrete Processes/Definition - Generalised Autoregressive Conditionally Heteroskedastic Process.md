@@ -11,7 +11,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $GARCH\left(p,q\right)$
+mathLink: $\operatorname*{GARCH}\left(p,q\right)$
 ---
 > [!definition]+ Definition: Generalised Autoregressive Conditionally Heteroskedastic Process
 > #toComplete

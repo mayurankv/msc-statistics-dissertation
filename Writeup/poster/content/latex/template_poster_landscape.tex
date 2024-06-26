@@ -7,102 +7,77 @@
 	%print,        	 % Uncomment to convert colors to CMYK for printing purposes
 	%a1papersize,    % Uncomment to use an A1 paper size instead of the default A0 paper size
 ]{ImperialPoster}
-
-\postertitle{
-	Title\\
-	Short and snappy, with the main message
-}
 \color{ICLWhite}
 
+\postertitle{VOLATILITY FORECASTING MODELS toDo}
+\posterbrief{Comparing best in class models toDo}
+
+\newflowframe{0.3\textwidth}{\textheight}{0mm}{0mm}
+\newflowframe{0.3\textwidth}{\textheight}{0.3\textwidth}{0mm}
+\newflowframe{0.4\textwidth}{\textheight}{0.6\textwidth}{0mm}
+
 \begin{document}
-
 \medskip % Vertical whitespace
+\begin{multicols}{3}
+	\begin{main-section}{Data}{\faChartArea}
+		Content
+	\end{main-section}
 
-\begin{multicols}{4} % Column 1
+	\begin{main-section}{Evaluation}{\faCheck}
+		Content
+	\end{main-section}
 
-	\subsection{Subsection Title}
+	\begin{description-section}{Title}
+		Content
+	\end{description-section}
 
-	Adi cum fugia qui dolo ommodit quia venisi saperat iscim qsequae nobissitat.
+	\begin{data-model-section}{Realised Variance $RV_{t}$}
+		Content
+	\end{data-model-section}
 
-	Sed que perspic ipsanihit quunt aligenist re reperehendia \textcolor{ICLGreen}{apicias re pellectur sustentur?}
+	\begin{model-section}{Heston}
+		Content
+	\end{model-section}
 
-	Ehendios \textcolor{ICLGreen}{dolores} ni dolut acero del mint apid esto bernatendem eum \textcolor{ICLGreen}{atqui delisti opta} aliquam il id quam fuguist, eum rerferesto conserro berionectio. Alitatu saperat iscim qsequae.
+	% \includegraphics{diagram.tikz}
+	% \begin{tikzpicture}
+	% 	\begin{axis}[
+	% 		width=.8\textwidth,
+	% 		height=.8\textheight,
+	% 	]
+	% 		\node[circle] A
+	% 	\end{axis}
+	% \end{tikzpicture}
 
-	\begin{quote}
-		`Pull Quote/Subtitle.\\
-		Oluptat ut in gother comnihic totatem apietur, ium audi imus vent ipsum volup ta veniscil dolut acero del mint conserro'
-	\end{quote}
+	\columnbreak{}
 
-	\subsection{Subsection Title}
+	\begin{tcolorbox}[
+		enhanced jigsaw,
+		parskip,
+		opacityback=0,
+		colframe=ICLGreen!90!ICLGrey,
+		fonttitle=\bfseries,
+		before upper={\setlength{\baselineskip}{1.2\baselineskip}\setlength{\abovedisplayskip}{20pt}\setlength{\belowdisplayskip}{20pt}},
+		boxsep=10pt
+	]
+		\color{ICLWhite}
+		Hi
+	\end{tcolorbox}
 
-	Adi cum fugia qui dolo ommodit quia venisi saperat iscim qsequae nobissitat.
+	\columnbreak{}
 
-	Sed que perspic ipsanihit quunt aligenist re reperehendia apicias re pellectur sus, tentur?
-
-	\begin{table}[H] % [H] forces the table to be output where it is defined in the code (it suppresses floating)
-		\caption{Experimental results.}
-		\begin{tabular}{L{0.24\linewidth} C{0.24\linewidth} R{0.24\linewidth}}
-			\toprule
-			Treatment & Quantity & Response\\
-			\midrule
-			AAA & 10mL & 0.944\\
-			AAA & 150mL & 0.527\\
-			BBB & 20mL & 0.263\\
-			BBB & 2,000mL & 0.818\\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-
-	\columnbreak{} % Column 2
-
-	\section{Section Title}
-
-	Equae es nobissitat hitatum estis quodit larib ustotatet etur aut exere estint eium ium expeb usantis sae maio omnis consed quam reici voluptam ipistio. Arum, se velliquosam, oms evelendici derroruptius debitis quunto
-
-	\smalltext{Equae es nobissitat hitatum estis quodit larib ustotatet etur aut exere estint eium ium expeb usantis sae maio omnis consed quam reici voluptam ipistio. Arum, se velliquosam, oms evelendici derroruptius debitis quunto} % Use \smalltext or an enclosed \small for a block of text in a reduced font size
-
-	\begin{figure}[H] % [H] forces the figure to be output where it is defined in the code (it suppresses floating)
-		\includegraphics[width=\linewidth]{../assets/images/Grey_4-3_Portrait.pdf} % Figure image % chktex 8
-		\caption{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie.}
-	\end{figure}
-
-	\columnbreak{} % Column 3
-	\begin{figure}[H] % [H] forces the figure to be output where it is defined in the code (it suppresses floating)
-		\includegraphics[width=\linewidth]{../assets/images/Grey_16-9.pdf} % Figure image % chktex 8
-		\caption{Figure caption. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie.}
-	\end{figure}
-
-	\subsection{Subsection Title}
-
-	Adi cum fugia qui dolo ommodit quia venisi saperat iscim qsequae nobissitat. Sed que perspic ipsanihit quunt aligenist re reperehendia, apicias re pellectur susentur? Ehendios dolores ni dolut acero del mint apid esto bernatendem eum atqui delisti opta aliquam il id quam fuguist, eum rerferesto conserro berionectio. Alitatu saperat iscim  trffeq qsequae.
-
-	Ugia susae et remolectur, tem si occaborectas reptati con net porem. Imusci cus voluptat.
-
-	\includegraphics[width=0.49\linewidth]{../assets/images/Grey_16-9.pdf}\hfill\includegraphics[width=0.49\linewidth]{../assets/images/Grey_16-9.pdf} % Side by side images % chktex 8
-
-	\begin{itemize}
-		\item Lorem ipsum
-		\item Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		\item Praesent porttitor.
-	\end{itemize}
-
-	\columnbreak{} % Column 4
-	\section{Section Title}
-
-	\begingroup
-		\small % Reduce font size
-		Obisim qui quiae porum ea volorenis eic tem andae nus, verem expligento tecum eos quo magnihit inis sunt di dolupta tiuntem qui ipid moluptatquam idio. Itinturia vellam in none velit quat landi ium faci dolum volut as ea cus.
-
-		Am conet, ut occaerum ant eatibusdae sit, nus etur? Mincia cone verum qui dis nobitatur sequodi oriaepuda sim rempersperia nulluptatis culpario eicte illupta tenemperit isquamus natem et officilique prehent unt aut magnis volut porupta turehen ditatenis eumquamus dolorisi dipis enis vid ulpa aciur.\par
-	\endgroup
-
-	\largepercent{95\%} % Large bold percentage figure
-
-	Equae es nobissitat hitatum estis quodit larib ustotatet etur aut exere estint eium ium exeb usantis sae maio omnis consed quam reici*
-
-	\smalltext{*Equae es nobissitat hitatum estis quodit laborib ustotatet e auexere estint eium ium experib usantis sae maio omnis co.} % Use \smalltext or an enclosed \small for a block of text in a reduced font size
-
-	\boldsection{Arum alis dolum aut pe dolorestem cone verestis es si beaquib usanime eum} % Output some bold text to stand out from the body text
-
+	\begin{tcolorbox}[
+		standard jigsaw,
+		parskip,
+		opacityback=0,
+		% colback=ICLGrey!90!white,
+		colframe=ICLGreen!90!ICLGrey,
+		% title=foo,
+		fonttitle=\bfseries,
+		before upper={\setlength{\baselineskip}{1.2\baselineskip}\setlength{\abovedisplayskip}{20pt}\setlength{\belowdisplayskip}{20pt}},
+		boxsep=10pt
+	]
+		Hi
+	\end{tcolorbox}
 \end{multicols}
 \end{document}

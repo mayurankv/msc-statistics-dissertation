@@ -44,7 +44,7 @@ FIGARCH
 
 ---
 
-Torben G. Andersen and Tim Bollerslev (1998): "Answering the Skeptics: Yes, Standard Volatility Models do Provide Accurate Forecasts", in International Economic Review, Vol. 39, No. 4
+Torben G. Andersen and Tim Bollerslev (1998): "Answering the Skeptics: Yes, Standard Volatility 
 
 ---
 
@@ -60,7 +60,7 @@ Maybe:
 	- 
 
 Maybe too much and may need to drop - likely
-${}2$ H[[Definition - Autoregressive Process]] models
+${}2$ [[Definition - Heterogenous Autoregressive Process for Realised Variance]] models
 ${}2$ Rough models 
 ${}2$ non-rough models
 

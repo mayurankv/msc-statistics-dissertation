@@ -10,7 +10,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $WN\left(\sigma^{2}\right)$
+mathLink: $\operatorname*{WN}\left(\sigma^{2}\right)$
 ---
 > [!definition]+ Definition: White Noise Process
 > A [[Definition - Time Series|Time Series]] [[Definition - Time Series|$X_{t}$]] is a white noise process [[Definition - White Noise Process]] if it has zero [[Definition - Mean Function|Mean Function]], and [[Definition - Finite|Finite]] constant [[Definition - Variance Function|Variance Function]]:$$\operatorname*{Cov}\left[X_{t},X_{s}\right]=\sigma^{2}\mathbb{1}_{s=t}$$

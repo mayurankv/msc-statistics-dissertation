@@ -11,7 +11,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $ARMA\left(p,q\right)$
+mathLink: $\operatorname*{ARMA}\left(p,q\right)$
 ---
 > [!definition]+ Definition: Autoregressive Moving Average Process
 > #toComplete

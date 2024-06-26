@@ -34,38 +34,12 @@
             }
           },
           {
-            "id": "5f38168370d12c8e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "ab1c947e539acc09",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "416dec498525f287",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+                "file": "Organisation/Meetings/Supervisor Meeting 3.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,12 +60,12 @@
             }
           },
           {
-            "id": "73c25848d3cbaed5",
+            "id": "416dec498525f287",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/obsidian/templating/templater/templates/Content/Definition.md",
+                "file": "Organisation/temp/Dissertation Ideas.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -117,7 +91,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -125,7 +99,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -267,19 +241,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "00bc39cb6dcd7ac5",
+  "active": "416dec498525f287",
   "lastOpenFiles": [
-    "Writeup/poster/content/latex/xelatex99478.fls",
-    "Writeup/poster/content/latex/xelatex99453.fls",
-    "Writeup/poster/content/latex/template_poster_landscape.xdv",
+    "Writeup/poster/content/latex/template_poster_landscape.synctex.gz",
     "Writeup/poster/content/latex/template_poster_landscape.synctex(busy)",
-    "Writeup/poster/content/latex/xelatex99423.fls",
-    "Writeup/poster/content/latex/xelatex99408.fls",
-    "Writeup/poster/content/latex/xelatex99380.fls",
-    "Writeup/poster/content/latex/xelatex99348.fls",
-    "Writeup/poster/content/latex/xelatex99300.fls",
-    "Writeup/poster/content/latex/xelatex99261.fls",
-    "Writeup/poster/content/latex/xelatex99107.fls",
+    "Writeup/poster/content/latex/xelatex2331.fls",
+    "Writeup/poster/content/latex/xelatex2306.fls",
+    "Writeup/poster/content/latex/template_poster_landscape.xdv",
+    "Writeup/poster/content/latex/xelatex2230.fls",
+    "Writeup/poster/content/latex/template_poster_landscape.fdb_latexmk",
+    "Writeup/poster/content/latex/template_poster_landscape.aux",
+    "Writeup/poster/content/latex/xelatex2194.fls",
+    "Writeup/poster/content/latex/xelatex2175.fls",
+    "Writeup/poster/content/latex/xelatex2104.fls",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
+    "Organisation/Meetings/Supervisor Meeting 3.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Organisation/Progress Reports/Progress Report 1.md",
+    "Organisation/Meetings/Supervisor Meeting 2.md",
+    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
+    "Organisation/Meetings/Supervisor Meeting 4.md",
+    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Covariance Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Exogenous Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
+    "Organisation/temp/Dissertation Ideas.md",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_CMYK.png",
     "Writeup/poster/content/assets/images/output.cmyk.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_RGB.png",
@@ -287,33 +284,10 @@
     "Writeup/poster/content/assets/images/green_square_green.png",
     "Writeup/poster/content/assets/images/my.png",
     "Writeup/poster/content/assets/images/ICL_Crest.png",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
     "Writeup/poster/content/assets/images/UKRI_logo.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Old.png",
     "Writeup/poster/content/latex/assets/images/UKRI_logo.png",
     "Writeup/poster/content/latex/README.md",
-    "Writeup/poster/templates/Imperial Poster/README.md",
-    "Writeup/poster/templates/gemini/README.md",
-    "Writeup/poster/templates/gemini/LICENSE.md",
-    "Writeup/poster/templates/gemini-master/README.md",
-    "Writeup/poster/templates/gemini-master/LICENSE.md",
-    "Writeup/poster/templates/Imperial College London Poster Template/README.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Project/modules/discrete_time_series/README.md",
-    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
-    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-    "utilities/obsidian/ui/UI Example.md",
-    "Organisation/Meetings/Supervisor Meeting 4.md",
-    "Project/modules/time_series/README.md",
-    "Project/modules/time-series/README.md",
-    "Project/modules/time-serie/README.md",
-    "Project/templates/template_module/README.md",
-    "Organisation/Progress Reports/Progress Report 4.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
-    "Organisation/Progress Reports/Progress Report 1.md",
-    "Organisation/Meetings/Supervisor Meeting 2.md"
+    "Writeup/poster/templates/Imperial Poster/README.md"
   ]
 }

@@ -10,7 +10,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $ARIMAX\left(p,d,q\right)$
+mathLink: $\operatorname*{ARIMAX}\left(p,d,q\right)$
 ---
 > [!definition]+ Definition: Autoregressive Integrated Moving Average Exogenous Process
 > #toComplete

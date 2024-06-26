@@ -11,7 +11,7 @@ tags:
   - Statistics
   - TimeSeries
 type: definition
-mathLink: $HAR\text{-}RV$
+mathLink: $\operatorname*{HAR\text{-}RV}$
 ---
 > [!definition]+ Definition: Heterogenous Autoregressive Process for Realised Variance
 > The [[Definition - Heterogenous Autoregressive Process for Realised Variance]]  model #toComplete

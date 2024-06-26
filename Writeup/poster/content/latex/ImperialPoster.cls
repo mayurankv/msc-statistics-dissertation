@@ -40,7 +40,9 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{graphicx} % Required for including images
-\graphicspath{{Images/}{./}} % Specifies where to look for included images (trailing slash required)
+\usepackage{tikz}
+\usepackage{pgfkeys}
+\graphicspath{{../assets/images/}{./}} % Specifies where to look for included images (trailing slash required)
 
 \usepackage{anyfontsize} % Allows font sizes at arbitrary values
 
@@ -66,7 +68,16 @@
 
 \usepackage{float} % Allows more precisely positioning floats e.g. \begin{figure}[H]
 
-\newcommand{\largepercent}[1]{{\ImperialSansExtraBold\iftoggle{a1papersize}{\fontsize{150pt}{150pt}}{\fontsize{213pt}{213pt}}\selectfont\textcolor{ICLDarkBlue}{#1}}} % Styling of the large percentage value used to highlight important numbers
+\newcommand{\largepercent}[1]{{\ImperialSansExtraBold\iftoggle{a1papersize}{\fontsize{150pt}{150pt}}{\fontsize{213pt}{213pt}}\selectfont\textcolor{ICLDarkGreen}{#1}}} % Styling of the large percentage value used to highlight important numbers
+
+\usepackage{pagecolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{flowfram}
+\tcbuselibrary{skins}
+% \tcbset{
+% 	noparskip/.style={before={\par\smallskip\pagebreak[0]\parindent=0pt }, after={\par\smallskip}}
+% }
 
 %----------------------------------------------------------------------------------------
 %	COLORS
@@ -81,11 +92,13 @@
 
 \definecolor{ICLBlue}{RGB}{0, 0, 205}
 \definecolor{ICLGreen}{RGB}{15, 255, 175}
+\definecolor{ICLDarkGreen}{RGB}{20, 147, 102}
 \definecolor{ICLGrey}{RGB}{35, 41, 55}
 \definecolor{ICLWhite}{RGB}{204, 202, 194}
 \definecolor{ICLDarkBlue}{RGB}{0, 0, 128}
-
-\usepackage{pagecolor}
+\definecolor{ICLLightBlue}{HTML}{12b0ff}
+\definecolor{ICLCyan}{HTML}{95e6cb}
+\definecolor{ICLLime}{HTML}{d5ff80}
 \pagecolor{ICLGrey}
 
 \usepackage{graphicx}
@@ -96,7 +109,7 @@
         \parbox[b][\paperheight]{\paperwidth}{%
             \vfill
             \centering
-            {\transparent{0.05}\includegraphics[width=0.55\textwidth]{../assets/images/ICL_Crest.png}}
+            {\transparent{0.05}\includegraphics[width=0.55\textwidth]{ICL_Crest.png}}
             \vfill
         }
     }
@@ -169,6 +182,19 @@
 }}
 
 %----------------------------------------------------------------------------------------
+%	LINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{hyperref} % Required for links
+
+\hypersetup{
+	colorlinks=true, % Whether to color the text of links
+	urlcolor=ICLGreen, % Color for \url and \href links
+	linkcolor=ICLGreen, % Color for \nameref links
+	citecolor=ICLGreen, % Color of reference citations
+}
+
+%----------------------------------------------------------------------------------------
 %	HEADERS AND FOOTERS
 %----------------------------------------------------------------------------------------
 
@@ -176,7 +202,7 @@
 \pagestyle{fancy}
 
 \setlength{\headheight}{200pt}
-\renewcommand{\headrulewidth}{4pt}
+\renewcommand{\headrulewidth}{6pt}
 \renewcommand{\footrulewidth}{2pt}
 \let\oldheadrule\headrule
 \renewcommand{\headrule}{{\color{ICLGreen}\oldheadrule}}
@@ -186,35 +212,35 @@
 \fancyhf{} % Clear default headers/footers
 
 \fancyhead[L]{% Left header
-	\iftoggle{print}{% Use the CMYK logo for print mode
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Green_CMYK.png}%
+	\href{imperial.ac.uk}{\iftoggle{print}{% Use the CMYK logo for print mode
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{ICL_Logo_Green_CMYK.png}%
 	}{% Otherwise use the RGB logo for screens
-		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{../assets/images/ICL_Logo_Green_RGB.png}%
-	}%
-	% \includegraphics[height=\iftoggle{a1papersize}{4.6500cm}{5.7902cm}]{../assets/images/ICL_Crest.png}
-	% \raisebox{-2cm}{\includegraphics[height=\iftoggle{a1papersize}{3.875cm}{4.8252cm}]{../assets/images/ICL_Crest.png}}
+		\includegraphics[height=\iftoggle{a1papersize}{1.7615cm}{2.4126cm}]{ICL_Logo_Green_RGB.png}%
+	}}
 }
 \fancyhead[C]{
 	\begingroup
 		\color{ICLGreen}
-		\vspace{0pt}\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}\bfseries\postertitle
+		\vspace{0pt}\iftoggle{a1papersize}{\fontsize{62pt}{62pt}\selectfont}{\fontsize{82pt}{82pt}\selectfont}\bfseries\ImperialSansSemiBold\postertitle\vspace*{1cm}\\
+		\color{ICLDarkGreen}\ImperialSansExtraLight\iftoggle{a1papersize}{\fontsize{42pt}{42pt}\selectfont}{\fontsize{62pt}{62pt}\selectfont}
+		\posterbrief
 	\endgroup
 }
 \fancyhead[R]{
-	% \vspace*{2cm}\\
-	\textcolor{ICLGreen}{\bfseries{Presenter:}} Mayuran Visakan\\
-	\textcolor{ICLGreen}{\bfseries{Supervisor:}} Adam Sykulski
+	\textcolor{ICLGreen}{\bfseries{Presenter:}} \href{https://github.com/mayurankv}{\color{ICLWhite}Mayuran Visakan}\\
+	\textcolor{ICLGreen}{\bfseries{Supervisor:}} \href{https://profiles.imperial.ac.uk/adam.sykulski}{\color{ICLWhite}Adam Sykulski}
 } % Right header
 
 \fancyfoot[L]{% Left footer
 	\color{ICLGreen}% Color
 	\iftoggle{a1papersize}{\fontsize{32pt}{32pt}\selectfont}{\fontsize{45pt}{45pt}\selectfont}% Font size
-	\raisebox{-1.5cm}{\href{Imperial College London}{imperial.ac.uk}}\hfill\raisebox{-1.25cm}{24/06/2024}% Footer text
+	\raisebox{-1.5cm}{\href{imperial.ac.uk}{Imperial College London}}\hfill\raisebox{-1.25cm}{24/06/2024}% Footer text
 }
 \fancyfoot[C]{} % Center footer
 \fancyfoot[R]{} % Right footer
 
 \newcommand{\postertitle}[1]{\renewcommand{\postertitle}{#1}}
+\newcommand{\posterbrief}[1]{\renewcommand{\posterbrief}{#1}}
 
 %----------------------------------------------------------------------------------------
 %	SECTIONS
@@ -246,9 +272,45 @@
 
 \titlespacing*{\subsection}{0pt}{0pt}{-\baselineskip} % Spacing around section titles, the order is: left, before and after
 
+
+\tcbset{
+    enhanced jigsaw,
+    opacityback=0,
+    top=4mm,
+    % before skip=2mm,after skip=2mm,
+	opacityback=0,
+    colback=\thepagecolor,
+	opacityframe=0.6,
+	colframe=ICLGreen,
+    % colbacktitle=\thepagecolor,
+    % The titlebox:
+    coltitle=ICLGrey,
+    rounded corners,
+	arc=6mm,
+    drop fuzzy shadow,
+    fonttitle=\bfseries,
+	before upper*=\addfontfeatures{Color=ICLWhite}
+}
+\newtcolorbox{main-section}[2]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Overview:}} #1\hfill #2},
+	colframe=ICLGreen,
+}
+\newtcolorbox{description-section}[1]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Background:}} #1\hfill \faBook},
+	colframe=ICLCyan,
+}
+\newtcolorbox{data-model-section}[1]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Data Model:}} #1\hfill \faProjectDiagram},
+	colframe=ICLLightBlue,
+}
+\newtcolorbox{model-section}[1]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Model:}} #1\hfill \faSitemap},
+	colframe=ICLLime,
+}
+
 %------------------------------------------------
 
-\newcommand{\boldsection}[1]{{\iftoggle{a1papersize}{\fontsize{42pt}{52.5pt}}{\fontsize{60pt}{75pt}}\selectfont\bfseries\textcolor{ICLDarkBlue}{#1}\par}} % Styling of bold sections
+\newcommand{\boldsection}[1]{{\iftoggle{a1papersize}{\fontsize{42pt}{52.5pt}}{\fontsize{60pt}{75pt}}\selectfont\bfseries\textcolor{ICLDarkGreen}{#1}\par}} % Styling of bold sections
 
 %----------------------------------------------------------------------------------------
 %	TABLES AND FIGURES
@@ -291,16 +353,3 @@
 
 \renewcommand{\labelitemi}{\textcolor{ICLGreen}{\textbullet}} % Customize the first level bullet point character
 \renewcommand{\labelenumi}{\textcolor{ICLGreen}{\arabic{enumi}.}} % Customize the first level numbered list characters
-
-%----------------------------------------------------------------------------------------
-%	LINKS
-%----------------------------------------------------------------------------------------
-
-\usepackage{hyperref} % Required for links
-
-\hypersetup{
-	colorlinks=true, % Whether to color the text of links
-	urlcolor=ICLGreen, % Color for \url and \href links
-	linkcolor=ICLGreen, % Color for \nameref links
-	citecolor=ICLGreen, % Color of reference citations
-}

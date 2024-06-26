@@ -11,7 +11,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $MA\left(q\right)$
+mathLink: $\operatorname*{MA}\left(q\right)$
 ---
 > [!definition]+ Definition: Moving Average Process
 > A [[Definition - Time Series|Time Series]] [[Definition - Time Series|$X_{t}$]] is a [[Definition - Moving Average Process|Moving Average Process]] [[Definition - Moving Average Process]] with coefficients $\vec{\theta}\in \mathbb{R}^{q}$ if for $\varepsilon_{t}\sim$[[Definition - White Noise Process]], $\forall\: t$:

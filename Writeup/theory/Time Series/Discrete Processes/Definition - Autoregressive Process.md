@@ -11,7 +11,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $AR\left(p\right)$
+mathLink: $\operatorname*{AR}\left(p\right)$
 ---
 > [!definition]+ Definition: Autoregressive Process
 > A [[Definition - Time Series|Time Series]] [[Definition - Time Series|$X_{t}$]] is an [[Definition - Autoregressive Process|Autoregressive Process]] [[Definition - Autoregressive Process]] with coefficients $\vec{\phi}\in \mathbb{R}^{p}$ if for $\varepsilon_{t}\sim$[[Definition - White Noise Process]], $\forall\: t$:

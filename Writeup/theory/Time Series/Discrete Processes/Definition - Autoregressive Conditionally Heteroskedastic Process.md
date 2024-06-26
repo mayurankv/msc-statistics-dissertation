@@ -11,7 +11,7 @@ tags:
   - Statistics
   - SignalProcessing
 type: definition
-mathLink: $ARCH\left(p\right)$
+mathLink: $\operatorname*{ARCH}\left(p\right)$
 ---
 > [!definition]+ Definition: Autoregressive Conditionally Heteroskedastic Process
 > #toComplete
