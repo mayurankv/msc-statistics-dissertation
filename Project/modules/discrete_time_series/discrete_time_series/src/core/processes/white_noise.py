@@ -2,17 +2,13 @@ import numpy as np
 from typing import Optional
 import numpy.typing as npt
 from functools import partial
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from matplotlib.pylab import Generator
 
+from discrete_time_series.src.core.noise import Noise
 
-class WhiteNoise(ABC):
-	def __init__(
-		self,
-		standard_deviation: float = 1.0,
-	) -> None:
-		self.standard_deviation = standard_deviation
 
+class WhiteNoise(Noise):
 	@abstractmethod
 	def _get_generator(
 		self,

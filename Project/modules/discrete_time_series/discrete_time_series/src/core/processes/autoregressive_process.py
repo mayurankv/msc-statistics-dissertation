@@ -4,12 +4,12 @@ from discrete_time_series.src.core.stationary_time_series import StationaryTimeS
 from discrete_time_series.src.core.coefficients import Coefficients, RawCoefficient
 
 
-class MovingAverageProcess(StationaryTimeSeries):
+class AutoregressiveProcess(StationaryTimeSeries):
 	def __init__(
 		self,
 		coefficient: Optional[RawCoefficient] = None,
 	) -> None:
 		raw_coefficients: dict[str, RawCoefficient] = {}
 		if coefficient is not None:
-			raw_coefficients["noise"] = [1.0] + coefficient
-		super(MovingAverageProcess, self).__init__(coefficients=Coefficients(**raw_coefficients))
+			raw_coefficients["observations"] = [None] + coefficient
+		super(AutoregressiveProcess, self).__init__(coefficients=Coefficients(**raw_coefficients))

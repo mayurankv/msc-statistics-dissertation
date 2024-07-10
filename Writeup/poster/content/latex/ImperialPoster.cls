@@ -41,10 +41,10 @@
 
 \usepackage{graphicx} % Required for including images
 \usepackage{tikz}
-\usetikzlibrary{tikzmark,calc}
+\usetikzlibrary{tikzmark,calc,arrows.meta,bending,positioning}
 \usepackage{pgfkeys}
 \graphicspath{{../assets/images/}{./}} % Specifies where to look for included images (trailing slash required)
-
+\usepackage[absolute]{textpos}
 \usepackage{anyfontsize} % Allows font sizes at arbitrary values
 
 \usepackage{fontsize} % Allows changing the default font size to an arbitrary value
@@ -146,6 +146,7 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{fontspec} % Required for specifying custom fonts
+\usepackage[T1]{fontenc}
 
 \defaultfontfeatures{Ligatures=TeX} % To support LaTeX ligatures (e.g. `` and --)
 \defaultfontfeatures{Path=../assets/fonts/} % Specify the location of font files
@@ -280,7 +281,7 @@
     % before skip=2mm,after skip=2mm,
 	opacityback=0,
     colback=\thepagecolor,
-	opacityframe=0.6,
+	% opacityframe=0.6,
 	colframe=ICLGreen,
     % colbacktitle=\thepagecolor,
     % The titlebox:
@@ -289,23 +290,27 @@
 	arc=6mm,
     drop fuzzy shadow,
     fonttitle=\bfseries,
-	before upper*=\addfontfeatures{Color=ICLWhite}
+	before upper*=\fontfamily{lmr}\selectfont\color{ICLWhite}
 }
-\newtcolorbox{main-section}[2]{%
-	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Overview:}} #1\hfill #2},
+\newtcolorbox{main-section}[3][\linewidth]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Overview:}} #2\hfill #3},
 	colframe=ICLGreen,
+	width=#1,
 }
-\newtcolorbox{description-section}[1]{%
-	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Background:}} #1\hfill \faBook},
+\newtcolorbox{description-section}[2][\linewidth]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Background:}} #2\hfill \faBook},
 	colframe=ICLCyan,
+	width=#1,
 }
-\newtcolorbox{data-model-section}[1]{%
-	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Data Model:}} #1\hfill \faProjectDiagram},
+\newtcolorbox{data-model-section}[2][\linewidth]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Data Model:}} #2\hfill \faProjectDiagram},
 	colframe=ICLLightBlue,
+	width=#1,
 }
-\newtcolorbox{model-section}[1]{%
-	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Model:}} #1\hfill \faSitemap},
+\newtcolorbox{model-section}[2][\linewidth]{%
+	adjusted title={{\mdseries\textcolor{ICLGrey!95!white}{Model:}} #2\hfill \faSitemap},
 	colframe=ICLLime,
+	width=#1,
 }
 
 
@@ -315,13 +320,25 @@
 \setlength{\pageheight}{\paperheight}
 \newlength{\centerx}
 \newlength{\centery}
-\setlength{\centerx}{0.5\pagewidth}
-\setlength{\centery}{0.5\pageheight}
-\newcommand{\place}[3]{
+\setlength{\centerx}{0.495\paperwidth}
+\setlength{\centery}{0.44\paperheight}
+\TPReferencePosition{0.5,0}
+\newcommand{\place}[4]{
+	\AddToShipoutPictureFG*{
+		\begin{textblock*}{#3}(\dimexpr 0.5\paperwidth + \LenToUnit{#1\textwidth}\relax, \dimexpr 0.5\paperheight - \LenToUnit{#2\textheight} \relax)
+			#4
+		\end{textblock*}
+	}
+}
+\newcommand{\pagearrow}[5][ICLGreen]{
 	\AddToShipoutPictureBG*{
-		\put(\LenToUnit{#1\pagewidth}, \dimexpr \pageheight - \LenToUnit{#2\pageheight} \relax){
-			#3
-		}
+		\begin{tikzpicture}[remember picture, overlay]
+			\coordinate (A) at ($(current page.center) + ({#2*\textwidth}, {#3*\textheight})$);
+			\coordinate (B) at ($(current page.center) + ({#4*\textwidth}, {#5*\textheight})$);
+			% \coordinate (A) at ($(current page.north west)!#2!(current page.north east) - (0,#3*\pageheight)$);
+			% \coordinate (B) at ($(current page.south west)!#4!(current page.south east) + (0,{(1 - #5)*\pageheight})$);
+			\draw[-{Stealth},line width=6pt, #1] (A) -- (B);
+		\end{tikzpicture}
 	}
 }
 

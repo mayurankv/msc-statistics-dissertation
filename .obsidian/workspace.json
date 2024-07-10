@@ -91,15 +91,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
-                "mode": "source",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+                "mode": "preview",
                 "backlinks": true,
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -165,7 +165,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -182,7 +182,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md",
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -205,7 +205,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Organisation/temp/Dissertation Ideas.md"
+                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md"
               }
             }
           },
@@ -241,29 +241,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "416dec498525f287",
+  "active": "00bc39cb6dcd7ac5",
   "lastOpenFiles": [
-    "Writeup/poster/content/latex/template_poster_landscape.fdb_latexmk",
-    "Writeup/poster/content/latex/xelatex15284.fls",
-    "Writeup/poster/content/latex/template_poster_landscape.xdv",
-    "Writeup/poster/content/latex/template_poster_landscape.aux",
-    "Writeup/poster/content/latex/template_poster_landscape.synctex(busy)",
-    "Writeup/poster/content/latex/xelatex15280.fls",
-    "Writeup/poster/content/latex/xelatex15218.fls",
-    "Writeup/poster/content/latex/xelatex15160.fls",
-    "Writeup/poster/content/latex/xelatex15128.fls",
-    "Writeup/poster/content/latex/xelatex15089.fls",
-    "Writeup/poster/content/latex/xelatex15052.fls",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
     "Organisation/Meetings/Supervisor Meeting 3.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
+    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
+    "Organisation/temp/Dissertation Ideas.md",
+    "Organisation/Meetings/Supervisor Meeting 4.md",
+    "Writeup/poster/content/latex/template_poster_landscape.synctex(busy)",
+    "Writeup/poster/content/latex/xelatex23824.fls",
+    "Writeup/poster/content/latex/xelatex23726.fls",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/processes/__pycache__/moving_average_process.cpython-312.pyc",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/__pycache__/inference.cpython-312.pyc",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/__pycache__/stationary_time_series.cpython-312.pyc",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/processes/__pycache__/autoregressive_process.cpython-312.pyc",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/processes/autoregressive_process.py",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/processes/__pycache__/gaussian_white_noise.cpython-312.pyc",
+    "Project/modules/discrete_time_series/discrete_time_series/src/core/processes/__pycache__/white_noise.cpython-312.pyc",
     "Organisation/Progress Reports/Progress Report 1.md",
     "Organisation/Meetings/Supervisor Meeting 2.md",
-    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-    "Organisation/Meetings/Supervisor Meeting 4.md",
     "utilities/obsidian/templating/templater/templates/Content/Definition.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
@@ -276,7 +276,6 @@
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
-    "Organisation/temp/Dissertation Ideas.md",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_CMYK.png",
     "Writeup/poster/content/assets/images/output.cmyk.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_RGB.png",

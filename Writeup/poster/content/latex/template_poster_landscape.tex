@@ -7,104 +7,100 @@
 	%print,        	 % Uncomment to convert colors to CMYK for printing purposes
 	%a1papersize,    % Uncomment to use an A1 paper size instead of the default A0 paper size
 ]{ImperialPoster}
-\color{ICLWhite}
 
 \postertitle{VOLATILITY FORECASTING MODELS toDo}
 \posterbrief{Comparing best in class models toDo}
 
 \begin{document}
-\medskip % Vertical whitespace
 
-\place{0.1}{0.1}{
+\hphantom{.}
+
+\place{0}{0.48}{0.35\textwidth}{
+	\begin{main-section}{Question}{\faQuestionCircle}
+		\input{content/overview/question.tex}
+	\end{main-section}
+}
+\pagearrow[ICLCyan]{-0.175}{0.44}{-0.2}{0.44}
+\pagearrow[ICLCyan]{0.175}{0.44}{0.2}{0.44}
+\pagearrow{0}{0.4}{0}{0.3}
+
+\place{-0.35}{0.48}{0.3\textwidth}{
 	\begin{description-section}{Discrete Time Series Modelling}
-		Content
+		\input{content/description/discrete_time_series.tex}
 	\end{description-section}
 }
 
-\begin{multicols}{3}
-
-	\begin{description-section}{Discrete Time Series Modelling}
-		Content
-	\end{description-section}
-
-	\begin{multicols}{2}
-
-		\begin{model-section}{ARIMA-GARCH}
-			Content
-		\end{model-section}
-
-		\columnbreak{}
-
-		\begin{data-model-section}{Realised Variance $RV_{t}$}
-			Content
-		\end{data-model-section}
-
-		\begin{model-section}{HAR-RV}
-			Content
-		\end{model-section}
-
-	\end{multicols}
-
-	\columnbreak{}
-
-	\begin{main-section}{Data}{\faChartArea}
-		Content
-	\end{main-section}
-
-	\begin{main-section}{Evaluation}{\faCheck}
-		Content
-	\end{main-section}
-
-	\columnbreak{}
-
+\place{0.35}{0.48}{0.3\textwidth}{
 	\begin{description-section}{Continuous Time Series Modelling}
-		Content
+		\input{content/description/continuous_time_series.tex}
 	\end{description-section}
+}
 
-	\begin{multicols}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		\begin{data-model-section}{todo}
-			Content
-		\end{data-model-section}
 
-		\begin{model-section}{Heston}
-			Content
-		\end{model-section}
+\place{0}{0.28}{0.35\textwidth}{
+	\begin{main-section}{Data}{\faChartArea}
+		\input{content/overview/data.tex}
+	\end{main-section}
+}
 
-		\begin{model-section}{Volterra Bergomi}
-			Content
-		\end{model-section}
+\place{0}{0}{0.35\textwidth}{
+	\begin{main-section}{Evaluation}{\faCheck}
+		\input{content/overview/evaluation.tex}
+	\end{main-section}
+}
 
-		\columnbreak{}
+\place{-0.415}{0.28}{0.17\textwidth}{
+	\begin{model-section}{ARIMA-GARCH}
+		\input{content/models/arima_garch.tex}
+	\end{model-section}
+}
 
-		\begin{description-section}{Rough Volatility}
-			Content
-		\end{description-section}
+\place{-0.225}{0.28}{0.19\textwidth}{
+	\begin{data-model-section}{Realised Variance}
+		\input{content/data_models/realised_variance.tex}
+	\end{data-model-section}
+}
 
-		\begin{data-model-section}{todo}
-			Content
-		\end{data-model-section}
+\place{-0.225}{0}{0.19\textwidth}{
+	\begin{model-section}{HAR-RV}
+		\input{content/models/har_rv.tex}
+	\end{model-section}
+}
 
-		\begin{model-section}{Rough Quadratic Heston}
-			Content
-		\end{model-section}
+% \begin{multicols}{2}
 
-		\begin{model-section}{Rough Volterra Bergomi}
-			Content
-		\end{model-section}
+% 	\begin{data-model-section}{todo}
+% 		Content
+% 	\end{data-model-section}
 
-	\end{multicols}
+% 	\begin{model-section}{Heston}
+% 		\input{content/models/heston.tex}
+% 	\end{model-section}
 
-% \includegraphics{diagram.tikz}
-% \begin{tikzpicture}
-% 	\begin{axis}[
-% 		width=.8\textwidth,
-% 		height=.8\textheight,
-% 	]
-% 		\node[circle] A
-% 	\end{axis}
-% \end{tikzpicture}
+% 	\begin{model-section}{Volterra Bergomi}
+% 		\input{content/models/volterra_bergomi.tex}
+% 	\end{model-section}
 
-\end{multicols}
+% 	\columnbreak{}
+
+% 	\begin{description-section}{Rough Volatility}
+% 		\input{content/description/rough_volatility.tex}
+% 	\end{description-section}
+
+% 	\begin{data-model-section}{todo}
+% 		Content
+% 	\end{data-model-section}
+
+% 	\begin{model-section}{Rough Quadratic Heston}
+% 		\input{content/models/rough_quadratic_heston.tex}
+% 	\end{model-section}
+
+% 	\begin{model-section}{Rough Volterra Bergomi}
+% 		\input{content/models/rough_volterra_bergomi.tex}
+% 	\end{model-section}
+
+% \end{multicols}
 
 \end{document}
