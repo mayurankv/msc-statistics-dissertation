@@ -22,7 +22,7 @@ mathLink: $\operatorname*{HAR\text{-}RV}$
 ^summary
 
 ```reference title:Code, ref:[[Definition - Heterogenous Autoregressive Process for Realised Variance]]
-file: [[Heterogenous Autoregressive Process for Realised Variance.py]]
+file: [[heterogenous_autoregressive_process_for_realised_variance.py]]
 ```
 ^code
 
