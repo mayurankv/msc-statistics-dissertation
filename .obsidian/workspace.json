@@ -73,33 +73,17 @@
             }
           },
           {
-            "id": "77f0956ad0588a5e",
+            "id": "173e0af2d28abebd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "00bc39cb6dcd7ac5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
+                "file": "Writeup/thesis/overview/Overview.excalidraw"
               }
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -149,7 +133,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 393.5
+    "width": 393.5,
+    "collapsed": true
   },
   "right": {
     "id": "439e0c2104fc67e2",
@@ -165,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+                "file": "Writeup/thesis/overview/Overview.excalidraw",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -182,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+                "file": "Writeup/thesis/overview/Overview.excalidraw",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -205,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md"
+                "file": "Writeup/thesis/overview/Overview.excalidraw"
               }
             }
           },
@@ -230,7 +215,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "markdown-importer:Open format converter": false,
       "audio-recorder:Start/stop recording": false,
       "workspaces:Manage workspace layouts": false,
@@ -238,45 +222,49 @@
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "5a0ae81c1c17f403",
+  "active": "173e0af2d28abebd",
   "lastOpenFiles": [
+    "Writeup/thesis/overview/RV to Options.excalidraw",
+    "Writeup/thesis/overview/Overview.excalidraw",
+    "Organisation/temp/Dissertation Ideas.md",
+    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
+    "Writeup/thesis/overview/Overview.md",
+    "Writeup/thesis/overview/Overview.excalidraw.md",
+    "Writeup/thesis/overview/Overview",
+    "Overview",
+    "Organisation/Progress Reports/Progress Report 1.md",
+    "Writeup/theory/Statistical Finance/Definition - Implied Volatility.md",
+    "Writeup/thesis/overview/Overview.canvas",
+    "Writeup/thesis/overview",
+    "Writeup/theory/Untitled.md",
+    "Writeup/theory/Statistical Finance/Definition - Realised Volatility.md",
+    "Writeup/theory/Statistical Finance/Definition - Integrated Volatility.md",
+    "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/rough/Rough Quadratic Heston Model.md",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility/Volatility Modelling.md",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility/Implied Volatility.md",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility/Integrated Volatility.md",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility/Integrated Volatility",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility/Realised Variance.md",
+    "Writeup/thesis/content/markdown/2_literature_review/volatility",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/rough",
+    "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Autoregressive Fractionally Integrated Movina Average Model.md",
+    "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Autoregressive",
+    "Writeup/thesis/content/markdown/2_literature_review/price_process",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous",
+    "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Heterogeneous Autoregressive Model of Realised Variance.md",
+    "Writeup/thesis/content/markdown/2_literature_review/models/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/equations/Volatility.md",
-    "Writeup/thesis/content/markdown/equations",
-    "Writeup/thesis/content/markdown/6_conclusion",
-    "Writeup/thesis/content/markdown/5_discussion",
-    "Writeup/thesis/content/markdown/4_results",
-    "Writeup/thesis/content/markdown/3_methodology",
-    "Writeup/thesis/content/markdown/0_abstract",
-    "Writeup/thesis/content/markdown/2_literature_review",
-    "Writeup/thesis/content/markdown/1_introduction",
-    "Writeup/thesis/content/markdown/literature_review",
-    "Writeup/thesis/content/markdown/literature_",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
     "Organisation/Meetings/Supervisor Meeting 3.md",
-    "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
-    "Organisation/temp/Dissertation Ideas.md",
-    "Organisation/Meetings/Supervisor Meeting 4.md",
-    "Organisation/Progress Reports/Progress Report 1.md",
-    "Organisation/Meetings/Supervisor Meeting 2.md",
-    "utilities/obsidian/templating/templater/templates/Content/Definition.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Mean Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Heterogenous Autoregressive Process for Realised Variance.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Generalised Autoregressive Conditionally Heteroskedastic Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Gaussian White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Covariance Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Correlation Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Moving Average Exogenous Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Integrated Moving Average Exogenous Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Autoregressive Conditionally Heteroskedastic Process.md",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_CMYK.png",
     "Writeup/poster/content/assets/images/output.cmyk.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_RGB.png",
@@ -286,8 +274,6 @@
     "Writeup/poster/content/assets/images/ICL_Crest.png",
     "Writeup/poster/content/assets/images/UKRI_logo.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Old.png",
-    "Writeup/poster/content/latex/assets/images/UKRI_logo.png",
-    "Writeup/poster/content/latex/README.md",
-    "Writeup/poster/templates/Imperial Poster/README.md"
+    "Writeup/poster/content/latex/assets/images/UKRI_logo.png"
   ]
 }
