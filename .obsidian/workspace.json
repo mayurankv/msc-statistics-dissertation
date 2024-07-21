@@ -78,12 +78,30 @@
             "state": {
               "type": "excalidraw",
               "state": {
+                "file": "Writeup/thesis/overview/Pricing.excalidraw"
+              }
+            }
+          },
+          {
+            "id": "d2b223d2e3b2987f",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
                 "file": "Writeup/thesis/overview/Overview.excalidraw"
               }
             }
+          },
+          {
+            "id": "609329b44f0b238d",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -226,20 +244,30 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "5a0ae81c1c17f403",
+  "active": "d2b223d2e3b2987f",
   "lastOpenFiles": [
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/options.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/pricing.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/pricing.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/__init__.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/__init_-.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing/black_76.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing/black_scholes.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing",
+    "Project/modules/realised_measures/README.md",
+    "Project/modules/stochastic_volatility_models.1/README.md",
+    "Writeup/thesis/overview/Data Sources.md",
+    "Writeup/thesis/overview/Pricing.excalidraw.md",
     "Organisation/temp/Dissertation Ideas.md",
-    "Writeup/thesis/overview/Overview.excalidraw",
-    "Writeup/thesis/overview/RV to Options.excalidraw",
     "utilities/obsidian/templating/templater/templates/Definition - New Test.md",
     "Writeup/thesis/overview/Overview.md",
     "Writeup/thesis/overview/Overview.excalidraw.md",
-    "Writeup/thesis/overview/Overview",
-    "Overview",
     "Organisation/Progress Reports/Progress Report 1.md",
     "Writeup/theory/Statistical Finance/Definition - Implied Volatility.md",
     "Writeup/thesis/overview/Overview.canvas",
-    "Writeup/thesis/overview",
     "Writeup/theory/Untitled.md",
     "Writeup/theory/Statistical Finance/Definition - Realised Volatility.md",
     "Writeup/theory/Statistical Finance/Definition - Integrated Volatility.md",
@@ -248,22 +276,13 @@
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Volatility Modelling.md",
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Implied Volatility.md",
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Integrated Volatility.md",
-    "Writeup/thesis/content/markdown/2_literature_review/volatility/Integrated Volatility",
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Realised Variance.md",
-    "Writeup/thesis/content/markdown/2_literature_review/volatility",
-    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/rough",
     "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Autoregressive Fractionally Integrated Movina Average Model.md",
-    "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Autoregressive",
-    "Writeup/thesis/content/markdown/2_literature_review/price_process",
     "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/equations/Volatility.md",
     "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Strict White Noise Process.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Variance Function.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - White Noise Process.md",
-    "Organisation/Meetings/Supervisor Meeting 3.md",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_CMYK.png",
     "Writeup/poster/content/assets/images/output.cmyk.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_RGB.png",

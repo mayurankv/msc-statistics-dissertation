@@ -57,6 +57,7 @@
 		"Classique",
 		"colorinlistoftodos",
 		"Cours",
+		"crsp",
 		"Dthesis",
 		"filright",
 		"hvpms",
@@ -87,6 +88,7 @@
 		"/opt/homebrew/lib/python3.11/site-packages/",
 		"/opt/homebrew/lib/python3.12/site-packages/",
 		"./Project/modules/time_series",
-		"./Project/modules/discrete_time_series"
+		"./Project/modules/discrete_time_series",
+		"./Project/modules/assets"
 	],
 }
