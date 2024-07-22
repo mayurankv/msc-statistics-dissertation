@@ -1,6 +1,9 @@
-from typing import Literal
 from datetime import datetime
 from abc import ABC, abstractmethod
+
+
+from assets.src.core.underlying import Underlying
+from stochastic_volatility_models.src.core.options import OptionParameters
 
 
 class StochasticVolatilityModel(ABC):
@@ -20,25 +23,27 @@ class StochasticVolatilityModel(ABC):
 	@abstractmethod
 	def option_price(
 		self,
-		type: Literal["C", "P"],
-		spot: float,
-		future_spot: float,
-		strike: int,
-		expiry: datetime,
-		risk_free_rate: float,
 		volatility: float,
+		time: datetime,
+		underlying: Underlying,
+		risk_free_rate: float,
+		option_parameters: OptionParameters,
 	) -> float:
 		pass
 
 	@abstractmethod
 	def option_implied_volatility(
 		self,
-		type: Literal["C", "P"],
-		spot: float,
-		future_spot: float,
-		strike: int,
-		expiry: datetime,
-		risk_free_rate: float,
 		price: float,
+		time: datetime,
+		underlying: Underlying,
+		risk_free_rate: float,
+		option_parameters: OptionParameters,
+	) -> float:
+		pass
+
+	@abstractmethod
+	def simulate_path(
+		self,
 	) -> float:
 		pass

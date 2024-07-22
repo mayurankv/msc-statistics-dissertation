@@ -1,12 +1,18 @@
-from typing import Literal
-from datetime import datetime
+from typing import Literal, TypedDict
+from datetime import datetime, timedelta
 from py_vollib.black_scholes import black_scholes as bs_price
 from py_vollib.black_scholes.implied_volatility import implied_volatility as bs_iv
 from py_vollib.black import black as black_price
 from py_vollib.black.implied_volatility import implied_volatility as black_iv
 
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 from assets.src.core.underlying import Underlying
+from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
+
+
+class OptionParameters(TypedDict):
+	type: Literal["C", "P"]
+	strike: int
+	expiry: datetime
 
 
 class PricingModel:
@@ -21,29 +27,27 @@ class PricingModel:
 
 	def option_price(
 		self,
-		type: Literal["C", "P"],
-		spot: float,
-		future_spot: float,
-		strike: int,
-		expiry: datetime,
-		risk_free_rate: float,
 		volatility: float,
+		time: datetime,
+		underlying: Underlying,
+		risk_free_rate: float,
+		option_parameters: OptionParameters,
 	) -> float:
 		if self.type == "Black-Scholes":
 			return bs_price(
-				S=spot,
-				flag=type.lower(),
-				K=strike,
-				t=expiry,
+				S=underlying.price(time=time),
+				flag=option_parameters["type"].lower(),
+				K=option_parameters["strike"],
+				t=time_to_expiry(time, option_parameters["expiry"]),
 				r=risk_free_rate,
 				sigma=volatility,
 			)
 		elif self.type == "Black-76":
 			return black_price(
-				F=future_spot,
-				flag=type.lower(),
-				K=strike,
-				t=expiry,
+				F=underlying.get_future(time=time).price(time=time),
+				flag=option_parameters["type"].lower(),
+				K=option_parameters["strike"],
+				t=time_to_expiry(time, option_parameters["expiry"]),
 				r=risk_free_rate,
 				sigma=volatility,
 			)
@@ -52,29 +56,27 @@ class PricingModel:
 
 	def option_implied_volatility(
 		self,
-		type: Literal["C", "P"],
-		spot: float,
-		future_spot: float,
-		strike: int,
-		expiry: datetime,
-		risk_free_rate: float,
 		price: float,
+		time: datetime,
+		underlying: Underlying,
+		risk_free_rate: float,
+		option_parameters: OptionParameters,
 	) -> float:
 		if self.type == "Black-Scholes":
 			return bs_iv(
-				S=spot,
-				flag=type.lower(),
-				K=strike,
-				t=expiry,
+				S=underlying.price(time=time),
+				flag=option_parameters["type"].lower(),
+				K=option_parameters["strike"],
+				t=time_to_expiry(time, option_parameters["expiry"]),
 				r=risk_free_rate,
 				price=price,
 			)
 		elif self.type == "Black-76":
 			return black_iv(
-				F=future_spot,
-				flag=type.lower(),
-				K=strike,
-				t=expiry,
+				F=underlying.get_future(time=time).price(time=time),
+				flag=option_parameters["type"].lower(),
+				K=option_parameters["strike"],
+				t=time_to_expiry(time, option_parameters["expiry"]),
 				r=risk_free_rate,
 				discounted_option_price=price,
 			)
@@ -86,14 +88,10 @@ class Option:
 	def __init__(
 		self,
 		underlying: Underlying,
-		type: Literal["C", "P"],
-		strike: int,
-		expiry: datetime,
+		option_parameters: OptionParameters,
 	) -> None:
 		self.underlying = underlying
-		self.strike = strike
-		self.type = type
-		self.expiry = expiry
+		self.parameters = option_parameters
 
 	def price(
 		self,
@@ -102,15 +100,12 @@ class Option:
 		volatility: float,
 		risk_free_rate: float,
 	) -> float:
-		assert isinstance(self.type, Literal["C", "P"])
 		return model.option_price(
-			spot=self.underlying.price(time=time),
-			future_spot=self.underlying.get_future(time=time).price(time=time),
-			type=self.type,
-			strike=self.strike,
-			expiry=self.expiry,
-			risk_free_rate=risk_free_rate,
 			volatility=volatility,
+			time=time,
+			underlying=self.underlying,
+			risk_free_rate=risk_free_rate,
+			option_parameters=self.parameters,
 		)
 
 	def implied_volatility(
@@ -120,13 +115,17 @@ class Option:
 		price: float,
 		risk_free_rate: float,
 	) -> float:
-		assert isinstance(self.type, Literal["C", "P"])
 		return model.option_implied_volatility(
-			spot=self.underlying.price(time=time),
-			future_spot=self.underlying.get_future(time=time).price(time=time),
-			type=self.type,
-			strike=self.strike,
-			expiry=self.expiry,
-			risk_free_rate=risk_free_rate,
 			price=price,
+			time=time,
+			underlying=self.underlying,
+			risk_free_rate=risk_free_rate,
+			option_parameters=self.parameters,
 		)
+
+
+def time_to_expiry(
+	time: datetime,
+	option_expiry: datetime,
+) -> float:
+	return (option_expiry - time) / timedelta(365, 0, 0, 0)
