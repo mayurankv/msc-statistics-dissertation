@@ -5,6 +5,7 @@ from py_vollib.black_scholes.implied_volatility import implied_volatility as bs_
 from py_vollib.black import black as black_price
 from py_vollib.black.implied_volatility import implied_volatility as black_iv
 
+from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 from assets.src.core.underlying import Underlying
 
 
@@ -79,9 +80,6 @@ class PricingModel:
 			)
 		else:
 			return 0
-
-
-StochasticVolatilityModel = PricingModel
 
 
 class Option:
