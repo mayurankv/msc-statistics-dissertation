@@ -15,7 +15,7 @@ class PricingModel:
 		self,
 		model: PricingModels,
 	) -> None:
-		if type in ["Black-Scholes", "Black-76"]:
+		if model in ["Black-Scholes", "Black-76"]:
 			self.model = model
 		else:
 			raise ValueError("Pricing Model unknown")
