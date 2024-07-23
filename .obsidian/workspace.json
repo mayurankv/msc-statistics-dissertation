@@ -83,7 +83,7 @@
             }
           },
           {
-            "id": "d2b223d2e3b2987f",
+            "id": "ab71660d38f8311d",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
@@ -98,6 +98,19 @@
             "state": {
               "type": "empty",
               "state": {}
+            }
+          },
+          {
+            "id": "896a363c1cc275bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
             }
           }
         ],
@@ -244,19 +257,19 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d2b223d2e3b2987f",
+  "active": "ab71660d38f8311d",
   "lastOpenFiles": [
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+    "Writeup/thesis/overview/Overview.excalidraw",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_volatility",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/local_volatility",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/pricing_models.py",
+    "Project/modules/assets/assets/src/utils/datetime.py",
+    "Writeup/thesis/overview/Pricing.excalidraw",
     "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options.py",
     "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/options.py",
     "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/pricing.py",
     "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/pricing.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/__init__.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/__init_-.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing/black_76.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing/black_scholes.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/option_pricing",
     "Project/modules/realised_measures/README.md",
     "Project/modules/stochastic_volatility_models.1/README.md",
     "Writeup/thesis/overview/Data Sources.md",
@@ -278,7 +291,6 @@
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Integrated Volatility.md",
     "Writeup/thesis/content/markdown/2_literature_review/volatility/Realised Variance.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Autoregressive Fractionally Integrated Movina Average Model.md",
-    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/equations/Volatility.md",

@@ -1,5 +1,4 @@
 import wrds
 
-db = wrds.Connection(wrds_username="mayurankv")
-
-db.list_libraries().sort()
+with wrds.Connection(wrds_username="mayurankv") as db:
+	db.list_libraries().sort()

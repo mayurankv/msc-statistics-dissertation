@@ -8,7 +8,7 @@ class _BaseAsset:
 		self,
 		ticker: str,
 	) -> None:
-		self.ticker = ticker
+		self.ticker = ticker.upper()
 
 	def price(
 		self,

@@ -1,13 +1,30 @@
 from datetime import datetime
+from typing import TypedDict, Optional
 import numpy as np
 from scipy.integrate import quad
 
 from assets.src.core.underlying import Underlying
-from stochastic_volatility_models.src.core.options import OptionParameters, time_to_expiry
+from assets.src.utils.datetime import time_to_expiry
+from stochastic_volatility_models.src.core.options import OptionParameters
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 
 
+class HestonParameters(TypedDict):
+	initial_variance: float  # v_0
+	long_term_volatility: float  # theta
+	volatility_of_volatility: float  # eta
+	mean_reversion_rate: float  # kappa
+	wiener_correlation: float  # rho
+
+
 class HestonModel(StochasticVolatilityModel):
+	def __init__(
+		self,
+		parameters: HestonParameters,
+	) -> None:
+		super(HestonModel, self).__init__(parameters=parameters)
+		self.parameters: HestonParameters = parameters
+
 	def characteristic_function(
 		self,
 		u: float,
@@ -27,14 +44,22 @@ class HestonModel(StochasticVolatilityModel):
 
 		return value
 
+	def fit(
+		self,
+		# TODO (@mayurankv): Add parameters
+	) -> HestonParameters:
+		return self.parameters
+
 	def option_price(
 		self,
-		volatility: float,
+		volatility: Optional[float],
 		time: datetime,
 		underlying: Underlying,
 		risk_free_rate: float,
 		option_parameters: OptionParameters,
-	) -> dict[str, float | int]:
+	) -> float:
+		if volatility is not None:
+			raise ValueError("Volatility is unused")
 		integral, _ = quad(
 			func=lambda x: np.real(
 				np.exp(-1j * x * np.log(option_parameters["strike"]))
@@ -50,7 +75,7 @@ class HestonModel(StochasticVolatilityModel):
 			a=0,
 			b=np.inf,
 		)
-		price = (
+		price: float = (
 			np.exp(-risk_free_rate * time_to_expiry(time, option_parameters["expiry"])) * 0.5 * underlying.price(time=time) - np.exp(-risk_free_rate * time_to_expiry(time, option_parameters["expiry"])) / np.pi * integral
 			if option_parameters["type"] == "C"
 			else np.exp(-risk_free_rate * time_to_expiry(time, option_parameters["expiry"])) / np.pi * integral - underlying.price(time=time) + option_parameters["strike"] * np.exp(-risk_free_rate * time_to_expiry(time, option_parameters["expiry"]))
@@ -58,12 +83,20 @@ class HestonModel(StochasticVolatilityModel):
 
 		return price
 
-	def option_implied_volatility(
+	def option_model_implied_volatility(
 		self,
-		price: float,
+		price: Optional[float],
 		time: datetime,
 		underlying: Underlying,
 		risk_free_rate: float,
 		option_parameters: OptionParameters,
-	) -> dict[str, float | int]:
+	) -> float:
+		if price is not None:
+			raise ValueError("Price is unused")
+		# TODO (@mayurankv): Is this right?
+		return self.parameters["long_term_volatility"]
+
+	def simulate_path(
+		self,
+	) -> float:
 		return
