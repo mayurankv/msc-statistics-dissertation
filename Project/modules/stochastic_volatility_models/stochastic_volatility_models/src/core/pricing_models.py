@@ -6,7 +6,7 @@ from py_vollib.black import black as black_price
 from py_vollib.black.implied_volatility import implied_volatility as black_iv
 
 from assets.src.core.underlying import Underlying
-from assets.src.utils.datetime import time_to_expiry
+from assets.src.utils.expiry import time_to_expiry
 from stochastic_volatility_models.src.types.types import PricingModels, OptionParameters
 
 

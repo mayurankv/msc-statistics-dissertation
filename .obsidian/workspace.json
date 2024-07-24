@@ -114,7 +114,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -181,7 +181,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Writeup/thesis/overview/Overview.excalidraw",
+                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -198,7 +198,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Writeup/thesis/overview/Overview.excalidraw",
+                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -221,7 +221,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Writeup/thesis/overview/Overview.excalidraw"
+                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md"
               }
             }
           },
@@ -257,19 +257,21 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "ab71660d38f8311d",
+  "active": "896a363c1cc275bf",
   "lastOpenFiles": [
-    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2022/option_prices_test_2022.csv",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2022",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/foo",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/data/wrds_pull_data.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2023",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/data/wrds_data.py",
     "Writeup/thesis/overview/Overview.excalidraw",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_volatility",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/local_volatility",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/pricing_models.py",
-    "Project/modules/assets/assets/src/utils/datetime.py",
-    "Writeup/thesis/overview/Pricing.excalidraw",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/options.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/options/pricing.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/pricing.py",
+    "Project/notebooks/test.csv",
+    "Writeup/thesis/overview/Overview.png",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/objective_functions.py",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
     "Project/modules/realised_measures/README.md",
     "Project/modules/stochastic_volatility_models.1/README.md",
     "Writeup/thesis/overview/Data Sources.md",
@@ -303,7 +305,6 @@
     "Writeup/poster/content/assets/images/my.png",
     "Writeup/poster/content/assets/images/ICL_Crest.png",
     "Writeup/poster/content/assets/images/UKRI_logo.png",
-    "Writeup/poster/content/assets/images/ICL_Logo_Old.png",
-    "Writeup/poster/content/latex/assets/images/UKRI_logo.png"
+    "Writeup/poster/content/assets/images/ICL_Logo_Old.png"
   ]
 }

@@ -1,0 +1,34 @@
+- Get Option prices and store
+- Convert to volatility surface
+- Implement objective functions
+- Implement fitting
+
+
+1.
+Objective Functions:
+	☐ Need volatility surface structure first
+		☐ Need data first
+Fitting Heston:
+	☐ Need objective functions
+Simulating Heston:
+	☐
+Integrated Volatility:
+	☐
+
+2.
+Get data:
+	☐ Store
+	☐ Be able to pull
+
+3.
+Overall volatility surfaces:
+	☐ Interpolation? Spline?
+	☐ Conversion of strikes to log moneyness
+	☐ Converion of expiries to T2X
+
+4.
+General simulation of paths:
+General fitting parameters:
+
+??
+How to deal with leap years?

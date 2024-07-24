@@ -6,8 +6,9 @@ from loguru import logger
 
 # Constants
 PARENTS = Path(__file__).resolve().parents
-THESIS_DIRECTORYpip = PARENTS[3]
+THESIS_DIRECTORY = PARENTS[4]
 PROJECT_DIRECTORY = PARENTS[2]
+MODULE_DIRECTORY = PARENTS[0]
 MODULE_NAME = PARENTS[0].name
 
 

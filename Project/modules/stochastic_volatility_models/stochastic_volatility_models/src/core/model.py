@@ -6,6 +6,7 @@ from typing import Mapping, Optional
 from assets.src.core.underlying import Underlying
 from stochastic_volatility_models.src.types.types import PricingModels, OptionParameters
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
+from stochastic_volatility_models.src.core.surface import VolatilitySurface
 
 
 class StochasticVolatilityModel(ABC):
@@ -14,13 +15,6 @@ class StochasticVolatilityModel(ABC):
 		parameters: Mapping,
 	) -> None:
 		self.parameters = parameters
-
-	@abstractmethod
-	def fit(
-		self,
-		# TODO (@mayurankv): Add parameters
-	) -> dict:
-		pass
 
 	@abstractmethod
 	def integrated_volatility(
@@ -78,7 +72,16 @@ class StochasticVolatilityModel(ABC):
 		)
 
 	@abstractmethod
+	def fit(
+		self,
+		volatility_surface: VolatilitySurface,
+		# TODO (@mayurankv): Add parameters
+	) -> dict:
+		pass
+
+	@abstractmethod
 	def simulate_path(
 		self,
+		# TODO (@mayurankv): Add parameters
 	) -> float:
 		pass

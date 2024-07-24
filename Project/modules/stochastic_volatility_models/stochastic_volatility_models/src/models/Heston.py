@@ -2,9 +2,10 @@ from datetime import datetime
 from typing import TypedDict, Optional
 import numpy as np
 from scipy.integrate import quad
+from numba import jit
 
 from assets.src.core.underlying import Underlying
-from assets.src.utils.datetime import time_to_expiry
+from assets.src.utils.expiry import time_to_expiry
 from stochastic_volatility_models.src.core.options import OptionParameters
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 
@@ -25,6 +26,7 @@ class HestonModel(StochasticVolatilityModel):
 		super(HestonModel, self).__init__(parameters=parameters)
 		self.parameters: HestonParameters = parameters
 
+	@jit
 	def characteristic_function(
 		self,
 		u: float,
@@ -44,12 +46,25 @@ class HestonModel(StochasticVolatilityModel):
 
 		return value
 
-	def fit(
+	def integrated_volatility(
 		self,
-		# TODO (@mayurankv): Add parameters
-	) -> HestonParameters:
-		return self.parameters
+		time: datetime,
+		underlying: Underlying,
+		risk_free_rate: float,
+		option_parameters: OptionParameters,
+	) -> float:
+		# TODO (@mayurankv): Finish
 
+		# result = minimise(
+		# 	OFHest,
+		# 	params,
+		# 	method="leastsq",
+		# 	iter_cb=iter_cb,
+		# 	tol=1e-6,
+		# )
+		return
+
+	@jit
 	def option_price(
 		self,
 		volatility: Optional[float],
@@ -96,7 +111,17 @@ class HestonModel(StochasticVolatilityModel):
 		# TODO (@mayurankv): Is this right?
 		return self.parameters["long_term_volatility"]
 
+	def fit(
+		self,
+		# TODO (@mayurankv): Add parameters
+	) -> HestonParameters:
+		# TODO (@mayurankv): Finish
+		return self.parameters
+
+	@jit
 	def simulate_path(
 		self,
+		# TODO (@mayurankv): Add parameters
 	) -> float:
+		# TODO (@mayurankv): Finish
 		return
