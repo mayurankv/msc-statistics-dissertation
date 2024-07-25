@@ -1,33 +1,16 @@
-from datetime import datetime, timedelta
+import numpy as np
+from numpy.typing import NDArray
 
 
 def annualise(
-	delta: timedelta,
-) -> float:
+	delta: NDArray[np.timedelta64],
+) -> NDArray[np.float64]:
 	# TODO (@mayurankv): Account for leap years
-	return delta / timedelta(
-		days=365,
-		seconds=0,
-		microseconds=0,
-		milliseconds=0,
-	)
+	return delta / np.timedelta64(365, "D")
 
 
 def time_to_expiry(
-	time: datetime,
-	option_expiry: datetime,
-) -> float:
-	return annualise(delta=option_expiry - time)
-
-
-def time_to_expiry_list(
-	time: datetime,
-	option_expiries: list[datetime],
-) -> list[float]:
-	return [
-		time_to_expiry(
-			time=time,
-			option_expiry=expiry,
-		)
-		for expiry in option_expiries
-	]
+	time: np.datetime64,
+	option_expiries: NDArray[np.datetime64],
+) -> NDArray[np.float64]:
+	return annualise(delta=option_expiries - time)

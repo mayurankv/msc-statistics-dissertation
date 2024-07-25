@@ -6,7 +6,7 @@ from typing import Mapping, Optional
 from assets.src.core.underlying import Underlying
 from stochastic_volatility_models.src.types.types import PricingModels, OptionParameters
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
-from stochastic_volatility_models.src.core.surface import VolatilitySurface
+from stochastic_volatility_models.src.core.options import VolatilitySurface
 
 
 class StochasticVolatilityModel(ABC):

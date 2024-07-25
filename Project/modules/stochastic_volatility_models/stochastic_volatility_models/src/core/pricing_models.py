@@ -37,7 +37,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiry=option_parameters["expiry"],
+					option_expiries=[option_parameters["expiry"]],
 				),
 				r=risk_free_rate,
 				sigma=volatility,
@@ -49,7 +49,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiry=option_parameters["expiry"],
+					option_expiries=[option_parameters["expiry"]],
 				),
 				r=risk_free_rate,
 				sigma=volatility,
@@ -74,7 +74,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiry=option_parameters["expiry"],
+					option_expiries=[option_parameters["expiry"]],
 				),
 				r=risk_free_rate,
 				price=price,
@@ -86,7 +86,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiry=option_parameters["expiry"],
+					option_expiries=[option_parameters["expiry"]],
 				),
 				r=risk_free_rate,
 				discounted_option_price=price,

@@ -1,13 +1,17 @@
-from datetime import datetime
+import numpy as np
 from typing import TypedDict, Literal
 
+
+PriceTypes = Literal["bid", "ask"]
+OptionTypes = Literal["C", "P"]
 PricingModels = Literal["Black-Scholes", "Black-76"]
 
 
 class OptionParameters(TypedDict):
-	type: Literal["C", "P"]
+	type: OptionTypes
 	strike: int
-	expiry: datetime
+	expiry: np.datetime64
+	monthly: bool
 
 
 class ObjectiveFunctionParameters(TypedDict):

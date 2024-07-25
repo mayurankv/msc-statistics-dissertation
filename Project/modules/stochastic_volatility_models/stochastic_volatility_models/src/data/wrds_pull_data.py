@@ -16,6 +16,13 @@ def main() -> None:
 	if not os.path.exists(path):
 		os.mkdir(path)
 
+	csv_path = f"{path}/option_prices_{ticker.lower()}_{year}.csv"
+	json_path = f"{path}/option_prices_{ticker.lower()}_{year}_metadata.json"
+	if os.path.exists(csv_path):
+		print("Option data already pulled. Pull again?")
+		if input("Continue (Y/N): ") != "Y":
+			return
+
 	with wrds.Connection(wrds_username="mayurankv") as db:
 		query = f"""
 		SELECT secid FROM optionm_all.secnmd WHERE ticker = '{ticker}'
@@ -45,9 +52,9 @@ def main() -> None:
 		metadata[column] = option_prices.iloc[0][column]
 
 	option_prices = option_prices[unique_columns]
-	option_prices.to_csv(f"{path}/option_prices_{ticker.lower()}_{year}.csv")
+	option_prices.to_csv(csv_path)
 	with open(
-		file=f"{path}/option_prices_{ticker.lower()}_{year}_metadata.json",
+		file=json_path,
 		mode="w",
 	) as file:
 		json.dump(metadata, fp=file)
