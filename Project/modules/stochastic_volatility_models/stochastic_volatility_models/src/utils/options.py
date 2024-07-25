@@ -4,7 +4,7 @@ import numpy as np
 from numpy.typing import NDArray
 
 from stochastic_volatility_models.config import MODULE_DIRECTORY
-from stochastic_volatility_models.src.types.types import OptionParameters, OptionTypes, PriceTypes
+from stochastic_volatility_models.src.types.types import OptionParameters, OptionTypes
 
 PRICE_TYPE_STRINGS = {
 	"bid": "best_bid",
@@ -12,7 +12,7 @@ PRICE_TYPE_STRINGS = {
 }
 
 
-def get_options_symbols(
+def get_option_symbols(
 	ticker: str,
 	option_type: OptionTypes,
 	expiry: np.datetime64,
@@ -54,22 +54,19 @@ def get_option_prices(
 	ticker: str,
 	symbols: NDArray[str],  # type: ignore
 	time: np.datetime64,
-	price_type: PriceTypes,
 ) -> DataFrame:
-	path = f"{MODULE_DIRECTORY}/data/options/{ticker.lower()}.csv"
-	option_prices_iter = pd.read_csv(
+	path: str = f"{MODULE_DIRECTORY}/data/options/{ticker.lower()}.csv"
+
+	option_prices = pd.read_csv(
 		path,
 		index_col=[0, 1, 2, 3, 4],
-		chunksize=20000,
 	)
-	option_values = DataFrame(None, index=symbols)
-	for option_prices in option_prices_iter:
-		for symbol in symbols:
-			key = IndexSlice[symbol, time]
-			if key in option_prices.index:
-				try:
-					value: float = option_prices.at[key, PRICE_TYPE_STRINGS[price_type]]
-				except KeyError:
-					raise ValueError("Price type not recognised")
-				option_values[symbol] = value
+
+	priceable_symbols = option_prices.xs(key=time, level=1).index
+	priced_symbols = np.array([symbol for symbol in symbols if symbol in priceable_symbols])
+
+	option_values = DataFrame(data=None, index=symbols, columns=["Bid", "Ask", "Mid"])
+	option_values.loc[priced_symbols, ["Bid", "Ask"]] = option_prices.loc[IndexSlice[priced_symbols, time], ["best_bid", "best_ask"]]
+	option_values.loc[priced_symbols, "Mid"] = (option_values.loc[priced_symbols, "Bid"] + option_values.loc[priced_symbols, "Ask"]) / 2
+
 	return option_values

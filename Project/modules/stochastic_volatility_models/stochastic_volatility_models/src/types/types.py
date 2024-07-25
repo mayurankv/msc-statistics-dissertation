@@ -2,7 +2,7 @@ import numpy as np
 from typing import TypedDict, Literal
 
 
-PriceTypes = Literal["bid", "ask"]
+PriceTypes = Literal["Bid", "Ask", "Mid"]
 OptionTypes = Literal["C", "P"]
 PricingModels = Literal["Black-Scholes", "Black-76"]
 

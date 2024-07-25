@@ -95,7 +95,7 @@ class VolatilitySurface:
 		self.expiries = expiries
 		self.strikes = strikes
 		self.monthly = monthly
-		self.options = DataFrame(index=MultiIndex.from_product([self.strikes, self.expiries], names=["Strike", "Expiry"]))
+		self.options = DataFrame("", index=MultiIndex.from_product([self.strikes, self.expiries], names=["Strike", "Expiry"]), columns=["C", "P"])
 		self.options[["C", "P"]] = [
 			[
 				get_option_symbol(

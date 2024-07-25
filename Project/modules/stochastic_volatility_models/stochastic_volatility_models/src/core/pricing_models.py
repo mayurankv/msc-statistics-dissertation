@@ -1,13 +1,15 @@
 from typing import Optional
-from datetime import datetime
 from py_vollib.black_scholes import black_scholes as bs_price
 from py_vollib.black_scholes.implied_volatility import implied_volatility as bs_iv
 from py_vollib.black import black as black_price
 from py_vollib.black.implied_volatility import implied_volatility as black_iv
+import py_vollib_vectorized  # noqa: F401 # Monkey patching py_vollib
 
 from assets.src.core.underlying import Underlying
 from assets.src.utils.expiry import time_to_expiry
 from stochastic_volatility_models.src.types.types import PricingModels, OptionParameters
+
+import numpy as np
 
 
 class PricingModel:
@@ -23,7 +25,7 @@ class PricingModel:
 	def option_price(
 		self,
 		volatility: Optional[float],
-		time: datetime,
+		time: np.datetime64,
 		underlying: Underlying,
 		risk_free_rate: float,
 		option_parameters: OptionParameters,
@@ -37,7 +39,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiries=[option_parameters["expiry"]],
+					option_expiries=np.array([option_parameters["expiry"]]),
 				),
 				r=risk_free_rate,
 				sigma=volatility,
@@ -49,7 +51,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiries=[option_parameters["expiry"]],
+					option_expiries=np.array([option_parameters["expiry"]]),
 				),
 				r=risk_free_rate,
 				sigma=volatility,
@@ -60,7 +62,7 @@ class PricingModel:
 	def option_model_implied_volatility(
 		self,
 		price: Optional[float],
-		time: datetime,
+		time: np.datetime64,
 		underlying: Underlying,
 		risk_free_rate: float,
 		option_parameters: OptionParameters,
@@ -74,7 +76,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiries=[option_parameters["expiry"]],
+					option_expiries=np.array([option_parameters["expiry"]]),
 				),
 				r=risk_free_rate,
 				price=price,
@@ -86,7 +88,7 @@ class PricingModel:
 				K=option_parameters["strike"],
 				t=time_to_expiry(
 					time=time,
-					option_expiries=[option_parameters["expiry"]],
+					option_expiries=np.array([option_parameters["expiry"]]),
 				),
 				r=risk_free_rate,
 				discounted_option_price=price,

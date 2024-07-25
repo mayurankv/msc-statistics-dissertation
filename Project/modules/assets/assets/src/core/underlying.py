@@ -1,6 +1,6 @@
 from typing import Optional, Literal
-from datetime import datetime
 from pandas import DataFrame
+import numpy as np
 
 
 class _BaseAsset:
@@ -12,15 +12,15 @@ class _BaseAsset:
 
 	def price(
 		self,
-		time: datetime,
+		time: np.datetime64,
 	) -> float:
 		# TODO (@mayurankv): Pull price
 		return time
 
 	def prices(
 		self,
-		start_time: datetime,
-		end_time: datetime,
+		start_time: np.datetime64,
+		end_time: np.datetime64,
 		intraday: bool = False,
 	) -> DataFrame:
 		# TODO (@mayurankv): Pull prices
@@ -36,12 +36,12 @@ class _Underlying(_BaseAsset):
 		ticker: str,
 	) -> None:
 		super(_Underlying, self).__init__(ticker=ticker)
-		self.futures: dict[datetime | Literal["Continuous"], Future] = {}
+		self.futures: dict[np.datetime64 | Literal["Continuous"], Future] = {}
 
 	def set_future(
 		self,
 		future_ticker: str,
-		future_expiry: Optional[datetime] = None,
+		future_expiry: Optional[np.datetime64] = None,
 	) -> None:
 		self.futures[future_expiry if future_expiry is not None else "Continuous"] = Future(
 			ticker=future_ticker,
@@ -49,7 +49,7 @@ class _Underlying(_BaseAsset):
 
 	def get_future(
 		self,
-		time: Optional[datetime] = None,
+		time: Optional[np.datetime64] = None,
 	) -> Future:
 		expiry = "Continuous" if time is None else min([expiry for expiry in self.futures.keys() if expiry != "Continuous" and expiry > time], key=lambda expiry: expiry - time)
 		return self.futures[expiry]
@@ -58,7 +58,7 @@ class _Underlying(_BaseAsset):
 class _WeightedUnderlying(_Underlying):
 	def weights(
 		self,
-		time: datetime,
+		time: np.datetime64,
 	) -> dict[str, float]:
 		# TODO (@mayurankv): Pull weights
 		return time
