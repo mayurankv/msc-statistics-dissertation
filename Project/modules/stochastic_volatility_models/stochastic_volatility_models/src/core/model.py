@@ -1,11 +1,13 @@
-from datetime import datetime
+from pandas import DataFrame
+import numpy as np
 from abc import ABC, abstractmethod
-from typing import Mapping, Optional
+from typing import Mapping
+from numpy.typing import NDArray
 
 
-from assets.src.core.underlying import Underlying
-from stochastic_volatility_models.src.types.types import PricingModels, OptionParameters
-from stochastic_volatility_models.src.core.pricing_models import PricingModel
+from stochastic_volatility_models.src.utils.options import get_option_parameters
+from stochastic_volatility_models.src.core.underlying import Underlying
+from stochastic_volatility_models.src.types.types import OptionParameters
 from stochastic_volatility_models.src.core.options import VolatilitySurface
 
 
@@ -19,57 +21,52 @@ class StochasticVolatilityModel(ABC):
 	@abstractmethod
 	def integrated_volatility(
 		self,
-		time: datetime,
 		underlying: Underlying,
-		risk_free_rate: float,
+		time: np.datetime64,
 		option_parameters: OptionParameters,
 	) -> float:
+		# TODO (@mayurankv): Distribution?
 		pass
 
 	@abstractmethod
-	def option_price(
+	def volatility(
 		self,
-		volatility: Optional[float],
-		time: datetime,
 		underlying: Underlying,
-		risk_free_rate: float,
+		time: np.datetime64,
 		option_parameters: OptionParameters,
 	) -> float:
+		# TODO (@mayurankv): Distribution?
 		pass
 
 	@abstractmethod
-	def option_model_implied_volatility(
+	def price(
 		self,
-		price: Optional[float],
-		time: datetime,
 		underlying: Underlying,
-		risk_free_rate: float,
+		time: np.datetime64,
 		option_parameters: OptionParameters,
 	) -> float:
 		pass
 
-	def option_pricing_implied_volatility(
+	def price_surface(
 		self,
-		pricing_model: PricingModels,
-		volatility: Optional[float],
-		time: datetime,
 		underlying: Underlying,
-		risk_free_rate: float,
-		option_parameters: OptionParameters,
-	) -> float:
-		return PricingModel(model=pricing_model).option_model_implied_volatility(
-			price=self.option_price(
-				volatility=volatility,
-				time=time,
+		time: np.datetime64,
+		symbols: NDArray[str],  # type: ignore
+	) -> DataFrame:
+		prices = DataFrame(data=None, index=symbols, columns=["Price"])
+		prices["Price"] = [
+			self.price(
 				underlying=underlying,
-				risk_free_rate=risk_free_rate,
-				option_parameters=option_parameters,
-			),
-			time=time,
-			underlying=underlying,
-			risk_free_rate=risk_free_rate,
-			option_parameters=option_parameters,
-		)
+				time=time,
+				option_parameters=get_option_parameters(
+					ticker=underlying.ticker,
+					symbol=symbol,
+				),
+			)
+			for symbol in prices.index
+		]
+
+		return prices
 
 	@abstractmethod
 	def fit(

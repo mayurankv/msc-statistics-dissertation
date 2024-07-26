@@ -1,4 +1,4 @@
-from stochastic_volatility_models.src.core.surface import VolatilitySurface
+from stochastic_volatility_models.src.core.options import VolatilitySurface
 
 
 def prices(

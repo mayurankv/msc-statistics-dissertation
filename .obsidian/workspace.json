@@ -114,7 +114,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -181,7 +181,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+                "file": "Writeup/thesis/overview/Overview.excalidraw",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -198,7 +198,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+                "file": "Writeup/thesis/overview/Overview.excalidraw",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -221,7 +221,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md"
+                "file": "Writeup/thesis/overview/Overview.excalidraw"
               }
             }
           },
@@ -257,21 +257,21 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "896a363c1cc275bf",
+  "active": "ab71660d38f8311d",
   "lastOpenFiles": [
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2022/option_prices_test_2022.csv",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2022",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/foo",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/data/wrds_pull_data.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options/2023",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/options",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/data/wrds_data.py",
-    "Writeup/thesis/overview/Overview.excalidraw",
-    "Project/notebooks/test.csv",
-    "Writeup/thesis/overview/Overview.png",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/objective_functions.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2021/security_prices_vix_2021_metadata.json",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2021/security_prices_vix_2021.csv",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2021",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2020/security_prices_vix_2020_metadata.json",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2020/security_prices_vix_2020.csv",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2020",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2019/security_prices_vix_2019_metadata.json",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2019/security_prices_vix_2019.csv",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2019",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2018/security_prices_vix_2018_metadata.json",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/data/wrds/securities/vix/2018/security_prices_vix_2018.csv",
     "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
+    "Writeup/thesis/overview/Overview.png",
     "Project/modules/realised_measures/README.md",
     "Project/modules/stochastic_volatility_models.1/README.md",
     "Writeup/thesis/overview/Data Sources.md",

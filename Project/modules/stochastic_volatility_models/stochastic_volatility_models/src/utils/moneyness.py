@@ -2,7 +2,7 @@ from datetime import datetime
 import numpy as np
 from numpy.typing import NDArray
 
-from assets.src.core.underlying import Underlying
+from stochastic_volatility_models.src.core.underlying import Underlying
 
 
 def moneyness(

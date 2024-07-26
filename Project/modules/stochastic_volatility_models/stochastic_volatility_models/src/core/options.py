@@ -1,86 +1,12 @@
-from datetime import datetime
-from typing import Optional
 import numpy as np
 from pandas import DataFrame, MultiIndex
 from numpy.typing import NDArray
 
-
-from assets.src.core.underlying import Underlying
-from stochastic_volatility_models.src.types.types import PriceTypes, PricingModels, OptionParameters
+from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
-from stochastic_volatility_models.src.utils.options import get_option_prices, get_option_symbol
-
-
-class OldOption:
-	def __init__(
-		self,
-		underlying: Underlying,
-		option_parameters: OptionParameters,
-	) -> None:
-		self.underlying = underlying
-		self.parameters = option_parameters
-
-	def market_price(
-		self,
-		time: datetime,
-		price_type: PriceTypes,
-	) -> float:
-		return get_option_prices(
-			ticker=self.underlying.ticker,
-			option_type=self.parameters["type"],
-			expiry=self.parameters["expiry"],
-			strike=self.parameters["strike"],
-			time=time,
-			price_type=price_type,
-		)
-
-	def price(
-		self,
-		model: PricingModel | StochasticVolatilityModel,
-		time: datetime,
-		volatility: Optional[float],
-		risk_free_rate: float,
-	) -> float:
-		return model.option_price(
-			volatility=volatility,
-			time=time,
-			underlying=self.underlying,
-			risk_free_rate=risk_free_rate,
-			option_parameters=self.parameters,
-		)
-
-	def model_implied_volatility(
-		self,
-		model: PricingModel | StochasticVolatilityModel,
-		time: datetime,
-		price: Optional[float],
-		risk_free_rate: float,
-	) -> float:
-		return model.option_model_implied_volatility(
-			price=price,
-			time=time,
-			underlying=self.underlying,
-			risk_free_rate=risk_free_rate,
-			option_parameters=self.parameters,
-		)
-
-	def pricing_implied_volatility(
-		self,
-		pricing_model: PricingModels,
-		model: StochasticVolatilityModel,
-		time: datetime,
-		volatility: Optional[float],
-		risk_free_rate: float,
-	) -> float:
-		return model.option_pricing_implied_volatility(
-			pricing_model=pricing_model,
-			volatility=volatility,
-			time=time,
-			underlying=self.underlying,
-			risk_free_rate=risk_free_rate,
-			option_parameters=self.parameters,
-		)
+from stochastic_volatility_models.src.data.prices import get_option_prices
+from stochastic_volatility_models.src.utils.options import get_option_symbol
 
 
 class VolatilitySurface:
@@ -113,3 +39,55 @@ class VolatilitySurface:
 			]
 			for strike, expiry in self.options.index
 		]
+
+	def empirical_price(
+		self,
+		time: np.datetime64,
+	) -> DataFrame:
+		empirical_prices = get_option_prices(
+			ticker=self.underlying.ticker,
+			time=time,
+			symbols=self.options.values.ravel(),
+		)
+
+		return empirical_prices
+
+	def empirical_pricing_implied_volatility(
+		self,
+		pricing_model: PricingModel,
+		time: np.datetime64,
+	) -> DataFrame:
+		empirical_pricing_implied_volatilities = pricing_model.price_implied_volatility(
+			prices=self.empirical_price(time=time),
+			time=time,
+			underlying=self.underlying,
+		)
+
+		return empirical_pricing_implied_volatilities
+
+	def model_price(
+		self,
+		model: StochasticVolatilityModel,
+		time: np.datetime64,
+	) -> DataFrame:
+		model_prices = model.price_surface(
+			time=time,
+			underlying=self.underlying,
+			symbols=self.options.values.ravel(),
+		)
+
+		return model_prices
+
+	def model_pricing_implied_volatility(
+		self,
+		model: StochasticVolatilityModel,
+		pricing_model: PricingModel,
+		time: np.datetime64,
+	) -> DataFrame:
+		model_pricing_implied_volatilities = pricing_model.price_implied_volatility(
+			prices=self.model_price(model=model, time=time),
+			time=time,
+			underlying=self.underlying,
+		)
+
+		return model_pricing_implied_volatilities

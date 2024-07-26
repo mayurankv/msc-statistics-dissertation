@@ -1,7 +1,8 @@
-- Get Option prices and store
-- Convert to volatility surface
+- Get risk free rate
+- Test vol surface
 - Implement objective functions
 - Implement fitting
+- Finish heston model by Friday
 
 
 1.
