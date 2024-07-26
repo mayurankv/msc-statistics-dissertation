@@ -5,11 +5,13 @@ from scipy.interpolate import CubicSpline
 
 from stochastic_volatility_models.config import MODULE_DIRECTORY
 from stochastic_volatility_models.src.utils.expiry import deannualise
+from stochastic_volatility_models.src.utils.cache import np_cache
 
 
 DEFAULT_CHUNKSIZE = 20000
 
 
+@np_cache(arg_num=1, arg_name="time_to_expiry")
 def get_risk_free_interest_rate(
 	time: np.datetime64,
 	time_to_expiry: NDArray[np.float64],
@@ -31,7 +33,7 @@ def get_risk_free_interest_rate(
 				level=0,
 			)
 			for rates in rates_iter
-			if key in rates.index.get_level_values(0)
+			if key in rates.index.get_level_values(level=0)
 		]
 	).sort_index()
 

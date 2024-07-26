@@ -8,7 +8,6 @@ from numpy.typing import NDArray
 from stochastic_volatility_models.src.utils.options import get_option_parameters
 from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.src.types.types import OptionParameters
-from stochastic_volatility_models.src.core.options import VolatilitySurface
 
 
 class StochasticVolatilityModel(ABC):
@@ -71,7 +70,6 @@ class StochasticVolatilityModel(ABC):
 	@abstractmethod
 	def fit(
 		self,
-		volatility_surface: VolatilitySurface,
 		# TODO (@mayurankv): Add parameters
 	) -> dict:
 		pass

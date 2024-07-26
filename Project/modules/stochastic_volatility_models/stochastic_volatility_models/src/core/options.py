@@ -27,14 +27,16 @@ class VolatilitySurface:
 				get_option_symbol(
 					ticker=self.underlying.ticker,
 					option_type="C",
-					expiry=expiry,
+					expiry=np.datetime64(expiry),
 					strike=strike,
+					monthly=self.monthly,
 				),
 				get_option_symbol(
 					ticker=self.underlying.ticker,
 					option_type="P",
-					expiry=expiry,
+					expiry=np.datetime64(expiry),
 					strike=strike,
+					monthly=self.monthly,
 				),
 			]
 			for strike, expiry in self.options.index
