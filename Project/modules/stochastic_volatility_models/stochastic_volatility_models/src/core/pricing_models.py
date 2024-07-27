@@ -1,3 +1,5 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING, Literal
 import numpy as np
 from pandas import DataFrame
 from py_vollib_vectorized import vectorized_black_scholes as bs_price
@@ -5,11 +7,14 @@ from py_vollib_vectorized.implied_volatility import vectorized_implied_volatilit
 from py_vollib_vectorized import vectorized_black as black_price
 from py_vollib_vectorized.implied_volatility import vectorized_implied_volatility_black as black_iv
 
-from stochastic_volatility_models.src.core.underlying import Underlying
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
-from stochastic_volatility_models.src.utils.expiry import time_to_expiry
-from stochastic_volatility_models.src.utils.options import get_options_parameters_transpose
-from stochastic_volatility_models.src.types.types import PricingModels
+from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
+from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
+
+
+PricingModels = Literal["Black-Scholes", "Black-76"]
 
 
 # TODO (@mayurankv): Suppress irrelevant warnings? Fill NaNs with 0?

@@ -1,13 +1,15 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 from pandas import DataFrame
 import numpy as np
 from abc import ABC, abstractmethod
 from typing import Mapping
 from numpy.typing import NDArray
 
-
-from stochastic_volatility_models.src.utils.options import get_option_parameters
-from stochastic_volatility_models.src.core.underlying import Underlying
-from stochastic_volatility_models.src.types.types import OptionParameters
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
+from stochastic_volatility_models.src.utils.options.parameters import get_option_parameters
 
 
 class StochasticVolatilityModel(ABC):
@@ -52,8 +54,8 @@ class StochasticVolatilityModel(ABC):
 		time: np.datetime64,
 		symbols: NDArray[str],  # type: ignore
 	) -> DataFrame:
-		prices = DataFrame(data=None, index=symbols, columns=["Price"])
-		prices["Price"] = [
+		prices = DataFrame(data=None, index=symbols, columns=["Mid"])
+		prices["Mid"] = [
 			self.price(
 				underlying=underlying,
 				time=time,

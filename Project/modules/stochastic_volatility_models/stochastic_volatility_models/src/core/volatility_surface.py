@@ -1,16 +1,26 @@
-from typing import Literal
+from __future__ import annotations
+from typing import TYPE_CHECKING, TypedDict, Literal
 import numpy as np
 from pandas import DataFrame, MultiIndex
 from numpy.typing import NDArray
 
-from stochastic_volatility_models.src.types.types import PriceTypes
-from stochastic_volatility_models.src.core.underlying import Underlying
-from stochastic_volatility_models.src.core.pricing_models import PricingModel
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+	from stochastic_volatility_models.src.core.pricing_models import PricingModel
+	from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 from stochastic_volatility_models.src.data.prices import get_option_prices
-from stochastic_volatility_models.src.utils.options import get_option_symbol
+from stochastic_volatility_models.src.utils.options.parameters import get_option_symbol
 
+PriceTypes = Literal["Bid", "Ask", "Mid"]
+OptionTypes = Literal["C", "P"]
 QuantityMethod = Literal["empirical_price", "empirical_pricing_implied_volatility", "model_price", "model_pricing_implied_volatility"]
+
+
+class OptionParameters(TypedDict):
+	type: OptionTypes
+	strike: int
+	expiry: np.datetime64
+	monthly: bool
 
 
 class VolatilitySurface:

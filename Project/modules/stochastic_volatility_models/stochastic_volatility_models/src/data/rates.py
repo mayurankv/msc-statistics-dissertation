@@ -4,7 +4,7 @@ from numpy.typing import NDArray
 from scipy.interpolate import CubicSpline
 
 from stochastic_volatility_models.config import MODULE_DIRECTORY
-from stochastic_volatility_models.src.utils.expiry import deannualise
+from stochastic_volatility_models.src.utils.options.expiry import deannualise
 from stochastic_volatility_models.src.utils.cache import np_cache
 
 

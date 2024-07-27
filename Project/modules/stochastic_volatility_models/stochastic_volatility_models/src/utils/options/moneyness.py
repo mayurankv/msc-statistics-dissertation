@@ -1,7 +1,10 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import numpy as np
 from numpy.typing import NDArray
 
-from stochastic_volatility_models.src.core.underlying import Underlying
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
 
 
 def moneyness(

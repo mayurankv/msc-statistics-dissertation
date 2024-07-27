@@ -1,9 +1,20 @@
+- Move types
+- Evaluation functions
+- Heston fit
+- Heston simulation
+
+- After Heston look at realised estimators
+
 - Test vol surface
 - SSVI Fit vol surface
 - Implement objective functions
 - Implement fitting
 - Finish heston model by Friday
 - Sort todos in pricing models
+
+- Streamlit app to do choices
+
+Evaluation: 2301.13235v1.pdf
 
 
 1.

@@ -1,14 +1,15 @@
-from typing import TypedDict
-
-from ..types.types import PricingParameters
+from __future__ import annotations
+from typing import TYPE_CHECKING, TypedDict
 import numpy as np
-from scipy.integrate import quad
 from numba import jit
+from scipy.integrate import quad
 
-from stochastic_volatility_models.src.core.underlying import Underlying
-from stochastic_volatility_models.src.utils.expiry import time_to_expiry
-from stochastic_volatility_models.src.types.types import OptionParameters
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
+from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
+from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 
 
 class HestonParameters(TypedDict):
@@ -24,8 +25,7 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		parameters: HestonParameters,
 	) -> None:
-		super(HestonModel, self).__init__(parameters=parameters)
-		self.parameters: HestonParameters = parameters
+		self.parameters = parameters
 
 	@jit
 	def characteristic_function(
@@ -51,7 +51,6 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		risk_free_rate: float,
 		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Finish
@@ -69,7 +68,6 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		risk_free_rate: float,
 		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Is this right?
@@ -81,10 +79,10 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		pricing_parameters: PricingParameters,
 		option_parameters: OptionParameters,
 	) -> float:
 		t2x = time_to_expiry(time, np.array([option_parameters["expiry"]]))[0]
+		risk_free_rate = get_risk_free_interest_rate(time=time, time_to_expiry=np.array([t2x]))[0]
 		integral, _ = quad(
 			func=lambda x: np.real(
 				np.exp(-1j * x * np.log(option_parameters["strike"]))
@@ -94,17 +92,13 @@ class HestonModel(StochasticVolatilityModel):
 					underlying=underlying,
 					time=time,
 					time_to_expiry=t2x,
-					risk_free_rate=pricing_parameters["risk_free_rate"],
+					risk_free_rate=risk_free_rate,
 				)
 			),
 			a=0,
 			b=np.inf,
 		)
-		price: float = (
-			np.exp(pricing_parameters["risk_free_rate"] * t2x) * 0.5 * underlying.price(time=time) - np.exp(pricing_parameters["risk_free_rate"] * t2x) / np.pi * integral
-			if option_parameters["type"] == "C"
-			else np.exp(pricing_parameters["risk_free_rate"] * t2x) / np.pi * integral - underlying.price(time=time) + option_parameters["strike"] * np.exp(pricing_parameters["risk_free_rate"] * t2x)
-		)
+		price: float = np.exp(risk_free_rate * t2x) * 0.5 * underlying.price(time=time) - np.exp(risk_free_rate * t2x) / np.pi * integral if option_parameters["type"] == "C" else np.exp(risk_free_rate * t2x) / np.pi * integral - underlying.price(time=time) + option_parameters["strike"] * np.exp(risk_free_rate * t2x)
 
 		return price
 
@@ -119,6 +113,6 @@ class HestonModel(StochasticVolatilityModel):
 	def simulate_path(
 		self,
 		# TODO (@mayurankv): Add parameters
-	) -> float:
+	):
 		# TODO (@mayurankv): Finish
 		return

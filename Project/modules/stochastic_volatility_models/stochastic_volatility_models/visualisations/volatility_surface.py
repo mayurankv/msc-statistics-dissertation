@@ -1,12 +1,13 @@
-from typing import TypedDict
+from __future__ import annotations
+from typing import TYPE_CHECKING, TypedDict
 import numpy as np
 import plotly.graph_objects as go
 from plotly.graph_objects import Figure
 
-from stochastic_volatility_models.src.types.types import PriceTypes
-from stochastic_volatility_models.src.core.options import QuantityMethod, VolatilitySurface
-from stochastic_volatility_models.src.utils.expiry import time_to_expiry
-from stochastic_volatility_models.src.utils.moneyness import moneyness
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.volatility_surface import QuantityMethod, PriceTypes, VolatilitySurface
+from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
+from stochastic_volatility_models.src.utils.options.moneyness import moneyness
 
 
 class SurfacePlotParameters(TypedDict):

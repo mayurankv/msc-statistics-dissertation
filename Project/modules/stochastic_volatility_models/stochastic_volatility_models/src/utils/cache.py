@@ -1,7 +1,7 @@
 from functools import wraps
 from pandas import DataFrame
-from copy import deepcopy
 import numpy as np
+from copy import deepcopy
 
 
 def np_cache(
