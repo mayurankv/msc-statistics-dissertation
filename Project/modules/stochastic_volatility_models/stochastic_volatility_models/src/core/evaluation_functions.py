@@ -41,12 +41,31 @@ def surface_evaluation(
 	return loss
 
 
-# TODO (@mayurankv): ATM Skew
-
-
 def surface_atm_skew(
 	volatility_surface: VolatilitySurface,
 	time: np.datetime64,
+	model: StochasticVolatilityModel,
+	pricing_model: PricingModel,
 	metric: Metrics = "RMSE",
 ) -> float:
-	return
+	surface_empirical = volatility_surface.surface_quantities(
+		time=time,
+		quantity_method="empirical_pricing_implied_volatility",
+		price_types=["Mid"],
+		out_the_money=True,
+		pricing_model=pricing_model,
+	)[0]
+	surface_model = volatility_surface.surface_quantities(
+		time=time,
+		quantity_method="model_pricing_implied_volatility",
+		price_types=["Mid"],
+		out_the_money=True,
+		model=model,
+		pricing_model=pricing_model,
+	)[0]
+
+	loss = METRICS[metric](surface_empirical, surface_model)  # TODO (@mayurankv): Fix
+
+	# TODO (@mayurankv): Calculate ATM Skew for each expiry
+
+	return loss
