@@ -1,12 +1,15 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, cast
 import numpy as np
+from pandas import DataFrame
+from scipy.interpolate import CubicSpline
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
 	from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 	from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.utils.metrics import Metrics, METRICS
+from stochastic_volatility_models.src.utils.options.strikes import find_closest_strikes
 
 
 def surface_evaluation(
@@ -27,7 +30,7 @@ def surface_evaluation(
 			price_types=["Mid"],
 			out_the_money=True,
 			**kwargs,
-		)[0],
+		)[0].values,
 		volatility_surface.surface_quantities(
 			time=time,
 			quantity_method="model_price" if prices else "model_pricing_implied_volatility",
@@ -35,7 +38,7 @@ def surface_evaluation(
 			out_the_money=True,
 			model=model,
 			**kwargs,
-		)[0],
+		)[0].values,
 	)
 
 	return loss
@@ -48,24 +51,44 @@ def surface_atm_skew(
 	pricing_model: PricingModel,
 	metric: Metrics = "RMSE",
 ) -> float:
-	surface_empirical = volatility_surface.surface_quantities(
-		time=time,
-		quantity_method="empirical_pricing_implied_volatility",
-		price_types=["Mid"],
-		out_the_money=True,
-		pricing_model=pricing_model,
-	)[0]
-	surface_model = volatility_surface.surface_quantities(
-		time=time,
-		quantity_method="model_pricing_implied_volatility",
-		price_types=["Mid"],
-		out_the_money=True,
-		model=model,
-		pricing_model=pricing_model,
-	)[0]
+	surfaces = [
+		volatility_surface.surface_quantities(
+			time=time,
+			quantity_method="empirical_pricing_implied_volatility",
+			price_types=["Mid"],
+			out_the_money=True,
+			pricing_model=pricing_model,
+		)[0],
+		volatility_surface.surface_quantities(
+			time=time,
+			quantity_method="model_pricing_implied_volatility",
+			price_types=["Mid"],
+			out_the_money=True,
+			model=model,
+			pricing_model=pricing_model,
+		)[0],
+	]
 
-	loss = METRICS[metric](surface_empirical, surface_model)  # TODO (@mayurankv): Fix
+	atm_skews = [
+		np.array(
+			[
+				CubicSpline(
+					x=indices,
+					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+					bc_type="natural",
+				)(volatility_surface.underlying.future_price(time=time, expiry=expiry))
+				for expiry in volatility_surface.expiries
+				if (
+					indices := find_closest_strikes(
+						strikes=volatility_surface.strikes,
+						spot=volatility_surface.underlying.future_price(time=time, expiry=expiry),
+					)
+				)
+			]
+		)
+		for surface in surfaces
+	]
 
-	# TODO (@mayurankv): Calculate ATM Skew for each expiry
+	loss = METRICS[metric](*atm_skews)
 
 	return loss

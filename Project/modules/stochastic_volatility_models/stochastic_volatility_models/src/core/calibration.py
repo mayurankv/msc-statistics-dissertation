@@ -32,7 +32,7 @@ def cost_function(
 			)
 			+ weights["volatility_index"]
 			* surface_evaluation(
-				volatility_surface=index_volatility_surface,
+				volatility_surface=volatility_index_volatility_surface,
 				time=time,
 				model=model,
 				pricing_model=pricing_model,
@@ -47,7 +47,7 @@ def cost_function(
 			+ weights["skew"]
 			* weights["volatility_index"]
 			* surface_atm_skew(
-				volatility_surface=index_volatility_surface,
+				volatility_surface=volatility_index_volatility_surface,
 				time=time,
 				model=model,
 				pricing_model=pricing_model,
