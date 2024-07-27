@@ -1,13 +1,13 @@
 - Test vol surface
+- SSVI Fit vol surface
 - Implement objective functions
 - Implement fitting
 - Finish heston model by Friday
+- Sort todos in pricing models
 
 
 1.
 Objective Functions:
-	☐ Need volatility surface structure first
-		☐ Need data first
 Fitting Heston:
 	☐ Need objective functions
 Simulating Heston:
@@ -32,3 +32,5 @@ General fitting parameters:
 
 ??
 How to deal with leap years?
+- Deal with dividends in base black scholes
+- What is black scholes merton?

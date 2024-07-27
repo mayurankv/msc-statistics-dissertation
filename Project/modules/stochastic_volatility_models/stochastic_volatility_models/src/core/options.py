@@ -1,12 +1,16 @@
+from typing import Literal
 import numpy as np
 from pandas import DataFrame, MultiIndex
 from numpy.typing import NDArray
 
+from stochastic_volatility_models.src.types.types import PriceTypes
 from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 from stochastic_volatility_models.src.data.prices import get_option_prices
 from stochastic_volatility_models.src.utils.options import get_option_symbol
+
+QuantityMethod = Literal["empirical_price", "empirical_pricing_implied_volatility", "model_price", "model_pricing_implied_volatility"]
 
 
 class VolatilitySurface:
@@ -41,6 +45,19 @@ class VolatilitySurface:
 			]
 			for strike, expiry in self.options.index
 		]
+
+	def surface_symbols(
+		self,
+		time: np.datetime64,
+		out_the_money: bool = True,
+	) -> DataFrame:
+		surface = DataFrame(
+			data=[self.options.at[index, "C" if (index[0] >= self.underlying.future_price(time=time) and out_the_money) or (index[0] < self.underlying.future_price(time=time) and not out_the_money) else "P"] for index in self.options.index],
+			index=self.options.index,
+			columns=["Symbol"],
+		)
+
+		return surface
 
 	def empirical_price(
 		self,
@@ -93,3 +110,21 @@ class VolatilitySurface:
 		)
 
 		return model_pricing_implied_volatilities
+
+	def surface_quantities(
+		self,
+		time: np.datetime64,
+		quantity_method: QuantityMethod,
+		price_types: list[PriceTypes],
+		out_the_money: bool = True,
+		*args,
+		**kwargs,
+	) -> list[DataFrame]:
+		surface_symbols = self.surface_symbols(
+			time=time,
+			out_the_money=out_the_money,
+		)
+		quantities: DataFrame = getattr(self, quantity_method)(time=time, *args, **kwargs)
+		surfaces = [surface_symbols["Symbol"].map(quantities[price_type]).to_frame() for price_type in price_types]
+
+		return surfaces

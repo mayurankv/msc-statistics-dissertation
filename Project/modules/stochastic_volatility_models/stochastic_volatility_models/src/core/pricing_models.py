@@ -1,3 +1,4 @@
+import numpy as np
 from pandas import DataFrame
 from py_vollib_vectorized import vectorized_black_scholes as bs_price
 from py_vollib_vectorized.implied_volatility import vectorized_implied_volatility as bs_iv
@@ -10,9 +11,8 @@ from stochastic_volatility_models.src.utils.expiry import time_to_expiry
 from stochastic_volatility_models.src.utils.options import get_options_parameters_transpose
 from stochastic_volatility_models.src.types.types import PricingModels
 
-import numpy as np
 
-
+# TODO (@mayurankv): Suppress irrelevant warnings? Fill NaNs with 0?
 class PricingModel:
 	def __init__(
 		self,
@@ -79,6 +79,9 @@ class PricingModel:
 					price=prices[column].values,  # TODO (@mayurankv): Discount?
 					return_as="numpy",
 				)
+
+		implied_volatilities = implied_volatilities.fillna(value=0)
+
 		return implied_volatilities
 
 	def volatility_implied_price(
@@ -136,4 +139,7 @@ class PricingModel:
 					sigma=volatilities[column].values,  # TODO (@mayurankv): Un-discount price?
 					return_as="numpy",
 				)
+
+		implied_prices = implied_prices.fillna(value=0)
+
 		return implied_prices

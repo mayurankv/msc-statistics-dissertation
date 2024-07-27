@@ -45,6 +45,6 @@ def get_risk_free_interest_rate(
 		y=date_rates["rate"].to_numpy(),
 		bc_type="natural",
 	)
-	risk_free_interest_rate = interpolation(deannualise(time_to_expiry=time_to_expiry))
+	risk_free_interest_rate = interpolation(deannualise(time_to_expiry=time_to_expiry)) / 100
 
 	return risk_free_interest_rate  # type: ignore

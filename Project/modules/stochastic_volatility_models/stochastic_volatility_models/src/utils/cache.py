@@ -110,7 +110,7 @@ def df_cache(
 				{key[0]: cache_entry for key, cache_entry in cache.items() if key in keys},
 				columns=columns,
 				orient="index",
-			)
+			).sort_index()
 
 			return result
 
