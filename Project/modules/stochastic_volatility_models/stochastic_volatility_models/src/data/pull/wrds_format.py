@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from pandas import DataFrame
 from stochastic_volatility_models.config import MODULE_DIRECTORY
-from stochastic_volatility_models.src.data.wrds_pull_data import PLURAL
+from stochastic_volatility_models.src.data.pull.wrds_pull_data import PLURAL
 
 INDEX_KEYS = {
 	"option": ["symbol", "date"],

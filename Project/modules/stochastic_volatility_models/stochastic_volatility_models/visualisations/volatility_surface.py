@@ -17,20 +17,24 @@ class SurfacePlotParameters(TypedDict):
 	log_moneyness: bool
 
 
+DEFAULT_PLOT_PARAMETERS: SurfacePlotParameters = {
+	"mid_price": True,
+	"time_to_expiry": True,
+	"moneyness": True,
+	"log_moneyness": True,
+}
+
+
 # TODO (@mayurankv): Prettify plot
 def plot_volatility_surface(
 	time: np.datetime64,
 	volatility_surface: VolatilitySurface,
 	quantity_method: QuantityMethod,
-	plot_parameters: SurfacePlotParameters = {
-		"mid_price": True,
-		"time_to_expiry": True,
-		"moneyness": True,
-		"log_moneyness": True,
-	},
+	plot_parameters: SurfacePlotParameters = DEFAULT_PLOT_PARAMETERS,
 	*args,
 	**kwargs,
 ) -> Figure:
+	plot_parameters = DEFAULT_PLOT_PARAMETERS | plot_parameters
 	x = volatility_surface.expiries if not plot_parameters["time_to_expiry"] else time_to_expiry(time=time, option_expiries=volatility_surface.expiries)
 	y = volatility_surface.strikes if not plot_parameters["moneyness"] else moneyness(underlying=volatility_surface.underlying, strikes=volatility_surface.strikes, time=time, log=plot_parameters["log_moneyness"])
 	price_types: list[PriceTypes] = ["Bid", "Ask"] if not plot_parameters["mid_price"] else ["Mid"]

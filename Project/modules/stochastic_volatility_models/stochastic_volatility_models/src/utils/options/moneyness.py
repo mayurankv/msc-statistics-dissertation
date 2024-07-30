@@ -11,7 +11,7 @@ def moneyness(
 	underlying: Underlying,
 	strikes: NDArray[np.int64],
 	time: np.datetime64,
-	future: bool = True,
+	future: bool = False,
 	log: bool = False,
 ) -> NDArray[np.float64]:
 	moneyness = (underlying.future_price(time=time) if future else underlying.price(time=time)) / strikes

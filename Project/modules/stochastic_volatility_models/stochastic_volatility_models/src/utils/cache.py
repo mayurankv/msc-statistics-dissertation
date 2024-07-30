@@ -37,7 +37,7 @@ def np_cache(
 			if kwarg:
 				eval_kwargs[arg_name] = evaluate_indexing_arguments
 			else:
-				eval_args.insert(1, evaluate_indexing_arguments)
+				eval_args.insert(arg_num, evaluate_indexing_arguments)
 
 			if len(evaluate_indexing_arguments) > 0:
 				new_values = function(

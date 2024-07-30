@@ -62,7 +62,7 @@ class VolatilitySurface:
 		out_the_money: bool = True,
 	) -> DataFrame:
 		surface = DataFrame(
-			data=[self.options.at[index, "C" if (index[0] >= self.underlying.future_price(time=time) and out_the_money) or (index[0] < self.underlying.future_price(time=time) and not out_the_money) else "P"] for index in self.options.index],
+			data=[self.options.at[index, "C" if (index[0] >= self.underlying.price(time=time) and out_the_money) or (index[0] < self.underlying.price(time=time) and not out_the_money) else "P"] for index in self.options.index],
 			index=self.options.index,
 			columns=["Symbol"],
 		)
@@ -83,21 +83,22 @@ class VolatilitySurface:
 
 	def empirical_pricing_implied_volatility(
 		self,
-		pricing_model: PricingModel,
 		time: np.datetime64,
+		pricing_model: PricingModel,
 	) -> DataFrame:
 		empirical_pricing_implied_volatilities = pricing_model.price_implied_volatility(
 			prices=self.empirical_price(time=time),
 			time=time,
 			underlying=self.underlying,
+			monthly=self.monthly,
 		)
 
 		return empirical_pricing_implied_volatilities
 
 	def model_price(
 		self,
-		model: StochasticVolatilityModel,
 		time: np.datetime64,
+		model: StochasticVolatilityModel,
 	) -> DataFrame:
 		model_prices = model.price_surface(
 			time=time,
@@ -117,6 +118,7 @@ class VolatilitySurface:
 			prices=self.model_price(model=model, time=time),
 			time=time,
 			underlying=self.underlying,
+			monthly=self.monthly,
 		)
 
 		return model_pricing_implied_volatilities

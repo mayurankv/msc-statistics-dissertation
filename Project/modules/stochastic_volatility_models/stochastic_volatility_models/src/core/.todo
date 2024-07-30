@@ -6,6 +6,15 @@
 - [ ] Redo everywhere where I have used underlying.future_price(time=time) to use the correct expiry
 - [ ] Also when to use am_settlement for futures?
 
+Use black scholes with dividend yield:
+---------
+For European options you can utilise put-call parity and reverse out the implied dividend yield.
+I.e.
+F(T,K) = C(T,K) - P(T,K)
+and obviously
+F(T) = S(t)*e^[(r-d)*(T-t)]
+----------
+
 - After Heston look at realised estimators
 
 - Test vol surface

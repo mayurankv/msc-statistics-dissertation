@@ -76,12 +76,12 @@ def surface_atm_skew(
 					x=indices,
 					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
 					bc_type="natural",
-				)(volatility_surface.underlying.future_price(time=time, expiry=expiry))
+				)(volatility_surface.underlying.price(time=time))
 				for expiry in volatility_surface.expiries
 				if (
 					indices := find_closest_strikes(
 						strikes=volatility_surface.strikes,
-						spot=volatility_surface.underlying.future_price(time=time, expiry=expiry),
+						spot=volatility_surface.underlying.price(time=time),
 					)
 				)
 			]

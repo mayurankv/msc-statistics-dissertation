@@ -1,3 +1,4 @@
+from typing import Optional
 import pandas as pd
 import numpy as np
 from numpy.typing import NDArray
@@ -11,6 +12,7 @@ from stochastic_volatility_models.src.data.prices import DEFAULT_CHUNKSIZE
 def get_strikes_of_expiry(
 	ticker: str,
 	expiry: np.datetime64,
+	time: Optional[np.datetime64],
 	monthly: bool = True,
 	chunksize: int = DEFAULT_CHUNKSIZE,
 ) -> tuple[int, ...]:
@@ -25,6 +27,10 @@ def get_strikes_of_expiry(
 	put_strikes = set()
 
 	for option_prices in option_prices_iter:
+		if time is not None:
+			if (date_key := np.datetime_as_string(time)) not in option_prices.index.get_level_values(1):
+				continue
+			option_prices = option_prices.xs(date_key, level=1)
 		call_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "C") & (option_prices["am_settlement"] == int(monthly)), "strike_price"].values / 1000)
 		put_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "P") & (option_prices["am_settlement"] == int(monthly)), "strike_price"].values / 1000)
 
@@ -44,6 +50,7 @@ def get_strikes_of_expiry(
 def get_strikes_of_expiries(
 	ticker: str,
 	expiries: NDArray[np.datetime64],
+	time: Optional[np.datetime64],
 	monthly: bool = True,
 	chunksize: int = DEFAULT_CHUNKSIZE,
 ) -> tuple[int, ...]:
@@ -55,6 +62,7 @@ def get_strikes_of_expiries(
 						get_strikes_of_expiry(
 							ticker=ticker,
 							expiry=expiry,
+							time=time,
 							monthly=monthly,
 							chunksize=chunksize,
 						)
