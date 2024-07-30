@@ -106,11 +106,11 @@ def df_cache(
 					for column in new_df.columns:
 						columns.append(column)
 
-			result = DataFrame.from_dict(
-				{key[0]: cache_entry for key, cache_entry in cache.items() if key in keys},
+			result = DataFrame(
+				data=[cache[(indexing_argument, *tuple(args), *kwargs.items())] for indexing_argument in indexing_arguments],
+				index=[indexing_argument for indexing_argument in indexing_arguments],
 				columns=columns,
-				orient="index",
-			).sort_index()
+			)
 
 			return result
 

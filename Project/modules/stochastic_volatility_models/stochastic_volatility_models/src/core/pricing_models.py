@@ -10,6 +10,7 @@ from py_vollib_vectorized import vectorized_black_scholes_merton as bsm_price
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
+from stochastic_volatility_models.src.data.option_implied_prices import get_option_future_price
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import get_dividend_yield
 from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
@@ -21,14 +22,13 @@ PricingModels = Literal["Black-Scholes", "Black-76", "Black-Scholes-Merton"]
 
 # TODO (@mayurankv): Suppress irrelevant warnings? Fill NaNs with 0?
 class PricingModel:
-	def __init__(
-		self,
-		model: PricingModels = "Black-Scholes-Merton",
-	) -> None:
+	def __init__(self, model: PricingModels = "Black-Scholes-Merton", use_market_future: bool = False) -> None:
 		if model in ["Black-Scholes", "Black-76", "Black-Scholes-Merton"]:
 			self.model = model
 		else:
 			raise ValueError("Pricing Model unknown")
+
+		self.use_market_future = use_market_future
 
 	def price_implied_volatility(
 		self,
@@ -96,7 +96,14 @@ class PricingModel:
 				)
 			elif self.model == "Black-76":
 				implied_volatilities[column] = iv(
-					F=underlying.future_price(time=time),
+					F=underlying.future_price(time=time)
+					if self.use_market_future
+					else get_option_future_price(
+						underlying=underlying,
+						time=time,
+						expiries=options_parameters_transpose["expiry"],
+						monthly=monthly,
+					),
 					flag=np.char.lower(options_parameters_transpose["type"]),
 					K=options_parameters_transpose["strike"],
 					t=time_to_expiry(
@@ -182,7 +189,14 @@ class PricingModel:
 				)
 			elif self.model == "Black-76":
 				implied_prices[column] = b_price(
-					F=underlying.future_price(time=time),
+					F=underlying.future_price(time=time)
+					if self.use_market_future
+					else get_option_future_price(
+						underlying=underlying,
+						time=time,
+						expiries=options_parameters_transpose["expiry"],
+						monthly=monthly,
+					),
 					flag=np.char.lower(options_parameters_transpose["type"]),
 					K=options_parameters_transpose["strike"],
 					t=time_to_expiry(

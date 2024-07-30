@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional, cast
 import numpy as np
 from pandas import DataFrame
-from scipy.interpolate import CubicSpline
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
@@ -72,11 +71,11 @@ def surface_atm_skew(
 	atm_skews = [
 		np.array(
 			[
-				CubicSpline(
+				np.polyfit(
 					x=indices,
-					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
-					bc_type="natural",
-				)(volatility_surface.underlying.price(time=time))
+					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].to_numpy(),
+					deg=1,
+				)
 				for expiry in volatility_surface.expiries
 				if (
 					indices := find_closest_strikes(

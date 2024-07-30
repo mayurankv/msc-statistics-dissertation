@@ -32,8 +32,8 @@ class VolatilitySurface:
 		monthly: bool = True,
 	) -> None:
 		self.underlying = underlying
-		self.expiries = expiries
-		self.strikes = strikes
+		self.expiries = np.sort(expiries)
+		self.strikes = np.sort(strikes)
 		self.monthly = monthly
 		self.options = DataFrame("", index=MultiIndex.from_product([self.strikes, self.expiries], names=["Strike", "Expiry"]), columns=["C", "P"])
 		self.options[["C", "P"]] = [
