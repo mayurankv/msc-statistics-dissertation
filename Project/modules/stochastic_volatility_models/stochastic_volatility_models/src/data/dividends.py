@@ -4,6 +4,7 @@ import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
 from pandas import DataFrame, Series
+from loguru import logger
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
@@ -22,6 +23,8 @@ def _get_dividend_yield(
 	monthly: bool = True,
 	chunksize: int = DEFAULT_CHUNKSIZE,
 ) -> NDArray[np.float64]:
+	logger.trace("Getting dividend yield")
+
 	spot = underlying.price(time=time)
 	reference = spot * 1000
 
