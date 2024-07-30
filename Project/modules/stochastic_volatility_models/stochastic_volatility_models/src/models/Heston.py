@@ -102,12 +102,13 @@ class HestonModel(StochasticVolatilityModel):
 
 		return price
 
-	def fit(
-		self,
-		# TODO (@mayurankv): Add parameters
-	) -> HestonParameters:
-		# TODO (@mayurankv): Finish
-		return self.parameters
+	# def fit(
+	# 	self,
+	# 	# TODO (@mayurankv): Add parameters
+	# ) -> HestonParameters:
+	# 	minimise(cost_function)
+	# 	# TODO (@mayurankv): Finish
+	# 	return self.parameters
 
 	@jit
 	def simulate_path(

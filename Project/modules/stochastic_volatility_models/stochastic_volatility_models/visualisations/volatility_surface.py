@@ -7,7 +7,7 @@ from plotly.graph_objects import Figure
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import QuantityMethod, PriceTypes, VolatilitySurface
 from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
-from stochastic_volatility_models.src.utils.options.moneyness import moneyness
+from stochastic_volatility_models.src.utils.options.strikes import moneyness
 
 
 class SurfacePlotParameters(TypedDict):

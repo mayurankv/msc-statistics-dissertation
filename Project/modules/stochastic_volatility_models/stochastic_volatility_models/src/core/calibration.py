@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, TypedDict
 import numpy as np
+from numpy.typing import NDArray
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
@@ -14,15 +15,21 @@ class CostFunctionWeights(TypedDict):
 	skew: float
 
 
+DEFAULT_COST_FUNCTION_WEIGHTS: CostFunctionWeights = {
+	"volatility_index": 1.0,
+	"skew": 0.5,
+}
+
+
 def cost_function(
 	index_volatility_surface: VolatilitySurface,
 	volatility_index_volatility_surface: VolatilitySurface,
 	time: np.datetime64,
 	model: StochasticVolatilityModel,
 	pricing_model: PricingModel,
-	weights: CostFunctionWeights,
+	weights: CostFunctionWeights = DEFAULT_COST_FUNCTION_WEIGHTS,
 ) -> float:
-	return np.sqrt(
+	cost = np.sqrt(
 		(
 			surface_evaluation(
 				volatility_surface=index_volatility_surface,
@@ -55,3 +62,28 @@ def cost_function(
 		)
 		/ (1 + weights["volatility_index"])
 	)
+
+	return cost
+
+
+def minimise_cost_function(
+	parameters: NDArray[np.float64],
+	index_volatility_surface: VolatilitySurface,
+	volatility_index_volatility_surface: VolatilitySurface,
+	time: np.datetime64,
+	model: StochasticVolatilityModel,
+	pricing_model: PricingModel,
+	weights: CostFunctionWeights,
+):
+	model.parameters = {parameter_key: parameter for parameter_key, parameter in zip(model.parameters.keys(), parameters)}
+
+	cost = cost_function(
+		index_volatility_surface=index_volatility_surface,
+		volatility_index_volatility_surface=volatility_index_volatility_surface,
+		time=time,
+		model=model,
+		pricing_model=pricing_model,
+		weights=weights,
+	)
+
+	return cost

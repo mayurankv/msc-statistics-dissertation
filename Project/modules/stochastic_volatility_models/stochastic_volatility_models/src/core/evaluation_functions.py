@@ -1,14 +1,13 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Optional, cast
+from typing import TYPE_CHECKING, Optional
 import numpy as np
-from pandas import DataFrame
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
 	from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 	from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.utils.metrics import Metrics, METRICS
-from stochastic_volatility_models.src.utils.options.strikes import find_closest_strikes
+from stochastic_volatility_models.src.utils.options.skew import atm_skew
 
 
 def surface_evaluation(
@@ -69,22 +68,11 @@ def surface_atm_skew(
 	]
 
 	atm_skews = [
-		np.array(
-			[
-				np.polyfit(
-					x=indices,
-					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].to_numpy(),
-					deg=1,
-				)
-				for expiry in volatility_surface.expiries
-				if (
-					indices := find_closest_strikes(
-						strikes=volatility_surface.strikes,
-						spot=volatility_surface.underlying.price(time=time),
-					)
-				)
-			]
-		)
+		atm_skew(
+			surface=surface,
+			volatility_surface=volatility_surface,
+			time=time,
+		).values
 		for surface in surfaces
 	]
 

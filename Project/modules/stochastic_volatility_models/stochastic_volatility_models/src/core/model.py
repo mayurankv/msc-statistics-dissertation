@@ -5,10 +5,14 @@ import numpy as np
 from abc import ABC, abstractmethod
 from typing import Mapping
 from numpy.typing import NDArray
+from scipy.optimize import minimize as minimise
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
-	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
+	from stochastic_volatility_models.src.core.pricing_models import PricingModel
+	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters, VolatilitySurface
+	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
+from stochastic_volatility_models.src.core.calibration import DEFAULT_COST_FUNCTION_WEIGHTS, minimise_cost_function
 from stochastic_volatility_models.src.utils.options.parameters import get_option_parameters
 
 
@@ -69,12 +73,22 @@ class StochasticVolatilityModel(ABC):
 
 		return prices
 
-	@abstractmethod
 	def fit(
 		self,
-		# TODO (@mayurankv): Add parameters
+		index_volatility_surface: VolatilitySurface,
+		volatility_index_volatility_surface: VolatilitySurface,
+		time: np.datetime64,
+		pricing_model: PricingModel,
+		weights: CostFunctionWeights = DEFAULT_COST_FUNCTION_WEIGHTS,
 	) -> dict:
-		pass
+		results = minimise(
+			fun=minimise_cost_function,
+			x0=np.array(list(self.parameters.values())),
+			args=(index_volatility_surface, volatility_index_volatility_surface, time, pricing_model, weights),
+		)
+		self.parameters: Mapping = {parameter_key: parameter for parameter_key, parameter in zip(self.parameters.keys(), results["x"])}
+
+		return self.parameters
 
 	@abstractmethod
 	def simulate_path(
