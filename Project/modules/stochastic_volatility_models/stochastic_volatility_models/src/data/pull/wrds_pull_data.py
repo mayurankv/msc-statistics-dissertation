@@ -1,7 +1,7 @@
 import os
 import json
 import wrds
-from pandas import DataFrame
+from pandas import DataFrame, Index
 from stochastic_volatility_models.config import MODULE_DIRECTORY
 
 SOURCE = {
@@ -61,6 +61,9 @@ def pull_data(
 	}
 	for column in columns.difference(unique_columns):
 		metadata[column] = prices.iloc[0][column]
+
+	if asset_type == "option":
+		unique_columns = Index([*unique_columns, "am_settlement"])
 
 	prices = prices[unique_columns]
 	prices.to_csv(csv_path)
