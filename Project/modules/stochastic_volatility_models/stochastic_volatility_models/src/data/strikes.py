@@ -31,8 +31,8 @@ def get_strikes_of_expiry(
 			if (date_key := np.datetime_as_string(time)) not in option_prices.index.get_level_values(1):
 				continue
 			option_prices = option_prices.xs(date_key, level=1)
-		call_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "C") & (option_prices["am_settlement"] == int(monthly)), "strike_price"].values / 1000)
-		put_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "P") & (option_prices["am_settlement"] == int(monthly)), "strike_price"].values / 1000)
+		call_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "C") & (option_prices.index.get_level_values(0).str.startswith(ticker + (" " if monthly else "W "))), "strike_price"].values / 1000)
+		put_strikes.update(option_prices.loc[(option_prices["exdate"] == np.datetime_as_string(expiry, unit="D")) & (option_prices["cp_flag"] == "P") & (option_prices.index.get_level_values(0).str.startswith(ticker + (" " if monthly else "W "))), "strike_price"].values / 1000)
 
 	strikes = {
 		"C": tuple(sorted(call_strikes)),

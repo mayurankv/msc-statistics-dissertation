@@ -14,20 +14,20 @@ def get_option_symbol(
 	strike: int,
 	monthly: bool = True,
 ) -> str:
-	return f"{ticker}{'' if monthly else 'W'} {np.datetime_as_string(expiry, unit="D").replace('-','')[2:]}{option_type}{strike * 1000}"
+	return f"{ticker}{'' if monthly else 'W'} {np.datetime_as_string(expiry, unit="D").replace('-','')[2:]}{option_type}{int(strike * 1000)}"
 
 
 def get_option_parameters(
 	ticker: str,
 	symbol: str,
 ) -> OptionParameters:
-	root, suffix = symbol.split(" ")
+	root, suffix = symbol.split(sep=" ")
 	option_type = suffix[6:7]
 	if option_type not in ["C", "P"]:
 		raise ValueError("Invalid symbol")
 	option_parameters: OptionParameters = {
 		"type": option_type,  # type: ignore
-		"strike": int(int(suffix[7:]) / 1000),
+		"strike": int(suffix[7:]) / 1000,
 		"expiry": np.datetime64(f"20{suffix[:2]}-{suffix[2:4]}-{suffix[4:6]}"),
 		"monthly": not (root[len(ticker) :].endswith("W")),
 	}

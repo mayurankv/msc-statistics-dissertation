@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters, VolatilitySurface
 	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
 from stochastic_volatility_models.src.core.calibration import DEFAULT_COST_FUNCTION_WEIGHTS, minimise_cost_function
-from stochastic_volatility_models.src.utils.options.parameters import get_option_parameters
+from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
 
 
 class StochasticVolatilityModel(ABC):
@@ -48,8 +48,11 @@ class StochasticVolatilityModel(ABC):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
-	) -> float:
+		types: NDArray[str],  # type: ignore
+		strikes: NDArray[np.int64],
+		expiries: NDArray[np.datetime64],
+		monthly: bool,
+	) -> NDArray[np.float64]:
 		pass
 
 	def price_surface(
@@ -57,19 +60,24 @@ class StochasticVolatilityModel(ABC):
 		underlying: Underlying,
 		time: np.datetime64,
 		symbols: NDArray[str],  # type: ignore
+		monthly: bool,
 	) -> DataFrame:
-		prices = DataFrame(data=None, index=symbols, columns=["Mid"])
-		prices["Mid"] = [
-			self.price(
+		options_parameters_transpose = get_options_parameters_transpose(
+			ticker=underlying.ticker,
+			symbols=symbols,
+		)
+		prices = DataFrame(
+			data=self.price(
 				underlying=underlying,
 				time=time,
-				option_parameters=get_option_parameters(
-					ticker=underlying.ticker,
-					symbol=symbol,
-				),
-			)
-			for symbol in prices.index
-		]
+				types=options_parameters_transpose["type"],
+				strikes=options_parameters_transpose["strike"],
+				expiries=options_parameters_transpose["expiry"],
+				monthly=monthly,
+			),
+			index=symbols,
+			columns=["Mid"],
+		)
 
 		return prices
 
@@ -84,7 +92,7 @@ class StochasticVolatilityModel(ABC):
 		results = minimise(
 			fun=minimise_cost_function,
 			x0=np.array(list(self.parameters.values())),
-			args=(index_volatility_surface, volatility_index_volatility_surface, time, pricing_model, weights),
+			args=(index_volatility_surface, volatility_index_volatility_surface, time, self, pricing_model, weights),
 		)
 		self.parameters: Mapping = {parameter_key: parameter for parameter_key, parameter in zip(self.parameters.keys(), results["x"])}
 

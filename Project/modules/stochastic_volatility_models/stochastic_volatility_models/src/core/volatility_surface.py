@@ -104,6 +104,7 @@ class VolatilitySurface:
 			time=time,
 			underlying=self.underlying,
 			symbols=self.options.values.ravel(),
+			monthly=self.monthly,
 		)
 
 		return model_prices

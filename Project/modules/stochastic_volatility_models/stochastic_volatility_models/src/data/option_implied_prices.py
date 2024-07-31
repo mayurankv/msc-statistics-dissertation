@@ -54,13 +54,13 @@ def _get_atm_prices(
 						date_key,
 						level=1,
 					)
-				).loc[(prices["exdate"].isin(expiries)) & (prices["am_settlement"] == int(monthly)), ["exdate", "cp_flag", "strike_price", "am_settlement", "best_bid", "best_offer"]]
+				).loc[(prices["exdate"].isin(expiries)) & (prices.index.get_level_values(0).str.startswith(underlying.ticker + (" " if monthly else "W "))), ["exdate", "cp_flag", "strike_price", "best_bid", "best_offer"]]
 				for option_prices in option_prices_iter
 				if (date_key := np.datetime_as_string(time, unit="D")) in option_prices.index.get_level_values(level=1)
 			]
 		)
 		.reset_index()
-		.drop(labels=["am_settlement", "symbol"], axis=1)
+		.drop(labels=["symbol"], axis=1)
 		.set_index(keys=["exdate", "cp_flag", "strike_price"])
 	)
 

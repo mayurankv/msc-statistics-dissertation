@@ -15,6 +15,13 @@ I.e.
 F(T,K) = C(T,K) - P(T,K)
 and obviously
 F(T) = S(t)*e^[(r-d)*(T-t)]
+
+P-C = Ke^-rt - Se^-qt
+P = C + Ke^-rt - Se^-qt
+P = C + Ke^-rt - Se^-qt
+
+C = Se^-qt P_1 - Ke^-rt P_2
+P = Se^-qt (P_1-1) - Ke^-rt (P_2-1)
 ----------
 
 - After Heston look at realised estimators
@@ -66,3 +73,6 @@ How to deal with leap years?
 Future work:
 
 - Heston proper pricing Cui et al
+
+
+Emphasize the realisticness of the data used compared to common simplifications
