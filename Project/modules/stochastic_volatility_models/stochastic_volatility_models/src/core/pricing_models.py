@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Literal
 import numpy as np
 from pandas import DataFrame
+import warnings
 from py_vollib_vectorized import vectorized_black_scholes as bs_price
 from py_vollib_vectorized.implied_volatility import vectorized_implied_volatility as bs_iv
 from py_vollib_vectorized import vectorized_black as b_price
@@ -37,6 +38,10 @@ class PricingModel:
 		time: np.datetime64,
 		monthly: bool = True,
 	) -> DataFrame:
+		warnings.filterwarnings(
+			action="ignore",
+			category=UserWarning,
+		)
 		# TODO (@mayurankv): Test with None s in prices
 		implied_volatilities = DataFrame(
 			data=None,
@@ -132,6 +137,10 @@ class PricingModel:
 		time: np.datetime64,
 		monthly: bool = True,
 	) -> DataFrame:
+		warnings.filterwarnings(
+			action="ignore",
+			category=UserWarning,
+		)
 		# TODO (@mayurankv): Test with None s in volatilities
 		implied_prices = DataFrame(
 			data=None,

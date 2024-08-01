@@ -57,6 +57,43 @@ def np_cache(
 	return decorator
 
 
+def np_multiple_cache():
+	cache = {}
+
+	def decorator(function):
+		@wraps(wrapped=function)
+		def wrapper(
+			*args,
+			**kwargs,
+		):
+			args_indices = tuple(i for i, arg in enumerate(args) if isinstance(arg, np.ndarray))
+			kwargs_keys = tuple(k for k, v in kwargs.items() if isinstance(v, np.ndarray))
+			num_elements = args[args_indices[0]].size if args_indices else kwargs[kwargs_keys[0]].size
+
+			keys = [tuple([args_indices, kwargs_keys]) + tuple(arg[idx] if i in args_indices else arg for i, arg in enumerate(args)) + tuple(v[idx] if k in kwargs_keys else v for k, v in kwargs.items()) for idx in range(num_elements)]
+
+			evaluate_keys = np.array([key not in cache for key in keys])
+			eval_args = [arg if i not in args_indices else arg[evaluate_keys] for i, arg in enumerate(args)]
+			eval_kwargs = {k: (kwarg if k not in kwargs_keys else kwarg[evaluate_keys]) for k, kwarg in kwargs.items()}
+
+			if evaluate_keys.sum() > 0:
+				new_values = function(
+					*eval_args,
+					**eval_kwargs,
+				)
+
+				for key, new_value in zip([key for key, evaluate in zip(keys, evaluate_keys) if evaluate], new_values):
+					cache[key] = new_value
+
+			result = np.array([cache[key] for key in keys])
+
+			return result
+
+		return wrapper
+
+	return decorator
+
+
 def df_cache(
 	*,
 	arg_num: int = 0,

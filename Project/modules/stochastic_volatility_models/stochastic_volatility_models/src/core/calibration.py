@@ -88,5 +88,6 @@ def minimise_cost_function(
 		pricing_model=pricing_model,
 		weights=weights,
 	)
+	logger.debug(f"Cost is {cost}")  # TODO (@mayurankv): Delete
 
 	return cost
