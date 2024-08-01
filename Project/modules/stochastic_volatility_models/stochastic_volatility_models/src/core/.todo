@@ -1,3 +1,8 @@
+St vs S0??? Ask Adam
+
+Write custom cacher for pricing of models by pairs
+
+
 - Move types
 - Evaluation functions
 - Heston fit
@@ -76,3 +81,11 @@ Future work:
 
 
 Emphasize the realisticness of the data used compared to common simplifications
+
+
+
+p1 = {'initial_variance': 1.5735434638117027,
+'long_term_variance': -5.585043916635598,
+'volatility_of_volatility': -1.4008118465141628,
+'mean_reversion_rate': 2.7847101214701397,
+'wiener_correlation': -0.8231322657874336}

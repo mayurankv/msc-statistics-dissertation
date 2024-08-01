@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, TypedDict
 import numpy as np
 from numpy.typing import NDArray
+from loguru import logger
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
@@ -76,6 +77,8 @@ def minimise_cost_function(
 	weights: CostFunctionWeights,
 ):
 	model.parameters = {parameter_key: parameter for parameter_key, parameter in zip(model.parameters.keys(), parameters)}
+	logger.trace(f"Minimise cost function iteration with parameters {model.parameters}")
+	logger.debug(f"Minimise cost function iteration with parameters {model.parameters}")  # TODO (@mayurankv): Delete
 
 	cost = cost_function(
 		index_volatility_surface=index_volatility_surface,

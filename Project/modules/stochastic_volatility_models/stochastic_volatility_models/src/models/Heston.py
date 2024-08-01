@@ -2,9 +2,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, TypedDict, Callable
 import numpy as np
 from numpy.typing import NDArray
-from numba import jit, njit
+from numba import jit
+import numba as nb
+from scipy.integrate import quad
 from loguru import logger
-from tqdm import tqdm
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
@@ -14,7 +15,7 @@ from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import get_dividend_yield
 
-DEFAULT_LG_DEGREE = 40
+DEFAULT_LG_DEGREE = 64
 
 
 class HestonParameters(TypedDict):
@@ -25,7 +26,6 @@ class HestonParameters(TypedDict):
 	wiener_correlation: float  # rho
 
 
-@njit(cache=True)
 def characteristic_function(
 	u: complex | NDArray[np.complex64],
 	spot: float,
@@ -54,18 +54,25 @@ def lg_integrate(
 	integrand: Callable[[NDArray[np.float64]], NDArray[np.float64]],
 	degree: int = DEFAULT_LG_DEGREE,
 ) -> float:
-	def transformed_integrand(
-		u: NDArray[np.float64],
-	) -> NDArray[np.float64]:
-		t = u / (1 - u)
-		return integrand(t) / (1 - u) ** 2
+	def transformed_integrand(x):
+		return 2 * integrand((1 + x) / (1 - x)) / ((1 - x) ** 2)
 
 	nodes, weights = np.polynomial.legendre.leggauss(deg=degree)
-	nodes = 0.5 * (nodes + 1)
-	weights = 0.5 * weights
-	approximation = sum(weights * transformed_integrand(u=nodes))
+	approximation = np.sum(weights * transformed_integrand(nodes))
 
 	return approximation
+
+
+def integrate(
+	integrand: Callable[[NDArray[np.float64]], NDArray[np.float64]],
+) -> float:
+	value = quad(
+		func=integrand,
+		a=0,
+		b=np.inf,
+	)[0]
+
+	return value
 
 
 def p1_value(
@@ -79,9 +86,7 @@ def p1_value(
 	volatility_of_volatility: float,
 	mean_reversion_rate: float,
 	wiener_correlation: float,
-	degree: int = DEFAULT_LG_DEGREE,
 ) -> float:
-	@njit
 	def integrand(
 		u: NDArray[np.float64],
 	) -> NDArray[np.float64]:
@@ -115,9 +120,8 @@ def p1_value(
 			)
 		)
 
-	integral = lg_integrate(
+	integral = integrate(
 		integrand=integrand,
-		degree=degree,
 	)
 
 	value = integral / np.pi + 1 / 2
@@ -138,7 +142,6 @@ def p2_value(
 	wiener_correlation: float,
 	degree: int = DEFAULT_LG_DEGREE,
 ) -> float:
-	@njit
 	def integrand(
 		u: NDArray[np.float64],
 	) -> NDArray[np.float64]:
@@ -158,9 +161,8 @@ def p2_value(
 			)
 		)
 
-	integral = lg_integrate(
+	integral = integrate(
 		integrand=integrand,
-		degree=degree,
 	)
 
 	value = integral / np.pi + 1 / 2
@@ -211,18 +213,18 @@ class HestonModel(StochasticVolatilityModel):
 		expiries: NDArray[np.datetime64],
 		monthly: bool,
 	) -> NDArray[np.float64]:
-		logger.debug("Extracting parameters for Heston model pricing")
+		logger.trace("Extracting parameters for Heston model pricing")
 		spot = underlying.price(time=time)
 		time_to_expiries = time_to_expiry(
 			time=time,
 			option_expiries=expiries,
 		)
-		logger.debug("Extracting risk free rates")
+		logger.trace("Extracting risk free rates")
 		risk_free_rates = get_risk_free_interest_rate(
 			time=time,
 			time_to_expiry=time_to_expiries,
 		)
-		logger.debug("Extracting dividend yields")
+		logger.trace("Extracting dividend yields")
 		dividend_yields = get_dividend_yield(
 			underlying=underlying,
 			time=time,
@@ -230,35 +232,28 @@ class HestonModel(StochasticVolatilityModel):
 			monthly=monthly,
 		)
 
-		logger.debug("Calculating integrals in Heston model")
-		p1 = np.array(
-			[
-				p1_value(
-					spot=spot,
-					strike=strike,
-					time_to_expiry=time_to_expiry,
-					risk_free_rate=risk_free_rate,
-					dividend_yield=dividend_yield,
-					**self.parameters,
-				)
-				for strike, time_to_expiry, risk_free_rate, dividend_yield in tqdm(zip(strikes, time_to_expiries, risk_free_rates, dividend_yields))
-			]
-		)
-		p2 = np.array(
-			[
-				p2_value(
-					spot=spot,
-					strike=strike,
-					time_to_expiry=time_to_expiry,
-					risk_free_rate=risk_free_rate,
-					dividend_yield=dividend_yield,
-					**self.parameters,
-				)
-				for strike, time_to_expiry, risk_free_rate, dividend_yield in tqdm(zip(strikes, time_to_expiries, risk_free_rates, dividend_yields))
-			]
-		)
+		logger.trace("Calculating integrals in Heston model")
+		p1 = np.empty(shape=strikes.shape, dtype=np.float64)
+		p2 = np.empty(shape=strikes.shape, dtype=np.float64)
+		for i in nb.prange(len(strikes)):
+			p1[i] = p1_value(
+				spot=spot,
+				strike=strikes[i],
+				time_to_expiry=time_to_expiries[i],
+				risk_free_rate=risk_free_rates[i],
+				dividend_yield=dividend_yields[i],
+				**self.parameters,
+			)
+			p2[i] = p2_value(
+				spot=spot,
+				strike=strikes[i],
+				time_to_expiry=time_to_expiries[i],
+				risk_free_rate=risk_free_rates[i],
+				dividend_yield=dividend_yields[i],
+				**self.parameters,
+			)
 
-		logger.debug("Calculating final price in Heston model")
+		logger.trace("Calculating final price in Heston model")
 		price = spot * np.exp(-dividend_yields * time_to_expiries) * (p1 - (types == "P").astype(int)) - strikes * np.exp(-risk_free_rates * time_to_expiries) * (p2 - (types == "P").astype(int))
 
 		return price
