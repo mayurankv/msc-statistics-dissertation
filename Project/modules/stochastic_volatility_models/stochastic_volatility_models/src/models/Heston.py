@@ -120,7 +120,7 @@ def p1_value(
 			)
 		)
 
-	integral = integrate(
+	integral = lg_integrate(
 		integrand=integrand,
 	)
 
@@ -161,7 +161,7 @@ def p2_value(
 			)
 		)
 
-	integral = integrate(
+	integral = lg_integrate(
 		integrand=integrand,
 	)
 
