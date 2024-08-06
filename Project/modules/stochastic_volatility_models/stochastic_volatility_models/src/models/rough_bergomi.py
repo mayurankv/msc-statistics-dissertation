@@ -1,43 +1,33 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING, TypedDict, Optional
+from loguru import logger
+from functools import lru_cache
 import numpy as np
+from numpy.typing import NDArray
+from numba import prange
 from scipy.stats import norm
 from scipy.optimize import brentq
 
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
+from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS
+from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry, TRADING_DAYS
 
 
-def g(x, a):
-	"""
-	TBSS kernel applicable to the rBergomi variance process.
-	"""
-	return x**a
+class RoughBergomiParameters(TypedDict):
+	hurst_index: float  # H
+	volatility_of_volatility: float  # eta
+	wiener_correlation: float  # rho
 
 
-def b(k, a):
-	"""
-	Optimal discretisation of TBSS process for minimising hybrid scheme error.
-	"""
-	return ((k ** (a + 1) - (k - 1) ** (a + 1)) / (a + 1)) ** (1 / a)
-
-
-def cov(a, n):
-	"""
-	Covariance matrix for given alpha and n, assuming kappa = 1 for
-	tractability.
-	"""
-	cov = np.array([[0.0, 0.0], [0.0, 0.0]])
-	cov[0, 0] = 1.0 / n
-	cov[0, 1] = 1.0 / ((1.0 * a + 1) * n ** (1.0 * a + 1))
-	cov[1, 1] = 1.0 / ((2.0 * a + 1) * n ** (2.0 * a + 1))
-	cov[1, 0] = cov[0, 1]
-	return cov
-
-
-def bs(F, K, V, o="call"):
-	"""
-	Returns the Black call price for given forward, strike and integrated
-	variance.
-	"""
+def bs(
+	F,
+	K,
+	V,
+	o="call",
+):
+	# Returns the Black call price for given forward, strike and integrated variance.
 	# Set appropriate weight for option token o
 	w = 1
 	if o == "put":
@@ -52,11 +42,14 @@ def bs(F, K, V, o="call"):
 	return P
 
 
-def bsinv(P, F, K, t, o="call"):
-	"""
-	Returns implied Black vol from given call price, forward, strike and time
-	to maturity.
-	"""
+def bsinv(
+	P,
+	F,
+	K,
+	t,
+	o="call",
+):
+	# Returns implied Black vol from given call price, forward, strike and time to maturity.
 	# Set appropriate weight for option token o
 	w = 1
 	if o == "put":
@@ -74,151 +67,213 @@ def bsinv(P, F, K, t, o="call"):
 	return s
 
 
+@lru_cache
+def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
+	spot: float,
+	time: np.datetime64,
+	initial_variance: float,
+	hurst_index: float,
+	volatility_of_volatility: float,
+	wiener_correlation: float,
+	simulation_length: float,
+	steps_per_year: int,
+	num_paths: int,
+	monthly: bool = True,
+) -> tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]:
+	def gamma_kernel(  # Truncated Brownian Semi-Stationary process kernel applicable to the rBergomi variance process
+		x: float,
+		a: float,
+	) -> float:
+		return x**a
+
+	def discretisation(  # Optimal discretisation of Truncated Brownian Semi-Stationary process for minimising hybrid scheme error
+		k,
+		a,
+	) -> float:
+		return ((k ** (a + 1) - (k - 1) ** (a + 1)) / (a + 1)) ** (1 / a)
+
+	logger.trace("Initialise discretisation")
+	steps = int(steps_per_year * simulation_length)
+	time_grid = np.linspace(start=0, stop=simulation_length, num=1 + steps)[np.newaxis, :]
+
+	logger.trace("Extracting risk free rates")
+	risk_free_rates = 0
+	# risk_free_rates = get_risk_free_interest_rate(
+	# 	time=time,
+	# 	time_to_expiry=time_to_expiries,
+	# )
+	logger.trace("Extracting dividend yields")
+	dividend_yields = 0
+	# dividend_yields = get_dividend_yield(
+	# 	underlying=underlying,
+	# 	time=time,
+	# 	expiries=expiries,
+	# 	monthly=monthly,
+	# )
+
+	logger.trace("Initialise processes")
+	dt = 1.0 / steps_per_year  # Step size
+	alpha = 0.5 - hurst_index
+	dw1_rng = np.random.multivariate_normal
+	mean = np.array([0, 0])
+	covariance = 1.0 / ((1.0 * alpha + 1) * steps_per_year ** (1.0 * alpha + 1))
+	variance = np.array(  # Covariance matrix for given alpha and n, assuming kappa = 1 for tractability
+		[
+			[dt, covariance],
+			[covariance, 1.0 / ((2.0 * alpha + 1) * steps_per_year ** (2.0 * alpha + 1))],
+		]
+	)
+	dw1 = dw1_rng(
+		mean=mean,
+		cov=variance,
+		size=(num_paths, steps),
+	)
+	dw2_rng = np.random.standard_normal
+	dw2 = dw2_rng(
+		size=(num_paths, steps),
+	) * np.sqrt(dt)
+	price_driving_process = wiener_correlation * dw1[:, :, 0] + np.sqrt(1 - wiener_correlation**2) * dw2
+
+	logger.trace("Constructs Volterra process from appropriately correlated 2d Brownian increments")
+	v1 = np.zeros(shape=(num_paths, 1 + steps))  # Exact integrals
+	gamma = np.zeros(shape=1 + steps)  # Gamma
+	for step in np.arange(
+		start=1,
+		stop=steps + 1,
+		step=1,
+	):
+		v1[:, step] = dw1[:, step - 1, 1]  # Assumes kappa = 1
+		if step > 0:
+			gamma[step] = gamma_kernel(x=discretisation(k=step, a=alpha) / steps_per_year, a=alpha)
+	convolved_gamma = np.zeros(shape=(num_paths, dw1.shape[1] + steps))
+	for step in prange(num_paths):
+		convolved_gamma[step, :] = np.convolve(  # TODO (@mayurankv): Compute convolution, FFT not used for small n. Possible to compute for all paths in C-layer?
+			a=gamma,
+			v=dw1[step, :, 0],
+		)
+	v2 = convolved_gamma[:, : 1 + steps]  # Extract appropriate part of convolution
+	volatility_driving_process = np.sqrt(2 * alpha + 1) * (v1 + v2)
+
+	logger.trace("Rough Bergomi variance process")
+	variance_process = initial_variance * np.exp(volatility_of_volatility * volatility_driving_process - 0.5 * volatility_of_volatility**2 * time_grid ** (2 * alpha + 1))
+
+	logger.trace("Rough Bergomi price process")
+	price_process = np.ones_like(variance_process)
+	increments = (risk_free_rates - dividend_yields) * dt + np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	integral = np.cumsum(increments, axis=1)
+	price_process[:, 1:] = np.exp(integral)
+	price_process = price_process * spot
+
+	logger.trace("Rough Bergomi parallel price process")
+	parallel_price_process = np.ones_like(variance_process)
+	parallel_increments = wiener_correlation * np.sqrt(variance_process[:, :-1]) * dw1[:, :, 0] - 0.5 * wiener_correlation**2 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	parallel_integral = np.cumsum(parallel_increments, axis=1)
+	parallel_price_process[:, 1:] = np.exp(parallel_integral)
+	parallel_price_process = parallel_price_process * spot
+
+	return price_process, variance_process, parallel_price_process
+
+
 class RoughBergomi(StochasticVolatilityModel):
 	def __init__(
 		self,
-	):
-		pass
+		parameters: RoughBergomiParameters,
+	) -> None:
+		self.parameters: RoughBergomiParameters = parameters
 
-
-class rBergomi:
-	"""
-	Class for generating paths of the rBergomi model.
-	"""
-
-	def __init__(self, n=100, N=1000, T=1.00, a=-0.4):
-		"""
-		Constructor for class.
-		"""
-		# Basic assignments
-		self.T = T  # Maturity
-		self.n = n  # Granularity (steps per year)
-		self.dt = 1.0 / self.n  # Step size
-		self.s = int(self.n * self.T)  # Steps
-		self.t = np.linspace(
-			start=0,
-			stop=self.T,
-			num=1 + self.s,
-		)[np.newaxis, :]  # Time grid
-		self.a = a  # Alpha
-		self.N = N  # Paths
-
-		# Construct hybrid scheme correlation structure for kappa = 1
-		self.e = np.array([0, 0])
-		self.c = cov(self.a, self.n)
-
-	def dW1(
+	def integrated_volatility(
 		self,
-	):
-		rng = np.random.multivariate_normal
-		return rng(self.e, self.c, (self.N, self.s))
+		underlying: Underlying,
+		time: np.datetime64,
+	) -> float:
+		# TODO (@mayurankv): Finish
+		return
 
-	def Y(
+	def volatility(
 		self,
-		dW,
-	):
-		"""
-		Constructs Volterra process from appropriately
-		correlated 2d Brownian increments.
-		"""
-		Y1 = np.zeros((self.N, 1 + self.s))  # Exact integrals
-		Y2 = np.zeros((self.N, 1 + self.s))  # Riemann sums
+		underlying: Underlying,
+		time: np.datetime64,
+		option_parameters: OptionParameters,
+	) -> float:
+		# TODO (@mayurankv): Finish
+		# TODO (@mayurankv): Distribution?
+		return
 
-		# Construct Y1 through exact integral
-		for i in np.arange(1, 1 + self.s, 1):
-			Y1[:, i] = dW[:, i - 1, 1]  # Assumes kappa = 1
-
-		# Construct arrays for convolution
-		G = np.zeros(1 + self.s)  # Gamma
-		for k in np.arange(2, 1 + self.s, 1):
-			G[k] = g(b(k, self.a) / self.n, self.a)
-
-		X = dW[:, :, 0]  # Xi
-
-		# Initialise convolution result, GX
-		GX = np.zeros((self.N, len(X[0, :]) + len(G) - 1))
-
-		# Compute convolution, FFT not used for small n
-		# Possible to compute for all paths in C-layer?
-		for i in range(self.N):
-			GX[i, :] = np.convolve(G, X[i, :])
-
-		# Extract appropriate part of convolution
-		Y2 = GX[:, : 1 + self.s]
-
-		# Finally contruct and return full process
-		Y = np.sqrt(2 * self.a + 1) * (Y1 + Y2)
-		return Y
-
-	def dW2(
+	def price(
 		self,
-	):
-		"""
-		Obtain orthogonal increments.
-		"""
-		return np.random.randn(self.N, self.s) * np.sqrt(self.dt)
+		underlying: Underlying,
+		time: np.datetime64,
+		types: NDArray[str],  # type: ignore
+		strikes: NDArray[np.int64],
+		expiries: NDArray[np.datetime64],
+		monthly: bool,
+		simulation_length: float = 1.0,
+		steps_per_year: int = TRADING_DAYS,
+		num_paths: int = NUM_PATHS,
+		seed: Optional[int] = None,
+	) -> NDArray[np.float64]:
+		logger.trace("Extracting parameters for Rough Bergomi model pricing")
+		time_to_expiries = time_to_expiry(
+			time=time,
+			option_expiries=expiries,
+		)
 
-	def dB(
+		price_process, _ = self.simulate_path(
+			underlying=underlying,
+			time=time,
+			simulation_length=simulation_length,
+			steps_per_year=steps_per_year,
+			num_paths=num_paths,
+			seed=seed,
+			monthly=monthly,
+		)
+
+		logger.trace("Price options")
+		prices = np.array(
+			[
+				np.mean(
+					np.maximum(
+						(price_process[:, int(time_to_expiry * steps_per_year)] - strike) * flag,
+						0,
+					)
+				)
+				for flag, strike, time_to_expiry in zip(
+					(types == "C") * 2 - 1,
+					strikes,
+					time_to_expiries,
+				)
+			]
+		)
+
+		return prices
+
+	def simulate_path(
 		self,
-		dW1,
-		dW2,
-		rho=0.0,
-	):
-		"""
-		Constructs correlated price Brownian increments, dB.
-		"""
-		self.rho = rho
-		dB = rho * dW1[:, :, 0] + np.sqrt(1 - rho**2) * dW2
-		return dB
+		underlying: Underlying,
+		time: np.datetime64,
+		simulation_length: float = 1.0,
+		steps_per_year: int = TRADING_DAYS,
+		num_paths: int = NUM_PATHS,
+		monthly: bool = True,
+		seed: Optional[int] = None,
+	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
+		# TODO (@mayurankv): Risk free rate
+		# TODO (@mayurankv): Dividend yield
+		# TODO (@mayurankv): Forward variance curve
+		logger.trace("Set random seed")
+		np.random.seed(seed=seed)
 
-	def V(
-		self,
-		Y,
-		xi=1.0,
-		eta=1.0,
-	):
-		"""
-		rBergomi variance process.
-		"""
-		self.xi = xi
-		self.eta = eta
-		a = self.a
-		t = self.t
-		V = xi * np.exp(eta * Y - 0.5 * eta**2 * t ** (2 * a + 1))
-		return V
+		initial_variance = 0.235**2  # TODO (@mayurankv): From forward variance curve - here is where risk free rate and dividend yield come in?
 
-	def S(self, V, dB, S0=1):
-		"""
-		rBergomi price process.
-		"""
-		self.S0 = S0
-		dt = self.dt
-		# rho = self.rho
+		logger.trace("Simulate paths")
+		price_process, variance_process, parallel_price_process = simulate(
+			spot=underlying.price(time=time),
+			initial_variance=initial_variance,
+			**self.parameters,
+			simulation_length=simulation_length,
+			steps_per_year=steps_per_year,
+			num_paths=num_paths,
+			monthly=monthly,
+		)
 
-		# Construct non-anticipative Riemann increments
-		increments = np.sqrt(V[:, :-1]) * dB - 0.5 * V[:, :-1] * dt
-
-		# Cumsum is a little slower than Python loop.
-		integral = np.cumsum(increments, axis=1)
-
-		S = np.zeros_like(V)
-		S[:, 0] = S0
-		S[:, 1:] = S0 * np.exp(integral)
-		return S
-
-	def S1(self, V, dW1, rho, S0=1):
-		"""
-		rBergomi parallel price process.
-		"""
-		dt = self.dt
-
-		# Construct non-anticipative Riemann increments
-		increments = rho * np.sqrt(V[:, :-1]) * dW1[:, :, 0] - 0.5 * rho**2 * V[:, :-1] * dt
-
-		# Cumsum is a little slower than Python loop.
-		integral = np.cumsum(increments, axis=1)
-
-		S = np.zeros_like(V)
-		S[:, 0] = S0
-		S[:, 1:] = S0 * np.exp(integral)
-		return S
+		return price_process, variance_process

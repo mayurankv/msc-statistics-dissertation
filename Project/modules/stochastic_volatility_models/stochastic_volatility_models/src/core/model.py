@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 from pandas import DataFrame
 import numpy as np
 from abc import ABC, abstractmethod
@@ -14,6 +14,9 @@ if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
 from stochastic_volatility_models.src.core.calibration import DEFAULT_COST_FUNCTION_WEIGHTS, minimise_cost_function
 from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
+from stochastic_volatility_models.src.utils.options.expiry import DAYS
+
+NUM_PATHS = 1024
 
 
 class StochasticVolatilityModel(ABC):
@@ -105,6 +108,11 @@ class StochasticVolatilityModel(ABC):
 	@abstractmethod
 	def simulate_path(
 		self,
-		# TODO (@mayurankv): Add parameters
-	) -> float:
+		underlying: Underlying,
+		time: np.datetime64,
+		simulation_length: float = 1.0,
+		steps_per_year: int = int(DAYS),
+		num_paths: int = NUM_PATHS,
+		seed: Optional[int] = None,
+	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		pass

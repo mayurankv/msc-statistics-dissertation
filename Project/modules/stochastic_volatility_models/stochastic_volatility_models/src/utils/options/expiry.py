@@ -3,6 +3,8 @@ from numpy.typing import NDArray
 
 # TODO (@mayurankv): Account for leap years?
 YEAR = np.timedelta64(365, "D")
+DAYS = float(YEAR / np.timedelta64(1, "D"))
+TRADING_DAYS = 252
 
 
 def annualise(
@@ -15,7 +17,7 @@ def annualise(
 def deannualise(
 	time_to_expiry: NDArray[np.float64],
 ) -> NDArray[np.float64]:
-	return time_to_expiry * float(YEAR / np.timedelta64(1, "D"))
+	return time_to_expiry * DAYS
 
 
 def time_to_expiry(

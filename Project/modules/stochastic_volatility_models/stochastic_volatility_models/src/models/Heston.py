@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, TypedDict, Callable, Optional
 import numpy as np
 from numpy.typing import NDArray
-from numba import jit
 import numba as nb
 from scipy.integrate import quad
 from loguru import logger
@@ -276,17 +275,8 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Finish
-
-		# result = minimise(
-		# 	OFHest,
-		# 	params,
-		# 	method="leastsq",
-		# 	iter_cb=iter_cb,
-		# 	tol=1e-6,
-		# )
 		return
 
 	def volatility(
@@ -341,7 +331,6 @@ class HestonModel(StochasticVolatilityModel):
 
 		return prices
 
-	@jit
 	def simulate_path(
 		self,
 		# TODO (@mayurankv): Add parameters
