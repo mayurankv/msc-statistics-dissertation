@@ -61,6 +61,8 @@ class StochasticVolatilityModel(ABC):
 		time: np.datetime64,
 		symbols: NDArray[str],  # type: ignore
 		monthly: bool,
+		*args,
+		**kwargs,
 	) -> DataFrame:
 		options_parameters_transpose = get_options_parameters_transpose(
 			ticker=underlying.ticker,
@@ -74,6 +76,8 @@ class StochasticVolatilityModel(ABC):
 				strikes=options_parameters_transpose["strike"],
 				expiries=options_parameters_transpose["expiry"],
 				monthly=monthly,
+				*args,
+				**kwargs,
 			),
 			index=symbols,
 			columns=["Mid"],

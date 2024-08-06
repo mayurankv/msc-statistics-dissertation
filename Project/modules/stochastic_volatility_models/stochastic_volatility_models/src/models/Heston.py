@@ -65,10 +65,30 @@ def lg_integrate(
 	def transformed_integrand(x):
 		return 2 * integrand((1 + x) / (1 - x)) / ((1 - x) ** 2)
 
+	# def transformed_integrand(x):
+	# 	return integrand(1 - 2 * np.exp(-x)) / (1 - x)
+
 	nodes, weights = np.polynomial.legendre.leggauss(deg=degree)
 	approximation = np.sum(weights * transformed_integrand(nodes))
 
 	return approximation
+
+
+# def integrate(
+# 	integrand: Callable[[NDArray[np.float64]], NDArray[np.float64]],
+# ) -> float:
+# 	# def transformed_integrand(x):
+# 	# 	return 2 * integrand((1 + x) / (1 - x)) / ((1 - x) ** 2)
+# 	def transformed_integrand(x):
+# 		return integrand(1 - 2 * np.exp(-x)) / (1 - x)
+#
+# 	value = quad(
+# 		func=transformed_integrand,
+# 		a=-1,
+# 		b=1,
+# 	)[0]
+
+# 	return value
 
 
 def integrate(
@@ -287,6 +307,7 @@ class HestonModel(StochasticVolatilityModel):
 		strikes: NDArray[np.int64],
 		expiries: NDArray[np.datetime64],
 		monthly: bool,
+		legendre_gauss_degree: Optional[int] = DEFAULT_LG_DEGREE,
 	) -> NDArray[np.float64]:
 		logger.trace("Extracting parameters for Heston model pricing")
 		spot = underlying.price(time=time)
@@ -314,6 +335,7 @@ class HestonModel(StochasticVolatilityModel):
 			time_to_expiries=time_to_expiries,
 			risk_free_rates=risk_free_rates,
 			dividend_yields=dividend_yields,
+			legendre_gauss_degree=legendre_gauss_degree,
 			**self.parameters,
 		)
 

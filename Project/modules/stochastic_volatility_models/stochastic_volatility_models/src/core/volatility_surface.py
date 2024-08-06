@@ -87,7 +87,9 @@ class VolatilitySurface:
 		pricing_model: PricingModel,
 	) -> DataFrame:
 		empirical_pricing_implied_volatilities = pricing_model.price_implied_volatility(
-			prices=self.empirical_price(time=time),
+			prices=self.empirical_price(
+				time=time,
+			),
 			time=time,
 			underlying=self.underlying,
 			monthly=self.monthly,
@@ -99,12 +101,16 @@ class VolatilitySurface:
 		self,
 		time: np.datetime64,
 		model: StochasticVolatilityModel,
+		*args,
+		**kwargs,
 	) -> DataFrame:
 		model_prices = model.price_surface(
 			time=time,
 			underlying=self.underlying,
 			symbols=self.options.values.ravel(),
 			monthly=self.monthly,
+			*args,
+			**kwargs,
 		)
 
 		return model_prices
@@ -114,9 +120,16 @@ class VolatilitySurface:
 		model: StochasticVolatilityModel,
 		pricing_model: PricingModel,
 		time: np.datetime64,
+		*args,
+		**kwargs,
 	) -> DataFrame:
 		model_pricing_implied_volatilities = pricing_model.price_implied_volatility(
-			prices=self.model_price(model=model, time=time),
+			prices=self.model_price(
+				time=time,
+				model=model,
+				*args,
+				**kwargs,
+			),
 			time=time,
 			underlying=self.underlying,
 			monthly=self.monthly,
