@@ -2,9 +2,9 @@ import numpy as np
 from numpy.typing import NDArray
 
 # TODO (@mayurankv): Account for leap years?
+TRADING_DAYS = 252
 YEAR = np.timedelta64(365, "D")
 DAYS = float(YEAR / np.timedelta64(1, "D"))
-TRADING_DAYS = 252
 
 
 def annualise(

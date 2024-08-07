@@ -5,14 +5,13 @@ from functools import lru_cache
 import numpy as np
 from numpy.typing import NDArray
 from numba import prange
-from scipy.stats import norm
-from scipy.optimize import brentq
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
-	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS
-from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry, TRADING_DAYS
+from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS, SEED
+from stochastic_volatility_models.src.utils.options.expiry import DAYS
+from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
+from stochastic_volatility_models.src.data.dividends import interpolate_dividend_yield
 
 
 class RoughBergomiParameters(TypedDict):
@@ -21,55 +20,10 @@ class RoughBergomiParameters(TypedDict):
 	wiener_correlation: float  # rho
 
 
-def bs(
-	F,
-	K,
-	V,
-	o="call",
-):
-	# Returns the Black call price for given forward, strike and integrated variance.
-	# Set appropriate weight for option token o
-	w = 1
-	if o == "put":
-		w = -1
-	elif o == "otm":
-		w = 2 * (K > 1.0) - 1
-
-	sv = np.sqrt(V)
-	d1 = np.log(F / K) / sv + 0.5 * sv
-	d2 = d1 - sv
-	P = w * F * norm.cdf(w * d1) - w * K * norm.cdf(w * d2)
-	return P
-
-
-def bsinv(
-	P,
-	F,
-	K,
-	t,
-	o="call",
-):
-	# Returns implied Black vol from given call price, forward, strike and time to maturity.
-	# Set appropriate weight for option token o
-	w = 1
-	if o == "put":
-		w = -1
-	elif o == "otm":
-		w = 2 * (K > 1.0) - 1
-
-	# Ensure at least instrinsic value
-	P = np.maximum(P, np.maximum(w * (F - K), 0))
-
-	def error(s):
-		return bs(F, K, s**2 * t, o) - P
-
-	s = brentq(error, 1e-9, 1e9)
-	return s
-
-
 @lru_cache
 def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	spot: float,
+	ticker: str,
 	time: np.datetime64,
 	initial_variance: float,
 	hurst_index: float,
@@ -97,19 +51,20 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	time_grid = np.linspace(start=0, stop=simulation_length, num=1 + steps)[np.newaxis, :]
 
 	logger.trace("Extracting risk free rates")
-	risk_free_rates = 0
-	# risk_free_rates = get_risk_free_interest_rate(
-	# 	time=time,
-	# 	time_to_expiry=time_to_expiries,
-	# )
+	risk_free_rates = np.ones_like(time_grid[0]) * 0
+	_risk_free_rates = get_risk_free_interest_rate(
+		time=time,
+		time_to_expiry=time_grid[0],
+	)
 	logger.trace("Extracting dividend yields")
-	dividend_yields = 0
-	# dividend_yields = get_dividend_yield(
-	# 	underlying=underlying,
-	# 	time=time,
-	# 	expiries=expiries,
-	# 	monthly=monthly,
-	# )
+	dividend_yields = np.ones_like(time_grid[0]) * 0
+	_dividend_yields = interpolate_dividend_yield(
+		ticker=ticker,
+		spot=spot,
+		time=time,
+		time_to_expiries=time_grid[0],
+		monthly=monthly,
+	)
 
 	logger.trace("Initialise processes")
 	dt = 1.0 / steps_per_year  # Step size
@@ -159,7 +114,7 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 
 	logger.trace("Rough Bergomi price process")
 	price_process = np.ones_like(variance_process)
-	increments = (risk_free_rates - dividend_yields) * dt + np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	increments = (risk_free_rates[:-1] - dividend_yields[:-1]) * dt + np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
 	integral = np.cumsum(increments, axis=1)
 	price_process[:, 1:] = np.exp(integral)
 	price_process = price_process * spot
@@ -193,69 +148,20 @@ class RoughBergomi(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Finish
 		# TODO (@mayurankv): Distribution?
 		return
-
-	def price(
-		self,
-		underlying: Underlying,
-		time: np.datetime64,
-		types: NDArray[str],  # type: ignore
-		strikes: NDArray[np.int64],
-		expiries: NDArray[np.datetime64],
-		monthly: bool,
-		simulation_length: float = 1.0,
-		steps_per_year: int = TRADING_DAYS,
-		num_paths: int = NUM_PATHS,
-		seed: Optional[int] = None,
-	) -> NDArray[np.float64]:
-		logger.trace("Extracting parameters for Rough Bergomi model pricing")
-		time_to_expiries = time_to_expiry(
-			time=time,
-			option_expiries=expiries,
-		)
-
-		price_process, _ = self.simulate_path(
-			underlying=underlying,
-			time=time,
-			simulation_length=simulation_length,
-			steps_per_year=steps_per_year,
-			num_paths=num_paths,
-			seed=seed,
-			monthly=monthly,
-		)
-
-		logger.trace("Price options")
-		prices = np.array(
-			[
-				np.mean(
-					np.maximum(
-						(price_process[:, int(time_to_expiry * steps_per_year)] - strike) * flag,
-						0,
-					)
-				)
-				for flag, strike, time_to_expiry in zip(
-					(types == "C") * 2 - 1,
-					strikes,
-					time_to_expiries,
-				)
-			]
-		)
-
-		return prices
 
 	def simulate_path(
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
 		simulation_length: float = 1.0,
-		steps_per_year: int = TRADING_DAYS,
+		steps_per_year: int = int(DAYS),
 		num_paths: int = NUM_PATHS,
 		monthly: bool = True,
-		seed: Optional[int] = None,
+		seed: Optional[int] = SEED,
 	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		# TODO (@mayurankv): Risk free rate
 		# TODO (@mayurankv): Dividend yield
@@ -267,7 +173,9 @@ class RoughBergomi(StochasticVolatilityModel):
 
 		logger.trace("Simulate paths")
 		price_process, variance_process, parallel_price_process = simulate(
+			ticker=underlying.ticker,
 			spot=underlying.price(time=time),
+			time=time,
 			initial_variance=initial_variance,
 			**self.parameters,
 			simulation_length=simulation_length,

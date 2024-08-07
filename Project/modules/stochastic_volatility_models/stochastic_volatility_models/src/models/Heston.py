@@ -8,7 +8,6 @@ from loguru import logger
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
-	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.utils.cache import np_multiple_cache
@@ -283,7 +282,6 @@ class HestonModel(StochasticVolatilityModel):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Is this right?
 		# TODO (@mayurankv): Distribution?

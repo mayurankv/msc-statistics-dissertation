@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Optional
 from pandas import DataFrame
 import numpy as np
+from loguru import logger
 from abc import ABC, abstractmethod
 from typing import Mapping
 from numpy.typing import NDArray
@@ -14,9 +15,12 @@ if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
 from stochastic_volatility_models.src.core.calibration import DEFAULT_COST_FUNCTION_WEIGHTS, minimise_cost_function
 from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
-from stochastic_volatility_models.src.utils.options.expiry import DAYS
+from stochastic_volatility_models.src.utils.options.expiry import DAYS, time_to_expiry
+from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
+from stochastic_volatility_models.src.data.dividends import get_dividend_yield
 
-NUM_PATHS = 1024
+SEED = 343
+NUM_PATHS = 2**14
 
 
 class StochasticVolatilityModel(ABC):
@@ -41,12 +45,10 @@ class StochasticVolatilityModel(ABC):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Distribution?
 		pass
 
-	@abstractmethod
 	def price(
 		self,
 		underlying: Underlying,
@@ -54,16 +56,67 @@ class StochasticVolatilityModel(ABC):
 		types: NDArray[str],  # type: ignore
 		strikes: NDArray[np.int64],
 		expiries: NDArray[np.datetime64],
-		monthly: bool,
+		monthly: bool = True,
+		steps_per_year: int = int(DAYS),
+		num_paths: int = NUM_PATHS,
+		seed: Optional[int] = SEED,
 	) -> NDArray[np.float64]:
-		pass
+		logger.trace("Extracting parameters for Rough Bergomi model pricing")
+		time_to_expiries = time_to_expiry(
+			time=time,
+			option_expiries=expiries,
+		)
+		logger.trace("Extracting risk free rates")
+		risk_free_rates = get_risk_free_interest_rate(
+			time=time,
+			time_to_expiry=time_to_expiries,
+		)
+		logger.trace("Extracting dividend yields")
+		dividend_yields = get_dividend_yield(
+			underlying=underlying,
+			time=time,
+			expiries=expiries,
+			monthly=monthly,
+		)
+
+		price_process, _ = self.simulate_path(
+			underlying=underlying,
+			time=time,
+			simulation_length=time_to_expiries.max(),
+			steps_per_year=steps_per_year,
+			num_paths=num_paths,
+			seed=seed,
+			monthly=monthly,
+		)
+
+		logger.trace("Price options")
+		prices = np.array(
+			[
+				np.mean(
+					np.maximum(
+						# (price_process[:, int(time_to_expiry * steps_per_year)] - strike) * np.exp((dividend_yield - risk_free_rate) * time_to_expiry) * flag,
+						(price_process[:, int(time_to_expiry * steps_per_year)] - strike) * flag,
+						0,
+					)
+				)
+				for flag, strike, time_to_expiry, risk_free_rate, dividend_yield in zip(
+					(types == "C") * 2 - 1,
+					strikes,
+					time_to_expiries,
+					risk_free_rates,
+					dividend_yields,
+				)
+			]
+		)
+
+		return prices
 
 	def price_surface(
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
 		symbols: NDArray[str],  # type: ignore
-		monthly: bool,
+		monthly: bool = True,
 		*args,
 		**kwargs,
 	) -> DataFrame:
@@ -113,6 +166,7 @@ class StochasticVolatilityModel(ABC):
 		simulation_length: float = 1.0,
 		steps_per_year: int = int(DAYS),
 		num_paths: int = NUM_PATHS,
-		seed: Optional[int] = None,
+		monthly: bool = True,
+		seed: Optional[int] = SEED,
 	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		pass

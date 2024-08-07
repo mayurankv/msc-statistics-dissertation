@@ -1,7 +1,8 @@
 St vs S0??? Ask Adam
 
 How to do VIX pricing?
-
+Make Hesotn pricing work - monte carlo?
+Make rBergomi pricing work - put call parity
 
 - Move types
 - Evaluation functions
@@ -73,6 +74,14 @@ How to deal with leap years?
 - Deal with dividends in base black scholes
 - What is black scholes merton?
 
+--------- WRITEUP
+Implied Vol:
+https://quant.stackexchange.com/questions/47373/why-do-we-fit-volatility-surfaces-implied-from-a-option-pricing-model-to-the-emp
+https://quant.stackexchange.com/questions/30932/confusion-with-volatility-smiles-implied-by-different-models
+
+Vol Comparison:
+https://quant.stackexchange.com/questions/42553/realized-volatility-forecast-vs-implied-volatility
+---------
 
 
 Future work:

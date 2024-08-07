@@ -4,25 +4,25 @@ import pandas as pd
 from pandas import DataFrame, Series
 import numpy as np
 from numpy.typing import NDArray
+from functools import lru_cache
+from loguru import logger
 
 if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.config import MODULE_DIRECTORY
-from stochastic_volatility_models.src.utils.cache import df_cache
 from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.prices import DEFAULT_CHUNKSIZE
 
 
-@df_cache(arg_num=2, arg_name="expiries")
-def _get_atm_prices(
-	underlying: Underlying,
+@lru_cache
+def get_atm_prices(
+	ticker: str,
+	spot: float,
 	time: np.datetime64,
-	expiries: NDArray[str],  # type: ignore
 	monthly: bool = True,
 	chunksize: int = DEFAULT_CHUNKSIZE,
 ) -> DataFrame:
-	spot = underlying.price(time=time)
 	reference = spot * 1000
 
 	def get_atm_strikes(
@@ -39,7 +39,7 @@ def _get_atm_prices(
 
 		return atm_strikes
 
-	path: str = f"{MODULE_DIRECTORY}/data/options/{underlying.ticker.lower()}.csv"
+	path: str = f"{MODULE_DIRECTORY}/data/options/{ticker.lower()}.csv"
 	option_prices_iter = pd.read_csv(
 		path,
 		index_col=[0, 1],
@@ -54,7 +54,7 @@ def _get_atm_prices(
 						date_key,
 						level=1,
 					)
-				).loc[(prices["exdate"].isin(expiries)) & (prices.index.get_level_values(0).str.startswith(underlying.ticker + (" " if monthly else "W "))), ["exdate", "cp_flag", "strike_price", "best_bid", "best_offer"]]
+				).loc[(prices.index.get_level_values(0).str.startswith(ticker + (" " if monthly else "W "))), ["exdate", "cp_flag", "strike_price", "best_bid", "best_offer"]]
 				for option_prices in option_prices_iter
 				if (date_key := np.datetime_as_string(time, unit="D")) in option_prices.index.get_level_values(level=1)
 			]
@@ -64,40 +64,12 @@ def _get_atm_prices(
 		.set_index(keys=["exdate", "cp_flag", "strike_price"])
 	)
 
-	found_expiries = set(option_strikes.index.get_level_values(level=0).unique())
-	if found_expiries != (to_find_expiries := set(expiries)):
-		raise ValueError(f"Options could not be found. Only found {found_expiries} out of {to_find_expiries}.")
+	logger.trace(f"Found expiries: {set(option_strikes.index.get_level_values(level=0).unique())}")
 
 	option_strikes["Mid"] = (option_strikes["best_bid"] + option_strikes["best_offer"]) / 2
 	option_strikes = option_strikes.drop(["best_bid", "best_offer"], axis=1)
 
-	atm_prices = option_strikes.groupby(level=[0, 1]).apply(func=get_atm_strikes)["Mid"].unstack(level=1).reset_index().set_index(keys="exdate").reindex(index=expiries)
-
-	return atm_prices
-
-
-def get_atm_prices(
-	underlying: Underlying,
-	time: np.datetime64,
-	expiries: NDArray[np.datetime64],
-	monthly: bool = True,
-	chunksize: int = DEFAULT_CHUNKSIZE,
-) -> DataFrame:
-	_ = _get_atm_prices(
-		underlying=underlying,
-		time=time,
-		expiries=np.datetime_as_string(np.sort(np.array(list(set(expiries))))),
-		monthly=monthly,
-		chunksize=chunksize,
-	)
-
-	atm_prices = _get_atm_prices(
-		underlying=underlying,
-		time=time,
-		expiries=np.datetime_as_string(expiries),
-		monthly=monthly,
-		chunksize=chunksize,
-	)
+	atm_prices = option_strikes.groupby(level=[0, 1]).apply(func=get_atm_strikes)["Mid"].unstack(level=1).reset_index().set_index(keys="exdate").sort_index()
 
 	return atm_prices
 
@@ -110,9 +82,9 @@ def get_option_future_price(
 	chunksize: int = DEFAULT_CHUNKSIZE,
 ) -> NDArray[np.float64]:
 	atm_prices = get_atm_prices(
-		underlying=underlying,
+		ticker=underlying.ticker,
+		spot=underlying.price(time=time),
 		time=time,
-		expiries=expiries,
 		monthly=monthly,
 		chunksize=chunksize,
 	)
