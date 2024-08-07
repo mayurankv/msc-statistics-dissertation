@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, TypedDict, Literal
+from typing import TYPE_CHECKING, TypedDict, Literal, Optional
 import numpy as np
 from pandas import DataFrame, MultiIndex
 from numpy.typing import NDArray
@@ -60,9 +60,16 @@ class VolatilitySurface:
 		self,
 		time: np.datetime64,
 		out_the_money: bool = True,
+		call: Optional[bool] = None,
 	) -> DataFrame:
+		def call_condition(index: tuple[np.int64, np.datetime64]):
+			if call is not None:
+				return call
+			else:
+				return (index[0] >= self.underlying.price(time=time) and out_the_money) or (index[0] < self.underlying.price(time=time) and not out_the_money)
+
 		surface = DataFrame(
-			data=[self.options.at[index, "C" if (index[0] >= self.underlying.price(time=time) and out_the_money) or (index[0] < self.underlying.price(time=time) and not out_the_money) else "P"] for index in self.options.index],
+			data=[self.options.at[index, "C" if call_condition(index) else "P"] for index in self.options.index],
 			index=self.options.index,
 			columns=["Symbol"],
 		)
@@ -143,13 +150,11 @@ class VolatilitySurface:
 		quantity_method: QuantityMethod,
 		price_types: list[PriceTypes],
 		out_the_money: bool = True,
+		call: Optional[bool] = None,
 		*args,
 		**kwargs,
 	) -> list[DataFrame]:
-		surface_symbols = self.surface_symbols(
-			time=time,
-			out_the_money=out_the_money,
-		)
+		surface_symbols = self.surface_symbols(time=time, out_the_money=out_the_money, call=call)
 		quantities: DataFrame = getattr(self, quantity_method)(time=time, *args, **kwargs)
 		surfaces = [surface_symbols["Symbol"].map(quantities[price_type]).to_frame() for price_type in price_types]
 

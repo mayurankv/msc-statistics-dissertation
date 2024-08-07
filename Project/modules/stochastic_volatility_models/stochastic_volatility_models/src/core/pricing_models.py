@@ -18,13 +18,17 @@ from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
 
 
-PricingModels = Literal["Black-Scholes", "Black-76", "Black-Scholes-Merton"]
+PricingModels = Literal["Black-Scholes-Merton", "Black-Scholes", "Black-76", "Black-76 EMM"]
 
 
 # TODO (@mayurankv): Suppress irrelevant warnings? Fill NaNs with 0?
 class PricingModel:
-	def __init__(self, model: PricingModels = "Black-Scholes-Merton", use_market_future: bool = False) -> None:
-		if model in ["Black-Scholes", "Black-76", "Black-Scholes-Merton"]:
+	def __init__(
+		self,
+		model: PricingModels = "Black-Scholes-Merton",
+		use_market_future: bool = False,
+	) -> None:
+		if model in ["Black-Scholes-Merton", "Black-Scholes", "Black-76", "Black-76 EMM"]:
 			self.model = model
 		else:
 			raise ValueError("Pricing Model unknown")
@@ -125,6 +129,19 @@ class PricingModel:
 					price=prices[column].values,  # TODO (@mayurankv): Discount?
 					return_as="numpy",
 				)
+			elif self.model == "Black-76 EMM":
+				implied_volatilities[column] = iv(
+					F=underlying.price(time=time),
+					flag=np.char.lower(options_parameters_transpose["type"]),
+					K=options_parameters_transpose["strike"],
+					t=time_to_expiry(
+						time=time,
+						option_expiries=options_parameters_transpose["expiry"],
+					),
+					r=0,
+					price=prices[column].values,
+					return_as="numpy",
+				)
 
 		implied_volatilities = implied_volatilities.fillna(value=0)
 
@@ -206,6 +223,25 @@ class PricingModel:
 						expiries=options_parameters_transpose["expiry"],
 						monthly=monthly,
 					),
+					flag=np.char.lower(options_parameters_transpose["type"]),
+					K=options_parameters_transpose["strike"],
+					t=time_to_expiry(
+						time=time,
+						option_expiries=options_parameters_transpose["expiry"],
+					),
+					r=get_risk_free_interest_rate(
+						time=time,
+						time_to_expiry=time_to_expiry(
+							time=time,
+							option_expiries=options_parameters_transpose["expiry"],
+						),
+					),
+					sigma=volatilities[column].values,  # TODO (@mayurankv): Un-discount price?
+					return_as="numpy",
+				)
+			elif self.model == "Black-76 EMM":
+				implied_prices[column] = b_price(
+					F=underlying.price(time=time),
 					flag=np.char.lower(options_parameters_transpose["type"]),
 					K=options_parameters_transpose["strike"],
 					t=time_to_expiry(

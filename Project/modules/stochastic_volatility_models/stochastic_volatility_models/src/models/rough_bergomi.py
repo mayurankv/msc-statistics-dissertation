@@ -53,13 +53,13 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 
 	logger.trace("Extracting risk free rates")
 	risk_free_rates = np.ones_like(time_grid[0]) * 0
-	_risk_free_rates = get_risk_free_interest_rate(
+	risk_free_rates = get_risk_free_interest_rate(
 		time=time,
 		time_to_expiry=time_grid[0],
 	)
 	logger.trace("Extracting dividend yields")
 	dividend_yields = np.ones_like(time_grid[0]) * 0
-	_dividend_yields = interpolate_dividend_yield(
+	dividend_yields = interpolate_dividend_yield(
 		ticker=ticker,
 		spot=spot,
 		time=time,
@@ -116,6 +116,7 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	logger.trace("Rough Bergomi price process")
 	price_process = np.ones_like(variance_process)
 	increments = (risk_free_rates[:-1] - dividend_yields[:-1]) * dt + np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	# increments = np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
 	integral = np.cumsum(increments, axis=1)
 	price_process[:, 1:] = np.exp(integral)
 	price_process = price_process * spot
@@ -143,7 +144,7 @@ class RoughBergomi(StochasticVolatilityModel):
 		time: np.datetime64,
 	) -> float:
 		# TODO (@mayurankv): Finish
-		return
+		return 0
 
 	def volatility(
 		self,
@@ -152,7 +153,7 @@ class RoughBergomi(StochasticVolatilityModel):
 	) -> float:
 		# TODO (@mayurankv): Finish
 		# TODO (@mayurankv): Distribution?
-		return
+		return 0
 
 	def simulate_path(
 		self,

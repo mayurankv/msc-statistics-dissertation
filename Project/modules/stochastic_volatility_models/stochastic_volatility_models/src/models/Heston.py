@@ -271,16 +271,16 @@ class HestonModel(StochasticVolatilityModel):
 		time: np.datetime64,
 	) -> float:
 		# TODO (@mayurankv): Finish
-		return
+		return 0
 
 	def volatility(
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
 	) -> float:
-		# TODO (@mayurankv): Is this right?
 		# TODO (@mayurankv): Distribution?
-		return np.sqrt(self.parameters["long_term_variance"])
+		# TODO (@mayurankv): Is this right?: `np.sqrt(self.parameters["long_term_variance"])`
+		return 0
 
 	def price(
 		self,
@@ -335,4 +335,4 @@ class HestonModel(StochasticVolatilityModel):
 		seed: Optional[int] = SEED,
 	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		# TODO (@mayurankv): Finish
-		return
+		return (np.array([]), np.array([]))

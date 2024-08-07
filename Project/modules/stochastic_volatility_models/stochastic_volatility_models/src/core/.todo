@@ -1,8 +1,10 @@
 St vs S0??? Ask Adam
 
 How to do VIX pricing?
-Make Hesotn pricing work - monte carlo?
+Make Hesotn pricing work - monte carlo? Mask bad prices?
 Make rBergomi pricing work - put call parity
+
+Write Mikko email now
 
 - Move types
 - Evaluation functions
