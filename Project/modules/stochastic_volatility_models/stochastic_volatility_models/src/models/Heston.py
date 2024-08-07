@@ -6,13 +6,15 @@ import numba as nb
 from scipy.integrate import quad
 from loguru import logger
 
-if TYPE_CHECKING:
-	from stochastic_volatility_models.src.core.underlying import Underlying
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
-from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
+from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS, SEED
+from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry, DAYS
 from stochastic_volatility_models.src.utils.cache import np_multiple_cache
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import get_dividend_yield
+
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+
 
 DEFAULT_LG_DEGREE = 64
 
@@ -42,13 +44,6 @@ def characteristic_function(
 	d = np.sqrt(xi**2 + (u**2 + 1j * u) * volatility_of_volatility**2)
 	A1 = (u**2 + u * 1j) * np.sinh(d * time_to_expiry / 2)
 	A2 = (d * np.cosh(d * time_to_expiry / 2) + xi * np.sinh(d * time_to_expiry / 2)) / initial_variance
-	# if isinstance(u, np.ndarray):
-	# 	print("test1", u[125:])
-	# 	print("test2", np.argwhere(np.isinf(np.sinh(d * time_to_expiry / 2))))
-	# 	print("test3", (d * time_to_expiry / 2)[125:])
-	# 	print("test4", np.sinh(d * time_to_expiry / 2)[127])
-	# 	print("A1", np.argwhere(np.isnan(A1)))
-	# 	print("A2", np.argwhere(np.isnan(A2)))
 	A = A1 / A2
 	D = np.log(d / initial_variance) + (mean_reversion_rate - d) * time_to_expiry / 2 - np.log(((d + xi) + (d - xi) * np.exp(-d * time_to_expiry)) / (2 * initial_variance))
 	value = np.exp(1j * u * np.log(F / spot) - mean_reversion_rate * long_term_variance * wiener_correlation * time_to_expiry * 1j * u / volatility_of_volatility - A + 2 * mean_reversion_rate * long_term_variance * D / (volatility_of_volatility**2))
@@ -331,7 +326,13 @@ class HestonModel(StochasticVolatilityModel):
 
 	def simulate_path(
 		self,
-		# TODO (@mayurankv): Add parameters
-	):
+		underlying: Underlying,
+		time: np.datetime64,
+		simulation_length: float = 1.0,
+		steps_per_year: int = int(DAYS),
+		num_paths: int = NUM_PATHS,
+		monthly: bool = True,
+		seed: Optional[int] = SEED,
+	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		# TODO (@mayurankv): Finish
 		return

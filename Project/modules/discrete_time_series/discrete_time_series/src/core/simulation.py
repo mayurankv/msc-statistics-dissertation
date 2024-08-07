@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.stats import norm
-import numpy.typing as npt
+from numpy.typing import NDArray
 from typing import Optional
 from functools import partial
 from abc import abstractmethod
@@ -20,14 +20,14 @@ class ConfidenceNoise(Noise):
 	@abstractmethod
 	def _get_generator(
 		self,
-	) -> partial[npt.NDArray[np.float_]]:
+	) -> partial[NDArray[np.float64]]:
 		pass
 
 	def simulate(
 		self,
 		num_simulations: int,
 		seed: Optional[int] = None,
-	) -> npt.NDArray[np.float_]:
+	) -> NDArray[np.float64]:
 		if num_simulations < 1:
 			raise ValueError("Number of simulations must be positive")
 
@@ -40,7 +40,7 @@ class ConfidenceNoise(Noise):
 class GaussianConfidenceNoise(ConfidenceNoise):
 	def _get_generator(
 		self,
-	) -> partial[npt.NDArray[np.float_]]:
+	) -> partial[NDArray[np.float64]]:
 		return partial(
 			np.full,
 			fill_value=norm.ppf(

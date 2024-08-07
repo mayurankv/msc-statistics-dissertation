@@ -14,5 +14,5 @@ class Noise(ABC):
 	def simulate(
 		self,
 		num_simulations: int,
-	) -> npt.NDArray[np.float_]:
+	) -> npt.NDArray[np.float64]:
 		pass

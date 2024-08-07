@@ -4,7 +4,7 @@ from typing import Literal
 
 
 RawCoefficient = list[float | Literal[None]]
-Coefficient = npt.NDArray[np.float_]
+Coefficient = npt.NDArray[np.float64]
 CoefficientMask = npt.NDArray[np.bool_]
 
 

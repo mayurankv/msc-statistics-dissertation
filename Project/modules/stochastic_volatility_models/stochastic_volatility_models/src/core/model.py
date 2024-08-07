@@ -8,16 +8,18 @@ from typing import Mapping
 from numpy.typing import NDArray
 from scipy.optimize import minimize as minimise
 
-if TYPE_CHECKING:
-	from stochastic_volatility_models.src.core.underlying import Underlying
-	from stochastic_volatility_models.src.core.pricing_models import PricingModel
-	from stochastic_volatility_models.src.core.volatility_surface import OptionParameters, VolatilitySurface
-	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
 from stochastic_volatility_models.src.core.calibration import DEFAULT_COST_FUNCTION_WEIGHTS, minimise_cost_function
 from stochastic_volatility_models.src.utils.options.parameters import get_options_parameters_transpose
 from stochastic_volatility_models.src.utils.options.expiry import DAYS, time_to_expiry
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import get_dividend_yield
+
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
+	from stochastic_volatility_models.src.core.pricing_models import PricingModel
+	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
+	from stochastic_volatility_models.src.core.calibration import CostFunctionWeights
+
 
 SEED = 343
 NUM_PATHS = 2**14
@@ -35,7 +37,6 @@ class StochasticVolatilityModel(ABC):
 		self,
 		underlying: Underlying,
 		time: np.datetime64,
-		option_parameters: OptionParameters,
 	) -> float:
 		# TODO (@mayurankv): Distribution?
 		pass

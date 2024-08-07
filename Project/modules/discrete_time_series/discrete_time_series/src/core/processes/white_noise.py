@@ -13,14 +13,14 @@ class WhiteNoise(Noise):
 	def _get_generator(
 		self,
 		rng: Generator,
-	) -> partial[npt.NDArray[np.float_]]:
+	) -> partial[npt.NDArray[np.float64]]:
 		pass
 
 	def simulate(
 		self,
 		num_simulations: int,
 		seed: Optional[int] = None,
-	) -> npt.NDArray[np.float_]:
+	) -> npt.NDArray[np.float64]:
 		if num_simulations < 1:
 			raise ValueError("Number of simulations must be positive")
 

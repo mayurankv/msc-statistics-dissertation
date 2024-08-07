@@ -6,12 +6,13 @@ import numpy as np
 from numpy.typing import NDArray
 from numba import prange
 
-if TYPE_CHECKING:
-	from stochastic_volatility_models.src.core.underlying import Underlying
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS, SEED
 from stochastic_volatility_models.src.utils.options.expiry import DAYS
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import interpolate_dividend_yield
+
+if TYPE_CHECKING:
+	from stochastic_volatility_models.src.core.underlying import Underlying
 
 
 class RoughBergomiParameters(TypedDict):
@@ -102,7 +103,7 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 			gamma[step] = gamma_kernel(x=discretisation(k=step, a=alpha) / steps_per_year, a=alpha)
 	convolved_gamma = np.zeros(shape=(num_paths, dw1.shape[1] + steps))
 	for step in prange(num_paths):
-		convolved_gamma[step, :] = np.convolve(  # TODO (@mayurankv): Compute convolution, FFT not used for small n. Possible to compute for all paths in C-layer?
+		convolved_gamma[step, :] = np.convolve(
 			a=gamma,
 			v=dw1[step, :, 0],
 		)
@@ -163,16 +164,14 @@ class RoughBergomi(StochasticVolatilityModel):
 		monthly: bool = True,
 		seed: Optional[int] = SEED,
 	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
-		# TODO (@mayurankv): Risk free rate
-		# TODO (@mayurankv): Dividend yield
-		# TODO (@mayurankv): Forward variance curve
 		logger.trace("Set random seed")
 		np.random.seed(seed=seed)
 
-		initial_variance = 0.235**2  # TODO (@mayurankv): From forward variance curve - here is where risk free rate and dividend yield come in?
+		# TODO (@mayurankv): Forward variance curve
+		initial_variance = 0.235**2
 
 		logger.trace("Simulate paths")
-		price_process, variance_process, parallel_price_process = simulate(
+		price_process, variance_process, _ = simulate(
 			ticker=underlying.ticker,
 			spot=underlying.price(time=time),
 			time=time,

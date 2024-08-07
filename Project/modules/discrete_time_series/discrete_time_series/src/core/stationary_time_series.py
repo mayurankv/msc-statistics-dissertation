@@ -6,7 +6,7 @@ from discrete_time_series.src.core.processes.white_noise import WhiteNoise
 from discrete_time_series.src.core.processes.gaussian_white_noise import GaussianWhiteNoise
 from .simulation import ConfidenceNoise, GaussianConfidenceNoise
 import numpy as np
-from numpy import typing as npt
+from numpy.typing import NDArray
 
 
 class StationaryTimeSeries:
@@ -50,10 +50,10 @@ class StationaryTimeSeries:
 	def simulate(
 		self,
 		num_simulations: int,
-		initial_conditions: dict[str, npt.NDArray[np.float_]] = {},
+		initial_conditions: dict[str, NDArray[np.float64]] = {},
 		white_noise_process: Optional[WhiteNoise | ConfidenceNoise] = None,
 		seed: Optional[int] = None,
-	) -> npt.NDArray[np.float_]:
+	) -> NDArray[np.float64]:
 		if num_simulations < 1:
 			raise ValueError("Number of simulations must be positive")
 
@@ -92,9 +92,9 @@ class StationaryTimeSeries:
 	def simulate_confidences(
 		self,
 		num_simulations: int,
-		initial_conditions: dict[str, npt.NDArray[np.float_]],
+		initial_conditions: dict[str, NDArray[np.float64]],
 		confidences: list[float] = [0.95, 0.99],
-	) -> dict[float, npt.NDArray[np.float_]]:
+	) -> dict[float, NDArray[np.float64]]:
 		quantiles = [0.0] * len(confidences) * 2
 		for idx, confidence in enumerate(confidences):
 			if confidence <= 0 or confidence >= 1:

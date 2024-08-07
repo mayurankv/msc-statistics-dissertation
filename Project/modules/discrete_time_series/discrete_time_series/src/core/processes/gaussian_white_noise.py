@@ -10,7 +10,7 @@ class GaussianWhiteNoise(WhiteNoise):
 	def _get_generator(
 		self,
 		rng: Generator,
-	) -> partial[npt.NDArray[np.float_]]:
+	) -> partial[npt.NDArray[np.float64]]:
 		return partial(
 			rng.normal,
 			loc=0,
