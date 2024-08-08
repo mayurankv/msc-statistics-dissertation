@@ -5,8 +5,8 @@ import numpy as np
 from numpy.typing import NDArray
 from numba import prange
 
-from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
-from stochastic_volatility_models.src.data.dividends import interpolate_dividend_yield
+# from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
+# from stochastic_volatility_models.src.data.dividends import interpolate_dividend_yield
 
 
 @lru_cache
@@ -39,24 +39,24 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	steps = int(steps_per_year * simulation_length)
 	time_grid = np.linspace(start=0, stop=simulation_length, num=1 + steps)[np.newaxis, :]
 
-	logger.trace("Extracting risk free rates")
-	risk_free_rates = get_risk_free_interest_rate(
-		time=time,
-		time_to_expiry=time_grid[0],
-	)
-	logger.trace("Extracting dividend yields")
-	dividend_yields = interpolate_dividend_yield(
-		ticker=ticker,
-		spot=spot,
-		time=time,
-		time_to_expiries=time_grid[0],
-		monthly=monthly,
-	)
+	# logger.trace("Extracting risk free rates")
+	# risk_free_rates = get_risk_free_interest_rate(
+	# 	time=time,
+	# 	time_to_expiry=time_grid[0],
+	# )
+	# logger.trace("Extracting dividend yields")
+	# dividend_yields = interpolate_dividend_yield(
+	# 	ticker=ticker,
+	# 	spot=spot,
+	# 	time=time,
+	# 	time_to_expiries=time_grid[0],
+	# 	monthly=monthly,
+	# )
 
 	logger.trace("Initialise processes")
 	dt = 1.0 / steps_per_year
-	drift = risk_free_rates - dividend_yields
-	integrated_drift = np.cumsum(drift * dt)
+	# drift = risk_free_rates - dividend_yields
+	# integrated_drift = np.cumsum(drift * dt)
 	alpha = 0.5 - hurst_index
 	dw1_rng = np.random.multivariate_normal
 	mean = np.array([0, 0])
@@ -104,7 +104,7 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	logger.trace("Rough Bergomi price process")
 	price_process = np.ones_like(variance_process)
 	increments = np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
-	increments = increments + (drift[:-1] + integrated_drift[:-1]) * dt
+	# increments = increments + (drift[:-1] + integrated_drift[:-1]) * dt
 	integral = np.cumsum(increments, axis=1)
 	price_process[:, 1:] = np.exp(integral)
 	price_process = price_process * spot
