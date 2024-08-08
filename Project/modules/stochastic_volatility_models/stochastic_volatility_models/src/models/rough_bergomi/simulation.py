@@ -1,24 +1,12 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, TypedDict, Optional
 from loguru import logger
 from functools import lru_cache
 import numpy as np
 from numpy.typing import NDArray
 from numba import prange
 
-from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS, SEED
-from stochastic_volatility_models.src.utils.options.expiry import DAYS
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
 from stochastic_volatility_models.src.data.dividends import interpolate_dividend_yield
-
-if TYPE_CHECKING:
-	from stochastic_volatility_models.src.core.underlying import Underlying
-
-
-class RoughBergomiParameters(TypedDict):
-	hurst_index: float  # H
-	volatility_of_volatility: float  # eta
-	wiener_correlation: float  # rho
 
 
 @lru_cache
@@ -52,13 +40,11 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	time_grid = np.linspace(start=0, stop=simulation_length, num=1 + steps)[np.newaxis, :]
 
 	logger.trace("Extracting risk free rates")
-	risk_free_rates = np.ones_like(time_grid[0]) * 0
 	risk_free_rates = get_risk_free_interest_rate(
 		time=time,
 		time_to_expiry=time_grid[0],
 	)
 	logger.trace("Extracting dividend yields")
-	dividend_yields = np.ones_like(time_grid[0]) * 0
 	dividend_yields = interpolate_dividend_yield(
 		ticker=ticker,
 		spot=spot,
@@ -68,7 +54,9 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	)
 
 	logger.trace("Initialise processes")
-	dt = 1.0 / steps_per_year  # Step size
+	dt = 1.0 / steps_per_year
+	drift = risk_free_rates - dividend_yields
+	integrated_drift = np.cumsum(drift * dt)
 	alpha = 0.5 - hurst_index
 	dw1_rng = np.random.multivariate_normal
 	mean = np.array([0, 0])
@@ -115,8 +103,8 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 
 	logger.trace("Rough Bergomi price process")
 	price_process = np.ones_like(variance_process)
-	increments = (risk_free_rates[:-1] - dividend_yields[:-1]) * dt + np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
-	# increments = np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	increments = np.sqrt(variance_process[:, :-1]) * price_driving_process - 0.5 * variance_process[:, :-1] * dt  # Construct non-anticipative Riemann increments
+	increments = increments + (drift[:-1] + integrated_drift[:-1]) * dt
 	integral = np.cumsum(increments, axis=1)
 	price_process[:, 1:] = np.exp(integral)
 	price_process = price_process * spot
@@ -129,59 +117,3 @@ def simulate(  # CITE: https://github.com/ryanmccrickerd/rough_bergomi kappa=1
 	parallel_price_process = parallel_price_process * spot
 
 	return price_process, variance_process, parallel_price_process
-
-
-class RoughBergomi(StochasticVolatilityModel):
-	def __init__(
-		self,
-		parameters: RoughBergomiParameters,
-	) -> None:
-		self.parameters: RoughBergomiParameters = parameters
-
-	def integrated_volatility(
-		self,
-		underlying: Underlying,
-		time: np.datetime64,
-	) -> float:
-		# TODO (@mayurankv): Finish
-		return 0
-
-	def volatility(
-		self,
-		underlying: Underlying,
-		time: np.datetime64,
-	) -> float:
-		# TODO (@mayurankv): Finish
-		# TODO (@mayurankv): Distribution?
-		return 0
-
-	def simulate_path(
-		self,
-		underlying: Underlying,
-		time: np.datetime64,
-		simulation_length: float = 1.0,
-		steps_per_year: int = int(DAYS),
-		num_paths: int = NUM_PATHS,
-		monthly: bool = True,
-		seed: Optional[int] = SEED,
-	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
-		logger.trace("Set random seed")
-		np.random.seed(seed=seed)
-
-		# TODO (@mayurankv): Forward variance curve
-		initial_variance = 0.235**2
-
-		logger.trace("Simulate paths")
-		price_process, variance_process, _ = simulate(
-			ticker=underlying.ticker,
-			spot=underlying.price(time=time),
-			time=time,
-			initial_variance=initial_variance,
-			**self.parameters,
-			simulation_length=simulation_length,
-			steps_per_year=steps_per_year,
-			num_paths=num_paths,
-			monthly=monthly,
-		)
-
-		return price_process, variance_process

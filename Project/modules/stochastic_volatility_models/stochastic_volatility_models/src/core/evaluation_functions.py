@@ -17,6 +17,8 @@ def surface_evaluation(
 	pricing_model: Optional[PricingModel] = None,
 	prices: bool = False,
 	metric: Metrics = "MSE",
+	out_the_money: bool = True,
+	call: Optional[bool] = None,
 ) -> float:
 	if not prices and pricing_model is None:
 		raise ValueError("If evaluating volatilities, a pricing model must be provided")
@@ -26,15 +28,17 @@ def surface_evaluation(
 			time=time,
 			quantity_method="empirical_price" if prices else "empirical_pricing_implied_volatility",
 			price_types=["Mid"],
-			out_the_money=True,
+			out_the_money=out_the_money,
+			call=call,
 			**kwargs,
 		)[0].values,
 		volatility_surface.surface_quantities(
 			time=time,
 			quantity_method="model_price" if prices else "model_pricing_implied_volatility",
 			price_types=["Mid"],
-			out_the_money=True,
+			out_the_money=out_the_money,
 			model=model,
+			call=call,
 			**kwargs,
 		)[0].values,
 	)
@@ -48,20 +52,24 @@ def surface_atm_skew(
 	model: StochasticVolatilityModel,
 	pricing_model: PricingModel,
 	metric: Metrics = "RMSE",
+	out_the_money: bool = True,
+	call: Optional[bool] = None,
 ) -> float:
 	surfaces = [
 		volatility_surface.surface_quantities(
 			time=time,
 			quantity_method="empirical_pricing_implied_volatility",
 			price_types=["Mid"],
-			out_the_money=True,
+			out_the_money=out_the_money,
+			call=call,
 			pricing_model=pricing_model,
 		)[0],
 		volatility_surface.surface_quantities(
 			time=time,
 			quantity_method="model_pricing_implied_volatility",
 			price_types=["Mid"],
-			out_the_money=True,
+			out_the_money=out_the_money,
+			call=call,
 			model=model,
 			pricing_model=pricing_model,
 		)[0],

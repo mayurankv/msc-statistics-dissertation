@@ -83,12 +83,15 @@
             }
           },
           {
-            "id": "ab71660d38f8311d",
+            "id": "55ceba9567025b77",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Writeup/thesis/overview/Overview.excalidraw"
+                "file": "Writeup/thesis/content/markdown/2_literature_review/models/continuous/rough/rBergomi rough working.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           },
@@ -112,9 +115,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "465cbb5f777ca0fc",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Writeup/thesis/overview/Overview.excalidraw"
+              }
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -164,8 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 393.5,
-    "collapsed": true
+    "width": 393.5
   },
   "right": {
     "id": "439e0c2104fc67e2",
@@ -257,19 +269,20 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "ab71660d38f8311d",
+  "active": "465cbb5f777ca0fc",
   "lastOpenFiles": [
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/visualisations/__pycache__/volatility_surface.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/calibration.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/__pycache__/moneyness.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/__pycache__/expiry.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/__pycache__/parameters.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/core/__pycache__/volatility_surface.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/__pycache__/__init__.cpython-312.pyc",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/__pycache__",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/parameters.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/expiry.py",
-    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/utils/options/options.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_bergomi/simulation.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/heston/analytic_pricing.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/heston/simulation.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/heston/heston.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/heston/model.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_quadratic_heston/rough_quadratic_heston.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_quadratic_heston/__init__.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_quadratic_heston",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_heston/rough_heston.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_bergomi/rough_bergomi.py",
+    "Project/modules/stochastic_volatility_models/stochastic_volatility_models/src/models/rough_fractional_stochastic_volatility/rough_fractional_stochastic_volatility.py",
+    "Writeup/thesis/content/markdown/2_literature_review/models/continuous/rough/rBergomi rough working.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/continuous/Heston Model.md",
     "Writeup/thesis/overview/Overview.png",
     "Project/modules/realised_measures/README.md",
@@ -296,7 +309,6 @@
     "Writeup/thesis/content/markdown/2_literature_review/models/discrete/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/2_literature_review/models/Heterogeneous Autoregressive Model of Realised Variance.md",
     "Writeup/thesis/content/markdown/equations/Volatility.md",
-    "Writeup/theory/Time Series/Discrete Processes/Definition - Moving Average Process.md",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_CMYK.png",
     "Writeup/poster/content/assets/images/output.cmyk.png",
     "Writeup/poster/content/assets/images/ICL_Logo_Green_RGB.png",

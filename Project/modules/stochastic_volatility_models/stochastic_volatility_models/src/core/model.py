@@ -31,6 +31,7 @@ class StochasticVolatilityModel(ABC):
 		parameters: Mapping,
 	) -> None:
 		self.parameters = parameters
+		self.bounds = None
 
 	@abstractmethod
 	def integrated_volatility(
@@ -142,23 +143,6 @@ class StochasticVolatilityModel(ABC):
 
 		return prices
 
-	def fit(
-		self,
-		index_volatility_surface: VolatilitySurface,
-		volatility_index_volatility_surface: VolatilitySurface,
-		time: np.datetime64,
-		pricing_model: PricingModel,
-		weights: CostFunctionWeights = DEFAULT_COST_FUNCTION_WEIGHTS,
-	) -> dict:
-		results = minimise(
-			fun=minimise_cost_function,
-			x0=np.array(list(self.parameters.values())),
-			args=(index_volatility_surface, volatility_index_volatility_surface, time, self, pricing_model, weights),
-		)
-		self.parameters: Mapping = {parameter_key: parameter for parameter_key, parameter in zip(self.parameters.keys(), results["x"])}
-
-		return self.parameters
-
 	@abstractmethod
 	def simulate_path(
 		self,
@@ -171,3 +155,32 @@ class StochasticVolatilityModel(ABC):
 		seed: Optional[int] = SEED,
 	) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
 		pass
+
+	def fit(
+		self,
+		index_volatility_surface: VolatilitySurface,
+		volatility_index_volatility_surface: VolatilitySurface,
+		time: np.datetime64,
+		pricing_model: PricingModel,
+		weights: CostFunctionWeights = DEFAULT_COST_FUNCTION_WEIGHTS,
+		out_the_money: bool = True,
+		call: Optional[bool] = None,
+	) -> dict:
+		results = minimise(
+			fun=minimise_cost_function,
+			x0=np.array(list(self.parameters.values())),
+			args=(
+				index_volatility_surface,
+				volatility_index_volatility_surface,
+				time,
+				self,
+				pricing_model,
+				weights,
+				out_the_money,
+				call,
+			),
+			bounds=self.bounds,
+		)
+		self.parameters: Mapping = {parameter_key: parameter for parameter_key, parameter in zip(self.parameters.keys(), results["x"])}
+
+		return self.parameters
