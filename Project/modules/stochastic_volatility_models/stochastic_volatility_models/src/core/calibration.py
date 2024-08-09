@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
 	from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 	from stochastic_volatility_models.src.core.pricing_models import PricingModel
-from stochastic_volatility_models.src.core.evaluation_functions import surface_evaluation
+from stochastic_volatility_models.src.core.evaluation_functions import surface_evaluation, surface_atm_skew
 
 
 class CostFunctionWeights(TypedDict):
@@ -27,7 +27,8 @@ def cost_function(
 	volatility_index_volatility_surface: VolatilitySurface,
 	time: np.datetime64,
 	model: StochasticVolatilityModel,
-	pricing_model: PricingModel,
+	empirical_pricing_model: PricingModel,
+	model_pricing_model: PricingModel,
 	weights: CostFunctionWeights = DEFAULT_COST_FUNCTION_WEIGHTS,
 	out_the_money: bool = True,
 	call: Optional[bool] = None,
@@ -38,7 +39,8 @@ def cost_function(
 				volatility_surface=index_volatility_surface,
 				time=time,
 				model=model,
-				pricing_model=pricing_model,
+				empirical_pricing_model=empirical_pricing_model,
+				model_pricing_model=model_pricing_model,
 				out_the_money=out_the_money,
 				call=call,
 			)
@@ -47,26 +49,29 @@ def cost_function(
 			# 	volatility_surface=volatility_index_volatility_surface,
 			# 	time=time,
 			# 	model=model,
-			# 	pricing_model=pricing_model,
+			# 	empirical_pricing_model=empirical_pricing_model,
+			# 	model_pricing_model=model_pricing_model,
 			# 	out_the_money=out_the_money,
 			# 	call=call,
 			# )
-			# + weights["skew"]
-			# * surface_atm_skew(
-			# 	volatility_surface=index_volatility_surface,
-			# 	time=time,
-			# 	model=model,
-			# 	pricing_model=pricing_model,
-			# 	out_the_money=out_the_money,
-			# 	call=call,
-			# )
+			+ weights["skew"]
+			* surface_atm_skew(
+				volatility_surface=index_volatility_surface,
+				time=time,
+				model=model,
+				empirical_pricing_model=empirical_pricing_model,
+				model_pricing_model=model_pricing_model,
+				out_the_money=out_the_money,
+				call=call,
+			)
 			# + weights["skew"]
 			# * weights["volatility_index"]
 			# * surface_atm_skew(
 			# 	volatility_surface=volatility_index_volatility_surface,
 			# 	time=time,
 			# 	model=model,
-			# 	pricing_model=pricing_model,
+			# 	empirical_pricing_model=empirical_pricing_model,
+			# 	model_pricing_model=model_pricing_model,
 			# 	out_the_money=out_the_money,
 			# 	call=call,
 			# )
@@ -83,7 +88,8 @@ def minimise_cost_function(
 	volatility_index_volatility_surface: VolatilitySurface,
 	time: np.datetime64,
 	model: StochasticVolatilityModel,
-	pricing_model: PricingModel,
+	empirical_pricing_model: PricingModel,
+	model_pricing_model: PricingModel,
 	weights: CostFunctionWeights,
 	out_the_money: bool = True,
 	call: Optional[bool] = None,
@@ -95,7 +101,8 @@ def minimise_cost_function(
 		volatility_index_volatility_surface=volatility_index_volatility_surface,
 		time=time,
 		model=model,
-		pricing_model=pricing_model,
+		empirical_pricing_model=empirical_pricing_model,
+		model_pricing_model=model_pricing_model,
 		weights=weights,
 		out_the_money=out_the_money,
 		call=call,

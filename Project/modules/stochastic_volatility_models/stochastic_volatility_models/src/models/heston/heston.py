@@ -32,7 +32,7 @@ HESTON_BOUNDS = {
 }
 
 
-class HestonModel(StochasticVolatilityModel):
+class Heston(StochasticVolatilityModel):
 	def __init__(
 		self,
 		parameters: HestonParameters,
@@ -123,7 +123,5 @@ class HestonModel(StochasticVolatilityModel):
 			num_paths=num_paths,
 			monthly=monthly,
 		)
-
-		price_process = price_process
 
 		return price_process, variance_process

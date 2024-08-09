@@ -3,6 +3,7 @@ import numpy as np
 from typing import cast
 import matplotlib.pyplot as plt
 from scipy.interpolate import CubicSpline
+import plotly.graph_objects as go
 
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.core.underlying import Underlying
@@ -12,16 +13,41 @@ from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.utils.options.strikes import find_closest_strikes
 
 
+def get_slider(
+	traces,
+	volatility_surface,
+	t2x,
+):
+	steps = []
+	for idx in range(len(volatility_surface.expiries)):
+		step = dict(
+			method="update",
+			args=[
+				{"visible": [j // traces == idx for j in range(len(volatility_surface.expiries) * traces)]},  # Group visibility by expiry
+				{"title": f"T: {volatility_surface.expiries[idx]} - t2x: {t2x[idx]}"},
+			],
+			label=str(volatility_surface.expiries[idx]),
+		)
+		steps.append(step)
+
+	sliders = [dict(active=0, currentvalue={"prefix": "Expiry: "}, pad={"t": 50}, steps=steps)]
+	return sliders
+
+
 class Notebook:
 	def __init__(
 		self,
-		model,
+		model=None,
+		to_fit=False,
 	) -> None:
 		self.model = model
+		self.to_fit = to_fit and model is not None
 		self.ticker = "SPX"
+		self.vol_ticker = "VIX"
 		self.spx = Underlying(self.ticker)
-		self.vix = Underlying("VIX")
-		self.pricing_model = PricingModel("Black-76 EMM")  # "Black-76 EMM"
+		self.vix = Underlying(self.vol_ticker)
+		self.pricing_model = PricingModel("Black-76 EMM" if self.model is not None else "Black-Scholes-Merton")
+		self.empirical_pricing_model = PricingModel()
 		self.time = np.datetime64("2022-03-03")
 		expiries = np.array(
 			# ["2022-03-04", "2022-03-09", "2022-03-11", "2022-03-18", "2022-03-23", "2022-03-25", "2022-03-30", "2022-03-31", "2022-04-01", "2022-04-08", "2022-04-14", "2022-04-22", "2022-04-29", "2022-05-20", "2022-05-31", "2022-06-17", "2022-06-30", "2022-07-15", "2022-07-29", "2022-08-31"], dtype=np.datetime64
@@ -136,61 +162,218 @@ class Notebook:
 	def spx_price(
 		self,
 	) -> DataFrame:
-		return self.spx_vs.model_price(time=self.time, model=self.model)
+		if self.model is not None:
+			return self.spx_vs.model_price(time=self.time, model=self.model)
+		else:
+			return self.spx_vs.empirical_price(time=self.time)
 
 	def plot_surfaces(
 		self,
 		out_the_money=True,
 		call=None,
 	) -> None:
-		fig = plot_volatility_surface(
-			time=self.time,
-			volatility_surface=self.spx_vs,
-			quantity_method="model_price",
-			model=self.model,
-			plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
-			out_the_money=out_the_money,
-			call=call,
-		)
+		if self.model is not None:
+			fig = plot_volatility_surface(
+				time=self.time,
+				volatility_surface=self.spx_vs,
+				quantity_method="model_price",
+				model=self.model,
+				plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
+				out_the_money=out_the_money,
+				call=call,
+			)
+		else:
+			fig = plot_volatility_surface(
+				time=self.time,
+				volatility_surface=self.spx_vs,
+				quantity_method="empirical_price",
+				plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
+				out_the_money=out_the_money,
+				call=call,
+			)
 		fig.show()
 
-		fig = plot_volatility_surface(
-			time=self.time,
-			volatility_surface=self.spx_vs,
-			quantity_method="model_pricing_implied_volatility",
-			pricing_model=self.pricing_model,
-			model=self.model,
-			plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
-			out_the_money=out_the_money,
-			call=call,
-		)
+		if self.model is not None:
+			fig = plot_volatility_surface(
+				time=self.time,
+				volatility_surface=self.spx_vs,
+				quantity_method="model_pricing_implied_volatility",
+				pricing_model=self.pricing_model,
+				model=self.model,
+				plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
+				out_the_money=out_the_money,
+				call=call,
+			)
+		else:
+			fig = plot_volatility_surface(
+				time=self.time,
+				volatility_surface=self.spx_vs,
+				quantity_method="empirical_pricing_implied_volatility",
+				pricing_model=self.pricing_model,
+				plot_parameters={"moneyness": False, "time_to_expiry": False, "log_moneyness": False, "mid_price": True},
+				out_the_money=out_the_money,
+				call=call,
+			)
 		fig.show()
 
 	def plot_put_call_iv(
 		self,
+		plot_closeup=False,
 	) -> None:
 		volatility_surface = self.spx_vs
 
-		surface_c = volatility_surface.surface_quantities(
-			time=self.time,
-			quantity_method="model_pricing_implied_volatility",
-			price_types=["Mid"],
-			out_the_money=True,
-			call=True,
-			pricing_model=self.pricing_model,
-			model=self.model,
-			num_paths=2**16,
-		)[0]
-		surface_p = volatility_surface.surface_quantities(
-			time=self.time,
-			quantity_method="model_pricing_implied_volatility",
-			price_types=["Mid"],
-			out_the_money=True,
-			call=False,
-			pricing_model=self.pricing_model,
-			model=self.model,
-			num_paths=2**16,
-		)[0]
+		if self.model is not None:
+			surface_c = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=True,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+			surface_p = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=False,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+		else:
+			surface_c = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=True,
+				pricing_model=self.pricing_model,
+			)[0]
+			surface_p = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=False,
+				pricing_model=self.pricing_model,
+			)[0]
+
+		spot = volatility_surface.underlying.price(time=self.time)
+		t2x = time_to_expiry(self.time, volatility_surface.expiries)
+		indices = find_closest_strikes(
+			strikes=volatility_surface.strikes,
+			spot=volatility_surface.underlying.price(time=self.time),
+		)
+
+		fig = go.Figure()
+
+		for idx, expiry in enumerate(volatility_surface.expiries):
+			if not plot_closeup:
+				fig.add_trace(
+					trace=go.Scatter(
+						visible=idx == 0,  # Only the first trace is visible initially
+						x=volatility_surface.strikes,
+						y=cast(DataFrame, surface_c.xs(key=expiry, level=1)).loc[volatility_surface.strikes, "Symbol"].values,
+						name=f"T: {expiry}",
+						mode="lines+markers",
+						line=dict(color="blue"),
+						marker=dict(color="blue"),
+					)
+				)
+				fig.add_trace(
+					trace=go.Scatter(
+						visible=idx == 0,  # Only the first trace is visible initially
+						x=volatility_surface.strikes,
+						y=cast(DataFrame, surface_p.xs(key=expiry, level=1)).loc[volatility_surface.strikes, "Symbol"].values,
+						name=f"T: {expiry}",
+						mode="lines+markers",
+						line=dict(color="red"),
+						marker=dict(color="red"),
+					)
+				)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=indices,
+					y=cast(DataFrame, surface_c.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+					name=f"T: {expiry}",
+					mode="markers" if not plot_closeup else "lines+markers",
+					marker=dict(color="purple"),
+					line=dict(color="purple"),
+				)
+			)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=indices,
+					y=cast(DataFrame, surface_p.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+					name=f"T: {expiry}",
+					mode="markers" if not plot_closeup else "lines+markers",
+					marker=dict(color="orange"),
+					line=dict(color="orange"),
+				)
+			)
+			fig.add_vline(
+				x=spot,
+				line_dash="dash",
+				line_color="green",
+			)
+
+		fig.update_layout(
+			sliders=get_slider(
+				traces=4 - 2 * plot_closeup,
+				volatility_surface=volatility_surface,
+				t2x=t2x,
+			),
+			showlegend=False,
+			title_text=f"T: {volatility_surface.expiries[0]} - t2x: {t2x[0]}",
+		)
+
+		fig.show()
+
+	def plot_put_call_iv_old(
+		self,
+	) -> None:
+		volatility_surface = self.spx_vs
+
+		if self.model is not None:
+			surface_c = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=True,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+			surface_p = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=False,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+		else:
+			surface_c = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=True,
+				pricing_model=self.pricing_model,
+			)[0]
+			surface_p = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=True,
+				call=False,
+				pricing_model=self.pricing_model,
+			)[0]
+
 		for expiry in volatility_surface.expiries:
 			print(f"T: {expiry}")
 			indices = find_closest_strikes(
@@ -206,19 +389,149 @@ class Notebook:
 	def plot_iv(
 		self,
 		plot_closeup=False,
+		out_the_money=True,
+		call=None,
 	) -> None:
 		volatility_surface = self.spx_vs
 
-		surface = volatility_surface.surface_quantities(
-			time=self.time,
-			quantity_method="model_pricing_implied_volatility",
-			price_types=["Mid"],
-			out_the_money=True,
-			call=None,
-			pricing_model=self.pricing_model,
-			model=self.model,
-			num_paths=2**16,
-		)[0]
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+			)[0]
+
+		spot = volatility_surface.underlying.price(time=self.time)
+		t2x = time_to_expiry(self.time, volatility_surface.expiries)
+		indices = find_closest_strikes(
+			strikes=volatility_surface.strikes,
+			spot=volatility_surface.underlying.price(time=self.time),
+		)
+
+		fig = go.Figure()
+
+		for idx, expiry in enumerate(volatility_surface.expiries):
+			cs = CubicSpline(
+				x=indices,
+				y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+				bc_type="natural",
+			)
+
+			x = np.linspace(indices.min(), indices.max(), 100)
+			slope, intercept = np.polyfit(indices, cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].to_numpy(), 1)
+
+			if not plot_closeup:
+				fig.add_trace(
+					trace=go.Scatter(
+						visible=idx == 0,  # Only the first trace is visible initially
+						x=volatility_surface.strikes,
+						y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[volatility_surface.strikes, "Symbol"].values,
+						name=f"T: {expiry}",
+						mode="lines+markers",
+						line=dict(color="blue"),
+						marker=dict(color="blue"),
+					)
+				)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=indices,
+					y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+					name=f"T: {expiry}",
+					mode="lines+markers",
+					line=dict(color="red"),
+					marker=dict(color="red"),
+				)
+			)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=[spot],
+					y=[cs(spot)],
+					name=f"T: {expiry}",
+					mode="markers",
+					marker=dict(color="darkgreen"),
+				)
+			)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=x,
+					y=slope * x + intercept,
+					name=f"T: {expiry}",
+					mode="lines",
+					line=dict(color="orange"),
+				)
+			)
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=x,
+					y=cs(x),
+					name=f"T: {expiry}",
+					mode="lines",
+					line=dict(color="purple"),
+				)
+			)
+			fig.add_vline(
+				x=spot,
+				line_dash="dash",
+				line_color="green",
+			)
+
+		fig.update_layout(
+			sliders=get_slider(
+				traces=5 - plot_closeup,
+				volatility_surface=volatility_surface,
+				t2x=t2x,
+			),
+			showlegend=False,
+			title_text=f"T: {volatility_surface.expiries[0]} - t2x: {t2x[0]}",
+		)
+
+		fig.show()
+
+	def plot_iv_old(
+		self,
+		plot_closeup=False,
+		out_the_money=True,
+		call=None,
+	) -> None:
+		volatility_surface = self.spx_vs
+
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+			)[0]
+
 		t2x = time_to_expiry(self.time, volatility_surface.expiries)
 
 		for i, expiry in enumerate(volatility_surface.expiries):
@@ -258,17 +571,107 @@ class Notebook:
 	def plot_price(
 		self,
 		plot_closeup=False,
+		out_the_money=True,
+		call=None,
 	) -> None:
 		volatility_surface = self.spx_vs
 
-		surface = volatility_surface.surface_quantities(
-			time=self.time,
-			quantity_method="model_price",
-			price_types=["Mid"],
-			out_the_money=True,
-			call=None,
-			model=self.model,
-		)[0]
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+			)[0]
+
+		spot = volatility_surface.underlying.price(time=self.time)
+		t2x = time_to_expiry(self.time, volatility_surface.expiries)
+		indices = find_closest_strikes(
+			strikes=volatility_surface.strikes,
+			spot=volatility_surface.underlying.price(time=self.time),
+			n=8,
+		)
+
+		fig = go.Figure()
+
+		for idx, expiry in enumerate(volatility_surface.expiries):
+			if not plot_closeup:
+				fig.add_trace(
+					trace=go.Scatter(
+						visible=idx == 0,  # Only the first trace is visible initially
+						x=volatility_surface.strikes,
+						y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[volatility_surface.strikes, "Symbol"].values,
+						name=f"T: {expiry}",
+						mode="lines+markers",
+						line=dict(color="blue"),
+						marker=dict(color="blue"),
+					)
+				)
+			else:
+				fig.add_trace(
+					trace=go.Scatter(
+						visible=idx == 0,  # Only the first trace is visible initially
+						x=indices,
+						y=cast(DataFrame, surface.xs(key=expiry, level=1)).loc[indices, "Symbol"].values,
+						name=f"T: {expiry}",
+						mode="lines+markers",
+						line=dict(color="blue"),
+						marker=dict(color="blue"),
+					)
+				)
+			fig.add_vline(
+				x=spot,
+				line_dash="dash",
+				line_color="green",
+			)
+
+		fig.update_layout(
+			sliders=get_slider(
+				traces=1,
+				volatility_surface=volatility_surface,
+				t2x=t2x,
+			),
+			showlegend=False,
+			title_text=f"T: {volatility_surface.expiries[0]} - t2x: {t2x[0]}",
+		)
+
+		fig.show()
+
+	def plot_price_old(
+		self,
+		plot_closeup=False,
+		out_the_money=True,
+		call=None,
+	) -> None:
+		volatility_surface = self.spx_vs
+
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+			)[0]
 		spot = volatility_surface.underlying.price(time=self.time)
 		for expiry in volatility_surface.expiries:
 			print(f"T: {expiry}")
@@ -285,21 +688,25 @@ class Notebook:
 
 	def fit(
 		self,
-		skew_weight=0,
-		vol_weight=0,
+		skew_weight=0.0,
+		vol_weight=0.0,
 	) -> dict:
-		parameters: dict = self.model.fit(
-			index_volatility_surface=self.spx_vs,
-			volatility_index_volatility_surface=self.vix_vs,
-			time=self.time,
-			pricing_model=self.pricing_model,
-			weights={
-				"volatility_index": vol_weight,
-				"skew": skew_weight,
-			},
-		)
+		if self.to_fit and self.model is not None:
+			parameters: dict = self.model.fit(
+				index_volatility_surface=self.spx_vs,
+				volatility_index_volatility_surface=self.vix_vs,
+				time=self.time,
+				empirical_pricing_model=self.empirical_pricing_model,
+				model_pricing_model=self.pricing_model,
+				weights={
+					"volatility_index": vol_weight,
+					"skew": skew_weight,
+				},
+			)
 
-		return parameters
+			return parameters
+		else:
+			return {}
 
 	def plot_paths(
 		self,
@@ -307,23 +714,24 @@ class Notebook:
 		num_paths=2**14,
 		seed=None,
 	) -> None:
-		price_process, variance_process = self.model.simulate(
-			underlying=self.spx,
-			time=self.time,
-			simulation_length=simulation_length,
-			num_paths=num_paths,
-			monthly=False,
-			seed=seed,
-		)
+		if self.model is not None:
+			price_process, variance_process = self.model.simulate_path(
+				underlying=self.spx,
+				time=self.time,
+				simulation_length=simulation_length,
+				num_paths=num_paths,
+				monthly=False,
+				seed=seed,
+			)
 
-		DataFrame(price_process.T).plot(legend=False)
-		plt.show()
+			DataFrame(price_process.T).plot(legend=False)
+			plt.show()
 
-		plt.plot(price_process[0])
-		plt.show()
+			plt.plot(price_process[0])
+			plt.show()
 
-		DataFrame(variance_process.T).plot(legend=False)
-		plt.show()
+			DataFrame(variance_process.T).plot(legend=False)
+			plt.show()
 
-		plt.plot(variance_process[0])
-		plt.show()
+			plt.plot(variance_process[0])
+			plt.show()

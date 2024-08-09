@@ -14,15 +14,17 @@ def surface_evaluation(
 	volatility_surface: VolatilitySurface,
 	time: np.datetime64,
 	model: StochasticVolatilityModel,
-	pricing_model: Optional[PricingModel] = None,
+	empirical_pricing_model: Optional[PricingModel] = None,
+	model_pricing_model: Optional[PricingModel] = None,
 	prices: bool = False,
 	metric: Metrics = "MSE",
 	out_the_money: bool = True,
 	call: Optional[bool] = None,
 ) -> float:
-	if not prices and pricing_model is None:
-		raise ValueError("If evaluating volatilities, a pricing model must be provided")
-	kwargs = {} if prices else {"pricing_model": pricing_model}
+	if not prices and (empirical_pricing_model is None or model_pricing_model is None):
+		raise ValueError("If evaluating volatilities, pricing models must be provided")
+	empirical_kwargs = {} if prices else {"pricing_model": empirical_pricing_model}
+	model_kwargs = {} if prices else {"pricing_model": model_pricing_model}
 	loss = METRICS[metric](
 		volatility_surface.surface_quantities(
 			time=time,
@@ -30,7 +32,7 @@ def surface_evaluation(
 			price_types=["Mid"],
 			out_the_money=out_the_money,
 			call=call,
-			**kwargs,
+			**empirical_kwargs,
 		)[0].values,
 		volatility_surface.surface_quantities(
 			time=time,
@@ -39,7 +41,7 @@ def surface_evaluation(
 			out_the_money=out_the_money,
 			model=model,
 			call=call,
-			**kwargs,
+			**model_kwargs,
 		)[0].values,
 	)
 
@@ -50,7 +52,8 @@ def surface_atm_skew(
 	volatility_surface: VolatilitySurface,
 	time: np.datetime64,
 	model: StochasticVolatilityModel,
-	pricing_model: PricingModel,
+	empirical_pricing_model: PricingModel,
+	model_pricing_model: PricingModel,
 	metric: Metrics = "RMSE",
 	out_the_money: bool = True,
 	call: Optional[bool] = None,
@@ -62,7 +65,7 @@ def surface_atm_skew(
 			price_types=["Mid"],
 			out_the_money=out_the_money,
 			call=call,
-			pricing_model=pricing_model,
+			pricing_model=empirical_pricing_model,
 		)[0],
 		volatility_surface.surface_quantities(
 			time=time,
@@ -71,7 +74,7 @@ def surface_atm_skew(
 			out_the_money=out_the_money,
 			call=call,
 			model=model,
-			pricing_model=pricing_model,
+			pricing_model=model_pricing_model,
 		)[0],
 	]
 
