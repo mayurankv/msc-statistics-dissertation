@@ -5,7 +5,7 @@ from numpy.typing import NDArray
 from loguru import logger
 
 from stochastic_volatility_models.src.core.model import StochasticVolatilityModel, NUM_PATHS, SEED
-from stochastic_volatility_models.src.models.heston.analytic_pricing import price, DEFAULT_LG_DEGREE
+from stochastic_volatility_models.src.models.heston.analytic_pricing import analytic_prices, DEFAULT_LG_DEGREE
 from stochastic_volatility_models.src.models.heston.simulation import simulate
 from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry, DAYS
 from stochastic_volatility_models.src.data.rates import get_risk_free_interest_rate
@@ -86,7 +86,7 @@ class HestonModel(StochasticVolatilityModel):
 			monthly=monthly,
 		)
 
-		prices = price(
+		prices = analytic_prices(
 			spot=spot,
 			types=types,
 			strikes=strikes,

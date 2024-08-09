@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 	from stochastic_volatility_models.src.core.volatility_surface import VolatilitySurface
 	from stochastic_volatility_models.src.core.model import StochasticVolatilityModel
 	from stochastic_volatility_models.src.core.pricing_models import PricingModel
-from stochastic_volatility_models.src.core.evaluation_functions import surface_evaluation, surface_atm_skew
+from stochastic_volatility_models.src.core.evaluation_functions import surface_evaluation
 
 
 class CostFunctionWeights(TypedDict):
@@ -51,15 +51,15 @@ def cost_function(
 			# 	out_the_money=out_the_money,
 			# 	call=call,
 			# )
-			+ weights["skew"]
-			* surface_atm_skew(
-				volatility_surface=index_volatility_surface,
-				time=time,
-				model=model,
-				pricing_model=pricing_model,
-				out_the_money=out_the_money,
-				call=call,
-			)
+			# + weights["skew"]
+			# * surface_atm_skew(
+			# 	volatility_surface=index_volatility_surface,
+			# 	time=time,
+			# 	model=model,
+			# 	pricing_model=pricing_model,
+			# 	out_the_money=out_the_money,
+			# 	call=call,
+			# )
 			# + weights["skew"]
 			# * weights["volatility_index"]
 			# * surface_atm_skew(
@@ -87,10 +87,8 @@ def minimise_cost_function(
 	weights: CostFunctionWeights,
 	out_the_money: bool = True,
 	call: Optional[bool] = None,
-):
+) -> float:
 	model.parameters = {parameter_key: parameter for parameter_key, parameter in zip(model.parameters.keys(), parameters)}
-	logger.trace(f"Minimise cost function iteration with parameters {model.parameters}")
-	logger.debug(f"Minimise cost function iteration with parameters {model.parameters}")  # TODO (@mayurankv): Delete
 
 	cost = cost_function(
 		index_volatility_surface=index_volatility_surface,
@@ -102,6 +100,8 @@ def minimise_cost_function(
 		out_the_money=out_the_money,
 		call=call,
 	)
-	logger.debug(f"Cost is {cost}")  # TODO (@mayurankv): Delete
+
+	logger.trace(f"Cost is {cost} with parameters {model.parameters}")  # TODO (@mayurankv): Delete
+	logger.debug(f"Cost is {cost} with parameters {model.parameters}")  # TODO (@mayurankv): Delete
 
 	return cost

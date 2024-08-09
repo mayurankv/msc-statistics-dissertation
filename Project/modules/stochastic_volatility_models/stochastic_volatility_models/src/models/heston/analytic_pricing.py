@@ -195,7 +195,7 @@ def p2_value(
 
 
 @np_multiple_cache()
-def price(
+def analytic_prices(
 	spot: float,
 	types: NDArray[str],  # type: ignore
 	strikes: NDArray[np.int64],
