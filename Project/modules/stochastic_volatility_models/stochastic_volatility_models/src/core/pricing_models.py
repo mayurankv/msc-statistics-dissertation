@@ -21,7 +21,6 @@ from stochastic_volatility_models.src.utils.options.parameters import get_option
 PricingModels = Literal["Black-Scholes-Merton", "Black-Scholes", "Black-76", "Black-76 EMM"]
 
 
-# TODO (@mayurankv): Suppress irrelevant warnings? Fill NaNs with 0?
 class PricingModel:
 	def __init__(
 		self,
@@ -46,7 +45,6 @@ class PricingModel:
 			action="ignore",
 			category=UserWarning,
 		)
-		# TODO (@mayurankv): Test with None s in prices
 		implied_volatilities = DataFrame(
 			data=None,
 			index=prices.index,
@@ -158,7 +156,6 @@ class PricingModel:
 			action="ignore",
 			category=UserWarning,
 		)
-		# TODO (@mayurankv): Test with None s in volatilities
 		implied_prices = DataFrame(
 			data=None,
 			index=volatilities.index,

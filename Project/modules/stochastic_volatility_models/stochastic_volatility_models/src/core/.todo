@@ -1,61 +1,18 @@
-St vs S0??? Ask Adam
+Now:
+	☐ Can't forecast volatility
+	☐ Write Mikko email now
+	☐ Ask Adam: How many pages per section rough guide?
+	☐ VIX Pricing
+	☐ VIX Fitting
+	☐ Skew Fitting
+	☐ Realised Variance stuff
+	☐ Function to check all surfaces of pairs plotted for initial parameters to check cost function locally convex and has unique minimum
 
-How to do VIX pricing?
-Make Hesotn pricing work - monte carlo? Mask bad prices?
-Make rBergomi pricing work - put call parity
+Models:
+	☐ Integrated Volatility
+	☐ Volatility
 
-Write Mikko email now
-
-- Move types
-- Evaluation functions
-- Heston fit
-- Heston simulation
-
-- [ ] Redo everywhere where I have used underlying.future_price(time=time) to use the correct expiry
-- [ ] Also when to use am_settlement for futures?
-
-Function to check all surfaces of pairs plotted for initial parameters to check cost function locally convex and has unique minimum
-
-Use black scholes with dividend yield:
----------
-For European options you can utilise put-call parity and reverse out the implied dividend yield.
-I.e.
-F(T,K) = C(T,K) - P(T,K)
-and obviously
-F(T) = S(t)*e^[(r-d)*(T-t)]
-
-P-C = Ke^-rt - Se^-qt
-P = C + Ke^-rt - Se^-qt
-P = C + Ke^-rt - Se^-qt
-
-C = Se^-qt P_1 - Ke^-rt P_2
-P = Se^-qt (P_1-1) - Ke^-rt (P_2-1)
-----------
-
-- After Heston look at realised estimators
-
-- Test vol surface
-- Sort todos in pricing models
-
-- Streamlit app to do choices
-
-Cost Function: 2401.03345v1.pdf, 2001.01789v1.pdf, 2301.13235v1.pdf
-Cite Heston characteristic function and pricing
-
-
-1.
-Objective Functions:
-Fitting Heston:
-	☐ Need objective functions
-Simulating Heston:
-	☐
-Integrated Volatility:
-	☐
-
-2.
-Get data:
-	☐ Store
-	☐ Be able to pull
+---
 
 3.
 Overall volatility surfaces:
@@ -66,34 +23,3 @@ Overall volatility surfaces:
 4.
 General simulation of paths:
 General fitting parameters:
-
-??
-How to deal with leap years?
-- Deal with dividends in base black scholes
-- What is black scholes merton?
-
---------- WRITEUP
-Implied Vol:
-https://quant.stackexchange.com/questions/47373/why-do-we-fit-volatility-surfaces-implied-from-a-option-pricing-model-to-the-emp
-https://quant.stackexchange.com/questions/30932/confusion-with-volatility-smiles-implied-by-different-models
-
-Vol Comparison:
-https://quant.stackexchange.com/questions/42553/realized-volatility-forecast-vs-implied-volatility
-https://civolatility.com/implied-vs-realized-volatility-all-you-need-to-know/
----------
-
-
-Future work:
-
-- Heston proper pricing Cui et al
-
-
-Emphasize the realisticness of the data used compared to common simplifications
-
-
-
-p1 = {'initial_variance': 1.5735434638117027,
-'long_term_variance': -5.585043916635598,
-'volatility_of_volatility': -1.4008118465141628,
-'mean_reversion_rate': 2.7847101214701397,
-'wiener_correlation': -0.8231322657874336}

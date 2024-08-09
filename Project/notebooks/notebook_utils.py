@@ -4,6 +4,7 @@ from typing import cast
 import matplotlib.pyplot as plt
 from scipy.interpolate import CubicSpline
 import plotly.graph_objects as go
+# import plotly.express as px
 
 from stochastic_volatility_models.src.core.pricing_models import PricingModel
 from stochastic_volatility_models.src.core.underlying import Underlying
@@ -13,7 +14,7 @@ from stochastic_volatility_models.src.utils.options.expiry import time_to_expiry
 from stochastic_volatility_models.src.utils.options.strikes import find_closest_strikes
 
 
-def get_slider(
+def get_expiry_slider(
 	traces,
 	volatility_surface,
 	t2x,
@@ -31,6 +32,26 @@ def get_slider(
 		steps.append(step)
 
 	sliders = [dict(active=0, currentvalue={"prefix": "Expiry: "}, pad={"t": 50}, steps=steps)]
+	return sliders
+
+
+def get_strike_slider(
+	traces,
+	volatility_surface,
+):
+	steps = []
+	for idx in range(len(volatility_surface.strikes)):
+		step = dict(
+			method="update",
+			args=[
+				{"visible": [j // traces == idx for j in range(len(volatility_surface.strikes) * traces)]},  # Group visibility by expiry
+				{"title": f"K: {volatility_surface.strikes[idx]}"},
+			],
+			label=str(volatility_surface.strikes[idx]),
+		)
+		steps.append(step)
+
+	sliders = [dict(active=0, currentvalue={"prefix": "Strike: "}, pad={"t": 50}, steps=steps)]
 	return sliders
 
 
@@ -321,7 +342,7 @@ class Notebook:
 			)
 
 		fig.update_layout(
-			sliders=get_slider(
+			sliders=get_expiry_slider(
 				traces=4 - 2 * plot_closeup,
 				volatility_surface=volatility_surface,
 				t2x=t2x,
@@ -493,7 +514,7 @@ class Notebook:
 			)
 
 		fig.update_layout(
-			sliders=get_slider(
+			sliders=get_expiry_slider(
 				traces=5 - plot_closeup,
 				volatility_surface=volatility_surface,
 				t2x=t2x,
@@ -568,6 +589,64 @@ class Notebook:
 			plt.plot(spot, cs(spot), color="orange", marker="o")
 			plt.show()
 
+	def plot_strike_iv(
+		self,
+		out_the_money=True,
+		call=None,
+	) -> None:
+		volatility_surface = self.spx_vs
+
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_pricing_implied_volatility",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				pricing_model=self.pricing_model,
+			)[0]
+
+		indices = find_closest_strikes(
+			strikes=volatility_surface.strikes,
+			spot=volatility_surface.underlying.price(time=self.time),
+		)
+
+		fig = go.Figure()
+
+		for idx, strike in enumerate(volatility_surface.strikes):
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=volatility_surface.expiries,
+					y=cast(DataFrame, surface.xs(key=strike, level=0)).loc[volatility_surface.expiries, "Symbol"].values,  # type: ignore
+					name=f"K: {strike}",
+					mode="lines+markers",
+					line=dict(color="blue" if strike not in indices else "purple"),
+					marker=dict(color="blue" if strike not in indices else "purple"),
+				)
+			)
+
+		fig.update_layout(
+			sliders=get_strike_slider(
+				traces=1,
+				volatility_surface=volatility_surface,
+			),
+			showlegend=False,
+			title_text=f"K: {volatility_surface.strikes[0]}",
+		)
+
+		fig.show()
+
 	def plot_price(
 		self,
 		plot_closeup=False,
@@ -636,7 +715,7 @@ class Notebook:
 			)
 
 		fig.update_layout(
-			sliders=get_slider(
+			sliders=get_expiry_slider(
 				traces=1,
 				volatility_surface=volatility_surface,
 				t2x=t2x,
@@ -686,6 +765,62 @@ class Notebook:
 			plt.axvline(spot, color="orange", linestyle="dashed")
 			plt.show()
 
+	def plot_strike_price(
+		self,
+		out_the_money=True,
+		call=None,
+	) -> None:
+		volatility_surface = self.spx_vs
+
+		if self.model is not None:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="model_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+				model=self.model,
+			)[0]
+		else:
+			surface = volatility_surface.surface_quantities(
+				time=self.time,
+				quantity_method="empirical_price",
+				price_types=["Mid"],
+				out_the_money=out_the_money,
+				call=call,
+			)[0]
+
+		indices = find_closest_strikes(
+			strikes=volatility_surface.strikes,
+			spot=volatility_surface.underlying.price(time=self.time),
+		)
+
+		fig = go.Figure()
+
+		for idx, strike in enumerate(volatility_surface.strikes):
+			fig.add_trace(
+				trace=go.Scatter(
+					visible=idx == 0,  # Only the first trace is visible initially
+					x=volatility_surface.expiries,
+					y=cast(DataFrame, surface.xs(key=strike, level=0)).loc[volatility_surface.expiries, "Symbol"].values,  # type: ignore
+					name=f"K: {strike}",
+					mode="lines+markers",
+					line=dict(color="blue" if strike not in indices else "purple"),
+					marker=dict(color="blue" if strike not in indices else "purple"),
+				)
+			)
+
+		fig.update_layout(
+			sliders=get_strike_slider(
+				traces=1,
+				volatility_surface=volatility_surface,
+			),
+			showlegend=False,
+			title_text=f"K: {volatility_surface.strikes[0]}",
+		)
+
+		fig.show()
+
 	def fit(
 		self,
 		skew_weight=0.0,
@@ -709,6 +844,53 @@ class Notebook:
 			return {}
 
 	def plot_paths(
+		self,
+		simulation_length=1,
+		num_paths=2**14,
+		num_show: int | None = None,
+		choice_seed: int | None = None,
+		seed: int | None = None,
+	) -> None:
+		if self.model is not None:
+			price_process, variance_process = self.model.simulate_path(
+				underlying=self.spx,
+				time=self.time,
+				simulation_length=simulation_length,
+				num_paths=num_paths,
+				monthly=False,
+				seed=seed,
+			)
+
+			if num_show is None or num_show == num_paths:
+				price_df = price_process
+				variance_df = variance_process
+			else:
+				rng = np.random.default_rng(seed=choice_seed)
+				selected_elements = rng.choice(num_paths, size=num_show, replace=False)
+				price_df = price_process[selected_elements]
+				variance_df = variance_process[selected_elements]
+
+			# fig = px.line(
+			# 	data_frame=DataFrame(data=price_df.T),
+			# ).update_layout(
+			# 	title_text="Paths",
+			# 	showlegend=False,
+			# )
+			# fig.show()
+			DataFrame(price_df.T).plot(legend=False)
+			plt.show()
+
+			# fig = px.line(
+			# 	data_frame=DataFrame(data=variance_df.T),
+			# ).update_layout(
+			# 	title_text="Paths",
+			# 	showlegend=False,
+			# )
+			# fig.show()
+			DataFrame(variance_df.T).plot(legend=False)
+			plt.show()
+
+	def plot_paths_old(
 		self,
 		simulation_length=1,
 		num_paths=2**14,
