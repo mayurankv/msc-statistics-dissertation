@@ -35,10 +35,6 @@ P = Se^-qt (P_1-1) - Ke^-rt (P_2-1)
 - After Heston look at realised estimators
 
 - Test vol surface
-- SSVI Fit vol surface
-- Implement objective functions
-- Implement fitting
-- Finish heston model by Friday
 - Sort todos in pricing models
 
 - Streamlit app to do choices

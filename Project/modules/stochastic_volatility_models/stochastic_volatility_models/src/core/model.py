@@ -23,6 +23,7 @@ if TYPE_CHECKING:
 
 SEED = 343
 NUM_PATHS = 2**14
+MIN_TICK_SIZE = 0.05
 
 
 class StochasticVolatilityModel(ABC):
@@ -139,7 +140,7 @@ class StochasticVolatilityModel(ABC):
 			),
 			index=symbols,
 			columns=["Mid"],
-		)
+		).clip(lower=MIN_TICK_SIZE / 2)
 
 		return prices
 

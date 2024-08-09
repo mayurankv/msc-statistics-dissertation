@@ -124,4 +124,6 @@ class HestonModel(StochasticVolatilityModel):
 			monthly=monthly,
 		)
 
+		price_process = price_process
+
 		return price_process, variance_process
